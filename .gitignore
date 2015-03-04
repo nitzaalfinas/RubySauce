@@ -16,7 +16,7 @@ db/*.sqlite3-journal
 !/log/.keep
 /tmp
 
-# Ignoring image
+# Ignoring images
 public/images/
 
 # Ignore database configuration
