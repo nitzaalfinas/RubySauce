@@ -6,7 +6,8 @@
 		<%= render "articles", :locals => { @articles => @articles } %>  	
 	</div>
 	<div class="col-lg-3">
-		Menu
+		<%= render partial: "widget/popular_article" %>
+		<%= render partial: "widget/recent_article" %>
 	</div>
 </div>
 

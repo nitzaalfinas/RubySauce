@@ -1,67 +1,59 @@
 <%= render "support/fixed_nav" %>
 
-<div id="content-wrapper">
-	<div id="sub-post">
-		<div class="container">
-			<i class="fa fa-home"></i> 
-			<a href="/">Home</a> 
-			<i class="fa fa-angle-double-right"></i>
+<div class="container">
+	<ol class="breadcrumb">
+		<li>
+			<a href="/"><i class="fa fa-angle-double-right"></i> Home</a>
+		</li>
+		<li>
 			<% @article_categories.each do |ac| %>
 			<a class="cats" href="/category/<%= ac.cat_slug %>"><%= ac.cat_name %></a> 
 			<% end %>
-			<i class="fa fa-angle-double-right"></i> 
-			<a><%= @article.title %></a>
-		</div>
-	</div>
-
-
-	<div class="container">
-		<div class="content left medium">
-			<h1><%= @article.title %></h1>
-			<%= image_tag("upload/show/"+@article.feat_img) %>
-			<h2>
-				oleh 
-				<% if @article.full_name == nil %>
-					Tim
-				<% else %>
-					<%= @article.full_name %>
-				<% end %>
-			</h2>
-			<h3><%= @article.created_at %></h3>
-			<%= @article.body.html_safe %>
-			<div class="clear line" style="margin-right:50px"></div>
-
-			<%= render "discuss_list", :locals => { @article.id => @article.id } %>
-			<%= render "discuss_form", :locals => { @article.id => @article.id } %>
-		</div>
-
-
-
-		<div class="content left small">
-			
-			<div class="content">
-				<div>
-					<%= render "widget/right_pages" %>
-				</div>
-
-				<div>
-					<%= render "widget/right_categories" %>
-				</div>
-
-				<div>
-					<%= render "widget/last_article" %>
-				</div>
-				
-				<div>
-					<%= render "widget/new_user" %>	
-				</div>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-
+		</li>
+		<li class="active">
+			<%= @article.title %>
+		</li>
+	</ol>
 </div>
+	
 
+<div class="container">
+	<div class="col-lg-9">
+		<h1><%= @article.title %></h1>
+		<%= image_tag("upload/show/"+@article.feat_img) %>
+		<h2>
+			oleh 
+			<% if @article.full_name == nil %>
+				Tim
+			<% else %>
+				<%= @article.full_name %>
+			<% end %>
+		</h2>
+		<h3><%= @article.created_at %></h3>
+		<%= @article.body.html_safe %>
+		<div class="clear line" style="margin-right:50px"></div>
 
+		<%= render "discuss_list", :locals => { @article.id => @article.id } %>
+		<%= render "discuss_form", :locals => { @article.id => @article.id } %>
+	</div>
+
+	<div class="col-lg-3">
+		<div>
+			<%= render "widget/right_pages" %>
+		</div>
+
+		<div>
+			<%= render "widget/right_categories" %>
+		</div>
+
+		<div>
+			<%= render "widget/recent_article" %>
+		</div>
+		
+		<div>
+			<%= render "widget/new_user" %>	
+		</div>
+	</div>
+</div>
 
 <%= render "support/footer" %>
