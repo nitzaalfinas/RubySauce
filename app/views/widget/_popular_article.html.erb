@@ -1,0 +1,20 @@
+<% 
+#Title: Popular Article
+#Author: nitzaalfinas@gmail.com
+#Description: Showing 5 popular article
+%>
+
+<% @larts = VArticle.order('article_vcount desc').take(5) %>
+
+<h1>Artikel Populer</h1>
+
+<ul class="nostyle">
+	<% @larts.each do |lar| %>
+	<li class="line">
+		<a href="/<%= lar.permalink %>">
+			<h2 style="margin-bottom:5px;"><%= lar.title %></h2>	
+			<h3><%= lar.created_at %></h3>		
+		</a>
+	</li>
+	<% end %>
+</ul>

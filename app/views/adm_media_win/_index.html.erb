@@ -1,0 +1,66 @@
+<div id="media_win_modal" class="modal fade bs-example-modal-lg" tabindex="-1" 
+	role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  	<div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      	<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" 
+        			aria-label="Close"><span aria-hidden="true">&times;</span>
+    			</button>
+	        	<h4 class="modal-title" id="myModalLabel">Media</h4>
+	      	</div>
+	      	<div class="modal-body" id="media_article">
+	      		<div class="w100 dis-table">
+	      			<div class="w100 dis-table">
+	      				<% @media.each do |med| %>
+			      			<div class="medclick col-lg-4 media pt10 pb10 cursor-pointer"
+			      				data-mediaid='<%= med.id %>'
+								data-medstoragename='<%= med.med_storage_name %>' >
+			      				<div class="col-lg-12" id="media_<%= med.id %>">
+			      					<%= image_tag('upload/thumb/'+med.med_storage_name, alt: med.med_alt, style: "margin-bottom: 10px;") %>
+		      					</div>
+			      			</div>
+			      		<% end %>	
+	      			</div>
+		      		<div class="w100 dis-table">
+		      			<div class="pagination">
+		      				<a href="#" class="previous_page_win" data-numpage="<%= @prev_page %>">&lt; Previous</a>
+							<a href="#" class="next_page_win"  data-numpage="<%= @next_page %>">Next &gt;</a>
+		      			</div>
+		      		</div>
+	      		</div>
+	      	</div>
+	    </div>
+  	</div>
+</div>
+
+<script type="text/javascript">
+$('div.medclick').on("click", function(){
+	var mediaid = $(this).data("mediaid")
+	var medstoragename = $(this).data("medstoragename")
+	$('#feat_img_display').html($('#media_'+mediaid).html());
+	$('#article_feat_img_input').val(medstoragename);
+	$('#media_win_modal').modal('hide');
+});
+
+
+$('a.previous_page_win').click(function(){
+	numpage = $(this).data("numpage")
+	$.ajax({
+		url: '/adm/media_win/the_page?page='+numpage+'&rows=5&sort=id&order=desc',
+		success: function (response) {
+			$('#media_article').html(response)
+		}
+	});
+});
+	
+
+$('a.next_page_win').click(function(){
+	numpage = $(this).data("numpage")
+	$.ajax({
+		url: '/adm/media_win/the_page?page='+numpage+'&rows=5&sort=id&order=desc',
+		success: function (response) {
+			$('#media_article').html(response)
+		}
+	});
+});
+</script>

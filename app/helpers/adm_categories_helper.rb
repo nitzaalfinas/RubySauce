@@ -1,0 +1,2 @@
+module AdmCategoriesHelper
+end

@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Excerp
+	</div>
+	<div class="panel-body">
+		<textarea class="form-control" name="article[excerp]"><%= @article.excerp %></textarea>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Author
+	</div>
+	<div class="panel-body">
+		<select name="article[author_id]" class="form-control">
+			<option value="<%= current_user.id %>"><%= current_user.nick_name %></option>
+		</select>
+	</div>
+</div>

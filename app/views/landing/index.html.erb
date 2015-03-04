@@ -1,0 +1,18 @@
+<%= render "support/fixed_nav" %>
+
+
+<div class="container">
+	<div class="col-lg-9">
+		<%= render "articles", :locals => { @articles => @articles } %>  	
+	</div>
+	<div class="col-lg-3">
+		Menu
+	</div>
+</div>
+
+
+<%= render "support/footer" %>
+
+<script type="text/javascript">
+	landing.onload();
+</script>

@@ -1,0 +1,2 @@
+module AdmPagesHelper
+end

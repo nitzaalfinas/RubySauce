@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Categories
+	</div>
+	<div class="panel-body">
+		<% @categories.each do |cat| %>
+			<div>
+				<% @catx = ArticleCategory.where('article_id = ? and category_id = ?', @article.id, cat.id ).count  %>
+				
+				<% if @catx == 1 %>	
+					<input type="checkbox" name="category[category_id][]" value="<%= cat.id %>" checked> 
+					<%= cat.cat_name %>
+				<% else %>	
+					<input type="checkbox" name="category[category_id][]" value="<%= cat.id %>" > 
+					<%= cat.cat_name %>
+				<% end %>
+			</div>
+		<% end #end @categories.each %>
+
+	</div>
+</div>

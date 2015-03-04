@@ -1,0 +1,16 @@
+<div class="pages">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Pages
+		</div>
+		<div class="panel-body">
+			<% @articles = VPage.where("publish_status = 'Publish'").order('created_at DESC').paginate(page: params[:page], per_page: 10) %>
+			<% @articles.each do |article| %>
+				<li onclick="n_menu.add_page_to_draft(<%= article.id %>,'<%= article.title %>','<%= article.permalink %>');" class="cursor-pointer">
+					<%= article.title %>
+				</li>
+			<% end #end @categories.each %>
+			<%= will_paginate @articles %>
+		</div>
+	</div>
+</div>

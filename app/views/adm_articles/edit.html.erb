@@ -1,0 +1,63 @@
+<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+
+<h1 class="mt0">Edit Article</h1>
+
+<%= form_for(@article, url: "/adm/articles/update/#{@article.id}?page=#{@page}", html: {"class" => "form-horizontal"}) do |f| %>
+
+	<!-- barisan flash error -->
+	<% if @article.errors.any? %>
+		<div id="errors" class="alert alert-danger">
+			<h2 class="mt5 mb5"><%= pluralize(@article.errors.count, "error") %> prevent this post from saving</h2>
+			<ul>
+				<% @article.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<!-- barisan content form -->
+	<div class="col-lg-9 pl0">
+		<div class="form-group">
+			<%= f.text_field :title, html_options={ "class" => "form-control", "placeholder" => "Title" } %>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon"><%= @setting.site_domain %>/</span>
+				<%= f.text_field :permalink, html_options={ "id" => "article_permalink", "class" => "form-control", "placeholder" => "Permalink" } %>
+			</div>
+		</div>	
+
+		<div class="form-group">
+			<%= f.text_area :body, html_options={ "id" => "article_body", "placeholder" => "Article" } %>
+		</div>
+
+		<%= render 'panel_ext', :locals => { @article => @article} %>
+	</div>
+
+	<div class="col-lg-3">
+		<%= render "panel_publish", :locals => { @article => @article } %>
+		<%= render "panel_categories", :locals => { @article => @article, @categories => @categories } %>
+		<%= render "panel_featured_image", :locals => { @article => @article } %>
+	</div>
+		
+<% end %>
+
+<script>
+$(document).ready(function(){
+	setTimeout(function(){
+		tinyMCE.init({
+			menubar: false,
+			plugins: [
+		        "autolink link image code table template"
+		    ],
+			selector:"#article_body",
+			toolbar1: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
+		});	
+	},500);
+	
+	$('#pill_articles').addClass('active');
+});
+
+</script>

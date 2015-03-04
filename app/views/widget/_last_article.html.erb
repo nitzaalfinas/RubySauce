@@ -1,0 +1,20 @@
+<% 
+#Title: Last Article
+#Author: nitzaalfinas@gmail.com
+#Description: Showing 5 last article
+%>
+
+<% @larts = VArticle.order('created_at desc').take(5) %>
+
+<h1>Last Article</h1>
+
+<ul class="nostyle">
+	<% @larts.each do |lar| %>
+	<li class="line">
+		<a href="/<%= lar.permalink %>">
+			<h2><%= lar.title %></h2>	
+			<h3><%= lar.created_at %></h3>		
+		</a>
+	</li>
+	<% end %>
+</ul>

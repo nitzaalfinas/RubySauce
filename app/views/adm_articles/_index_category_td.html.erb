@@ -1,0 +1,9 @@
+<% cats = VArticleCategory.where('article_id = '+article_id.to_s) %>
+
+<ul class="categories">
+	<% cats.each do |cat| %>
+		<li>
+			<%= cat.cat_name %>	
+		</li>
+	<% end %>
+</ul>

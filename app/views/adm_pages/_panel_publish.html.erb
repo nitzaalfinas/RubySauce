@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Publish
+	</div>
+	<div class="panel-body">
+		<div class="mb10">	
+			Status: 
+			<select name="article[publish_status]" class="form-control">
+				<%= options_for_select([['Publish','Publish'],['Draft','Draft']], @article.publish_status) %>
+			</select>
+		</div>
+
+		<div class="mb10">
+			Visibility: 
+			<select name="article[publish_visibility]" class="form-control">
+				<%= options_for_select([['Public','Public'],['Private','Private']], @article.publish_visibility) %>
+			</select>
+		</div>
+
+	</div>
+	<div class="panel-footer">
+		<input type="submit" class="btn btn-primary" value="Save">
+		<%= link_to "Cancel", adm_pages_path, class: "btn btn-default" %>
+	</div>	
+</div>

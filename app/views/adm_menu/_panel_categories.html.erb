@@ -1,0 +1,20 @@
+<div class="pages">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Categories
+		</div>
+		<div class="panel-body">
+			<% @categories = Category.all.order('created_at DESC').paginate(page: params[:page], per_page: 10) %>
+			<% @categories.each do |category| %>
+				<div class="mb10">
+					<div onclick="n_menu.add_category_to_draft(<%= category.id %>,'<%= category.cat_name %>','<%= category.cat_slug %>');">
+						<li>
+							<%= category.cat_name %>	
+						</li>
+					</div>
+				</div>
+			<% end #end @categories.each %>
+			<%= will_paginate @categories %>
+		</div>
+	</div>
+</div>

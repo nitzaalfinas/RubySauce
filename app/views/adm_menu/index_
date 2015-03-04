@@ -1,0 +1,24 @@
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="/jquery.mjs.nestedSortable.js"></script>
+<h1 class="mt0">Menu</h1>
+
+<ol class="sortable">
+	<li class="alert alert-danger"><div>Item 1</div></li>
+	<li class="alert alert-danger"><div>Item 2</div></li>
+	<li class="alert alert-danger"><div>Item 3</div></li>
+	<li class="alert alert-danger"><div>Item 4</div></li>
+</ol>
+
+<script>
+	$('#pill_menu').addClass('active');
+
+	$(document).ready(function(){
+
+        $('.sortable').nestedSortable({
+            handle: 'div',
+            items: 'li',
+            toleranceElement: '> div'
+        });
+
+    });
+</script>

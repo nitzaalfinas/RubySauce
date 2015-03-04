@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Author
+	</div>
+	<div class="panel-body">
+		<select name="article[author_id]" class="form-control">
+			<option value="<%= current_user.id %>"><%= current_user.nick_name %></option>
+		</select>
+	</div>
+</div>

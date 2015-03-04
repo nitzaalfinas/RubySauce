@@ -1,0 +1,9 @@
+<h2> You're almost done! Now create a password to securely access your account.</h2>
+    = semantic_form_for(resource, :as => resource_name, :url => confirm_path) do |form|
+      = devise_error_messages!
+      = form.inputs do
+        = form.input :password, :input_html => {:autofocus => true}
+        = form.input :password_confirmation
+        = form.input :confirmation_token, :as => :hidden
+      = form.actions do
+        = form.action :submit, :label => 'Confirm Account'
