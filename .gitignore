@@ -21,3 +21,5 @@ public/images/
 
 # Ignore database configuration
 config/database.yml
+
+catatan_pengembangan.txt
