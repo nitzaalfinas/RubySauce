@@ -169,6 +169,23 @@ class AdmMediaController < ApplicationController
 
 	def destroy
 		@data = Media.find(params[:id])
+
+		if @data.med_storage_name != nil
+			
+			if File.exist?(Rails.root+'/public/images/thumb/'+@data.med_storage_name)
+				File.delete(Rails.root+'/public/images/thumb/'+@data.med_storage_name)
+			end
+
+			if File.exist?(Rails.root+'/public/images/original/'+@data.med_storage_name)
+				File.delete(Rails.root+'/public/images/original/'+@data.med_storage_name)
+			end
+
+			if File.exist?(Rails.root+'/public/images/show/'+@data.med_storage_name)
+				File.delete(Rails.root+'/public/images/show/'+@data.med_storage_name)
+			end
+
+		end
+
 		@data.destroy
 		redirect_to adm_media_path
 	end #end destroy
