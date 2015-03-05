@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (i686)
 --
--- Host: localhost    Database: minang_dunia
+-- Host: localhost    Database: ror_cms
 -- ------------------------------------------------------
 -- Server version	5.5.40-0ubuntu0.12.04.1
 
@@ -29,7 +29,7 @@ CREATE TABLE `article_categories` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,13 +140,6 @@ CREATE TABLE `options` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `options`
---
-
-INSERT INTO `options` (`id`, `site_title`, `site_description`, `site_domain`, `site_menu`, `site_menu_draft`, `created_at`, `updated_at`) VALUES
-(1, 'RoR CMS', 'This is CMS based on Ruby on Rails', 'http://localhost:3000', '<ul class="right">\n    <li id="page_30">\n        <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a></div>\n    </li>\n    <li id="page_31">   \n        <div class="ui-sortable-handle"><a href="/page/kontak">Kontak</a></div>\n    </li>\n</ul>', '                                                     <ol class="sortable ui-sortable"><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_30">   <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(30);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li></ol>', '0000-00-00 00:00:00', '2015-03-04 14:04:41');
-
---
 -- Table structure for table `schema_migrations`
 --
 
@@ -175,7 +168,7 @@ CREATE TABLE `user_exts` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,17 +202,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `email`, `encrypted_password`, `full_name`, `nick_name`, `level`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `confirmation_token`, `confirmed_at`, `confirmation_sent_at`, `unconfirmed_email`, `created_at`, `updated_at`) VALUES
-(1, 'admin@email.com', '$2a$10$3DcqgAgmyzhqD0pOyWDNq.Wxef80mV3k5.Qrs78iGT4MsY3vbf2N2', 'Admin', 'admin', 'Admin', NULL, NULL, NULL, 2, '2015-03-04 22:07:53', '2015-03-04 14:03:25', '127.0.0.1', '127.0.0.1', 'af083c18f571c92cb10e149b04d9bdb1af80c87a83bc5009337c1e5f61b00e3e', '2015-03-04 14:04:00', '2015-03-04 14:02:00', NULL, '2015-03-04 14:02:00', '2015-03-04 22:07:53');
-
-
 
 --
 -- Temporary table structure for view `v_article_categories`
@@ -345,9 +329,9 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_article_categories` AS select `article_categories`.`id` AS `id`,`article_categories`.`article_id` AS `article_id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,(select `users`.`full_name` from `users` where (`users`.`id` = `articles`.`author_id`)) AS `full_name`,(select `users`.`nick_name` from `users` where (`users`.`id` = `articles`.`author_id`)) AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_vcount` AS `article_vcount`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at`,`article_categories`.`category_id` AS `category_id`,`categories`.`cat_name` AS `cat_name`,`categories`.`cat_slug` AS `cat_slug`,`categories`.`cat_count` AS `cat_count` from ((`article_categories` left join `categories` on((`article_categories`.`category_id` = `categories`.`id`))) left join `articles` on((`article_categories`.`article_id` = `articles`.`id`))) */;
@@ -364,9 +348,9 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_articles` AS select `articles`.`id` AS `id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,`users`.`full_name` AS `full_name`,`users`.`nick_name` AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_type` AS `article_type`,`articles`.`article_vcount` AS `article_vcount`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at` from (`articles` left join `users` on((`articles`.`author_id` = `users`.`id`))) where (`articles`.`article_type` = 'Article') */;
@@ -383,9 +367,9 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_discusses` AS select `discusses`.`id` AS `id`,`discusses`.`article_id` AS `article_id`,`articles`.`title` AS `title`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`discusses`.`user_id` AS `user_id`,`users`.`email` AS `email`,`users`.`full_name` AS `full_name`,`users`.`nick_name` AS `nick_name`,`users`.`level` AS `level`,`discusses`.`dis_body` AS `dis_body`,`discusses`.`dis_approve` AS `dis_approve`,`discusses`.`created_at` AS `created_at`,`discusses`.`updated_at` AS `updated_at` from ((`discusses` left join `users` on((`discusses`.`user_id` = `users`.`id`))) left join `articles` on((`discusses`.`article_id` = `articles`.`id`))) */;
@@ -402,9 +386,9 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8 */;
-/*!50001 SET character_set_results     = utf8 */;
-/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `v_pages` AS select `articles`.`id` AS `id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,`users`.`full_name` AS `full_name`,`users`.`nick_name` AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_type` AS `article_type`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at` from (`articles` left join `users` on((`articles`.`author_id` = `users`.`id`))) where (`articles`.`article_type` = 'Page') */;
@@ -421,7 +405,7 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-20  8:37:27
+-- Dump completed on 2015-03-05 13:15:45
 INSERT INTO schema_migrations (version) VALUES ('20141230104903');
 
 INSERT INTO schema_migrations (version) VALUES ('20141230120303');
