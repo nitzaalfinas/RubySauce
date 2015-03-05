@@ -32,22 +32,22 @@ class AdmMediaController < ApplicationController
 			med_storage_name = params[:media][:med_storage_name] # Assign a file like this, or
 
 			#upload original
-			original = File.open(Rails.root.join('app/assets/images/upload/original',med_storage_name.original_filename),'wb') do |file|
+			original = File.open(Rails.root.join('public/images/original',med_storage_name.original_filename),'wb') do |file|
 				file.write(med_storage_name.read)
 			end
 
 			#rename original if it has been uploaded
 			if original 
 				#get file extension
-				file_ex = File.extname(Rails.root.to_s+'/app/assets/images/upload/original/'+med_storage_name.original_filename)
+				file_ex = File.extname(Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename)
 
 				#get id for just saved image, in this case is @media.id. Then rename it
 				## table id into string
 				table_id = @media.id.to_s
 				## old name
-				old_name = Rails.root.to_s+'/app/assets/images/upload/original/'+med_storage_name.original_filename
+				old_name = Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename
 				## new name with extension
-				new_name = Rails.root.to_s+'/app/assets/images/upload/original/'+table_id+file_ex
+				new_name = Rails.root.to_s+'/public/images/original/'+table_id+file_ex
 
 				## executing rename file
 				file_rename = File.rename(old_name, new_name)
@@ -62,14 +62,14 @@ class AdmMediaController < ApplicationController
 				if file_rename
 
 					#THUMBNAIL
-					FileUtils.cp new_name, Rails.root.to_s+'/app/assets/images/upload/thumb/'+table_id+file_ex
-					MiniMagick::Image.new(Rails.root.join('app/assets/images/upload/thumb',table_id+file_ex)) do |b|
+					FileUtils.cp new_name, Rails.root.to_s+'/public/images/thumb/'+table_id+file_ex
+					MiniMagick::Image.new(Rails.root.join('public/images/thumb',table_id+file_ex)) do |b|
 					  b.resize "250x200>"
 					end
 
 					#SHOW
-					FileUtils.cp new_name, Rails.root.to_s+'/app/assets/images/upload/show/'+table_id+file_ex					
-					MiniMagick::Image.new(Rails.root.join('app/assets/images/upload/show',table_id+file_ex)) do |b|
+					FileUtils.cp new_name, Rails.root.to_s+'/public/images/show/'+table_id+file_ex					
+					MiniMagick::Image.new(Rails.root.join('public/images/show',table_id+file_ex)) do |b|
 					  b.resize "800x800>"
 					end
 				end #end file_rename
@@ -115,22 +115,22 @@ class AdmMediaController < ApplicationController
 			if med_storage_name
 
 				#upload original
-				original = File.open(Rails.root.join('app/assets/images/upload/original',med_storage_name.original_filename),'wb') do |file|
+				original = File.open(Rails.root.join('public/images/original',med_storage_name.original_filename),'wb') do |file|
 					file.write(med_storage_name.read)
 				end
 
 				#rename original if it has been uploaded
 				if original 
 					#get file extension
-					file_ex = File.extname(Rails.root.to_s+'/app/assets/images/upload/original/'+med_storage_name.original_filename)
+					file_ex = File.extname(Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename)
 
 					#get id for just saved image, in this case is @media.id. Then rename it
 					## table id into string
 					table_id = @media.id.to_s
 					## old name
-					old_name = Rails.root.to_s+'/app/assets/images/upload/original/'+med_storage_name.original_filename
+					old_name = Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename
 					## new name with extension
-					new_name = Rails.root.to_s+'/app/assets/images/upload/original/'+table_id+file_ex
+					new_name = Rails.root.to_s+'/public/images/original/'+table_id+file_ex
 
 					## executing rename file
 					file_rename = File.rename(old_name, new_name)
@@ -145,14 +145,14 @@ class AdmMediaController < ApplicationController
 					if file_rename
 
 						#THUMBNAIL
-						FileUtils.cp new_name, Rails.root.to_s+'/app/assets/images/upload/thumb/'+table_id+file_ex
-						MiniMagick::Image.new(Rails.root.join('app/assets/images/upload/thumb',table_id+file_ex)) do |b|
+						FileUtils.cp new_name, Rails.root.to_s+'/public/images/thumb/'+table_id+file_ex
+						MiniMagick::Image.new(Rails.root.join('public/images/thumb',table_id+file_ex)) do |b|
 						  b.resize "250x200>"
 						end
 
 						#SHOW
-						FileUtils.cp new_name, Rails.root.to_s+'/app/assets/images/upload/show/'+table_id+file_ex					
-						MiniMagick::Image.new(Rails.root.join('app/assets/images/upload/show',table_id+file_ex)) do |b|
+						FileUtils.cp new_name, Rails.root.to_s+'/public/images/show/'+table_id+file_ex					
+						MiniMagick::Image.new(Rails.root.join('public/images/show',table_id+file_ex)) do |b|
 						  b.resize "800x800>"
 						end
 					end #end file_rename
