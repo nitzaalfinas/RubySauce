@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: xxx
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: ror_cms
+
+
+test:
+  <<: *default
+  database: ror_cms
+
+production:
+  <<: *default
+  database: ror_cms
