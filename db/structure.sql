@@ -144,8 +144,7 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`id`, `site_title`, `site_description`, `site_domain`, `site_menu`, `site_menu_draft`, `created_at`, `updated_at`) VALUES
-(1, 'RoR CMS', 'This is CMS based on Ruby on Rails', 'http://localhost:3000', '<ul class="right">\n    <li id="page_30">\n        <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a></div>\n    </li>\n    <li id="page_31">   \n        <div class="ui-sortable-handle"><a href="/page/kontak">Kontak</a></div>\n    </li>\n</ul>', '                                                     <ol class="sortable ui-sortable"><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_30">   <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(30);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li></ol>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '0000-00-00 00:00:00', '2015-03-04 14:04:41');
-
+(1, 'RoR CMS', 'This is CMS based on Ruby on Rails', 'http://localhost:3000', '<ul class="right">\n    <li id="page_30">\n        <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a></div>\n    </li>\n    <li id="page_31">   \n        <div class="ui-sortable-handle"><a href="/page/kontak">Kontak</a></div>\n    </li>\n</ul>', '                                                     <ol class="sortable ui-sortable"><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_30">   <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(30);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li></ol>', '0000-00-00 00:00:00', '2015-03-04 14:04:41');
 
 --
 -- Table structure for table `schema_migrations`
@@ -212,6 +211,15 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `encrypted_password`, `full_name`, `nick_name`, `level`, `reset_password_token`, `reset_password_sent_at`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `confirmation_token`, `confirmed_at`, `confirmation_sent_at`, `unconfirmed_email`, `created_at`, `updated_at`) VALUES
+(1, 'admin@email.com', '$2a$10$3DcqgAgmyzhqD0pOyWDNq.Wxef80mV3k5.Qrs78iGT4MsY3vbf2N2', 'Admin', 'admin', 'Admin', NULL, NULL, NULL, 2, '2015-03-04 22:07:53', '2015-03-04 14:03:25', '127.0.0.1', '127.0.0.1', 'af083c18f571c92cb10e149b04d9bdb1af80c87a83bc5009337c1e5f61b00e3e', '2015-03-04 14:04:00', '2015-03-04 14:02:00', NULL, '2015-03-04 14:02:00', '2015-03-04 22:07:53');
+
+
 
 --
 -- Temporary table structure for view `v_article_categories`
