@@ -2,15 +2,6 @@
 
 <footer>
 	<div class="container">
-		<div class="col-lg-3">
-			<h3>About Us</h3>
-			<ul>
-				<li>
-					<% @article = Article.where('id = 30').take %>
-					<%= @article.excerp.html_safe %>
-				</li>
-			</ul>
-		</div>
 		
 		<div class="col-lg-3">
 			<h3>Contact</h3>
