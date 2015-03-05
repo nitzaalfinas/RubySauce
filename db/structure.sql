@@ -140,6 +140,14 @@ CREATE TABLE `options` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `options`
+--
+
+INSERT INTO `options` (`id`, `site_title`, `site_description`, `site_domain`, `site_menu`, `site_menu_draft`, `created_at`, `updated_at`) VALUES
+(1, 'RoR CMS', 'This is CMS based on Ruby on Rails', 'http://localhost:3000', '<ul class="right">\n    <li id="page_30">\n        <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a></div>\n    </li>\n    <li id="page_31">   \n        <div class="ui-sortable-handle"><a href="/page/kontak">Kontak</a></div>\n    </li>\n</ul>', '                                                     <ol class="sortable ui-sortable"><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_31">   <div><a href="/page/kontak">Kontak</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(31);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li><li id="menu_page_30">   <div class="ui-sortable-handle"><a href="/page/tentang-kami">Tentang Kami</a>       <i class="glyphicon glyphicon-trash" onclick="n_menu.del_page(30);"></i>       <i class="glyphicon glyphicon-move cursor-pointer"></i>   </div></li></ol>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', '0000-00-00 00:00:00', '2015-03-04 14:04:41');
+
+
+--
 -- Table structure for table `schema_migrations`
 --
 
