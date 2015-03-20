@@ -19,6 +19,7 @@ class AdmArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
+		@article.article_type = 'Article'
 		@article.article_vcount = 0
 		@article_save = @article.save
 
