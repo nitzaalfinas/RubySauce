@@ -6,13 +6,13 @@
 		<div id="feat_img_display">
 			<% case %>
 				<% when @article.feat_img == "" %>
-					<%= image_tag('upload/thumb/default.png', style: "width:100%;") %>
+					<%= image_tag('thumb/default.png', style: "width:100%;") %>
 					<% @value_feat = 'default.png' %>
 				<% when !@article.feat_img %>
-					<%= image_tag('upload/thumb/default.png', style: "width:100%;") %>
+					<%= image_tag('thumb/default.png', style: "width:100%;") %>
 					<% @value_feat = 'default.png' %>
 				<% else %>
-					<%= image_tag('upload/thumb/'+@article.feat_img, style: "width:100%;") %>
+					<%= image_tag('thumb/'+@article.feat_img, style: "width:100%;") %>
 					<% @value_feat = @article.feat_img %>
 			<% end %>
 		</div>

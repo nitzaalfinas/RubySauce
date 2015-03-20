@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+
+	#PERBAIKI UNTUK MENCEGAH RECRUSIVE DOWNLOAD IMAGE
   
 	devise_for :users
 
