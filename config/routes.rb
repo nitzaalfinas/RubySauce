@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
 	get '/:permalink', to: 'article_single#index'
 
-	get '/page/:permalink', to: 'article_page#index'
+	get '/page/:permalink', to: 'page_single#index'
 
 	get '/category/:permalink', to: 'percategory#index'	
 

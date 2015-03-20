@@ -3,7 +3,7 @@
 		<% @articles.each do |article| %>
 		<article class="mb30">
 			<div class="feat_img">
-				<%= image_tag("upload/thumb/"+article.feat_img) %>
+				<%= image_tag("thumb/"+article.feat_img) %>
 			</div>
 			<div class="title_article">
 				<a href="/<%= article.permalink %>">

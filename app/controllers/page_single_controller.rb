@@ -1,4 +1,4 @@
-class ArticlePageController < ApplicationController
+class PageSingleController < ApplicationController
 
 	def index
 		permalink = params[:permalink].to_s
