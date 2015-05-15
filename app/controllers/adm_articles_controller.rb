@@ -103,7 +103,7 @@ class AdmArticlesController < ApplicationController
 
 	private
 		def article_params
-			params.require(:article).permit(:title, :body, :permalink, :publish_status, :excerp, :author_id, :feat_img)
+			params.require(:article).permit(:title, :body, :permalink, :publish_status, :publish_visibility, :excerp, :author_id, :feat_img)
 		end
 
 end
