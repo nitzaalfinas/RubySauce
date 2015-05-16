@@ -9,7 +9,7 @@ How to setup;<br>
 3. Sign in;<br>
 email: admin@email.com<br>
 password: 11111111<br>
-
+<br>
 <h3>Prevent user from sign up</h3>
 If the application for personal use and you don't want another user for the application, you can remove sign up URL.<br>
 Open app/models/user.rb and remove :registerable so your file look like below;
