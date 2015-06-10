@@ -1,9 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  body: MyText
+  title: Ini adalah title pertama
+  body: body yang dituliskan bla-bla-bla
+  author_id: 1
+  permalink: "test_title"
+  excerp: "ini adalah excerp"
+  comment_status: "yes"
+  publish_status: "publish"
+  publish_visibility: "public"
+  article_type: "article"
+  article_vcount: 1
 
 two:
-  title: MyString
-  body: MyText
+  title: Ini adalah title kedua
+  body: body ble-ble-ble coy
+  author_id: 1
+  permalink: "test_title"
+  excerp: "ini adalah excerp"
+  comment_status: "yes"
+  publish_status: "publish"
+  publish_visibility: "public"
+  article_type: "article"
+  article_vcount: 1

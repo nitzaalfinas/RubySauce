@@ -3,8 +3,8 @@
 one:
   article_id: 1
   user_id: 1
-  dis_body: MyString
-  dis_approve: MyString
+  dis_body: "body num 1"
+  dis_approve: 
 
 two:
   article_id: 1
