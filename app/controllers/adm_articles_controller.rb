@@ -8,13 +8,13 @@ class AdmArticlesController < ApplicationController
 
 	def index
 		@articles = VArticle.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-		@setting = Option.find(1)
+		@setting = Option.first
 	end #index
 
 	def new
 		@article = Article.new
 		@categories = Category.all
-		@setting = Option.find(1)
+		@setting = Option.first
 	end #new
 
 	def create
@@ -39,9 +39,9 @@ class AdmArticlesController < ApplicationController
 		end 
 
 		if @article_save
-			redirect_to "/adm/articles"
+      redirect_to adm_articles_path
 		else
-			@setting = Option.find(1)
+			@setting = Option.first
 			@categories = Category.all
 			render 'new'
 		end #if @article_save
