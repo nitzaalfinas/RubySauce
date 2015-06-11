@@ -1,14 +1,14 @@
 <h1 class="mt0 mb30">General Settings</h1>
 
 <div class="form-horizontal">
-	<%= form_for(@setting, url: "/adm/settings/update") do |fg| %>
+	<%= form_for($appset, url: "/adm/settings/update") do |fg| %>
 
 		<!-- barisan flash error -->
-		<% if @setting.errors.any? %>
+		<% if $appset.errors.any? %>
 			<div id="errors" class="alert alert-danger">
-				<h2 class="mt5 mb5"><%= pluralize(@setting.errors.count, "error") %> prevent this post from saving</h2>
+				<h2 class="mt5 mb5"><%= pluralize($appset.errors.count, "error") %> prevent this post from saving</h2>
 				<ul>
-					<% @setting.errors.full_messages.each do |msg| %>
+					<% $appset.errors.full_messages.each do |msg| %>
 						<li><%= msg %></li>
 					<% end %>
 				</ul>

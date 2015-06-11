@@ -19,7 +19,7 @@
 				<div>
 					<%= link_to "edit", "/adm/pages/edit?id=#{article.id}&page=#{@articles.current_page}" %>
 					| <%= link_to 'trash', "/adm/pages/destroy/#{article.id}", method: :delete, data: {confirm:'Are you sure?'} %>
-					| <%= link_to 'view', @setting.site_domain.to_s+"/"+article.permalink.to_s %>
+					| <%= link_to 'view', $appset.site_domain.to_s+"/"+article.permalink.to_s %>
 				</div>
 			</td>
 			<td><%= article.nick_name %></td>

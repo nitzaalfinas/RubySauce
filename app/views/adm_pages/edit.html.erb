@@ -24,7 +24,7 @@
 
     <div class="form-group">
       <div class="input-group">
-        <span class="input-group-addon"><%= @setting.site_domain %>/page/</span>
+        <span class="input-group-addon"><%= $appset.site_domain %>/page/</span>
         <%= f.text_field :permalink, html_options={ "id" => "article_permalink", "class" => "form-control", "placeholder" => "Permalink" } %>
       </div>
     </div>	

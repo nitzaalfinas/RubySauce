@@ -10,14 +10,14 @@ class AdmPagesController < ApplicationController
 		adm_check current_user.level
 
 		@articles = VPage.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-		@setting = Option.find(1)
+		
 	end #def index
 
 	def new
 		adm_check current_user.level
 
 		@article = Article.new
-		@setting = Option.find(1)
+		
 	end
 
 	def create
@@ -30,7 +30,7 @@ class AdmPagesController < ApplicationController
 		if @article_save
 			redirect_to "/adm/pages"
 		else
-			@setting = Option.find(1) 
+			 
 			render 'new'
 		end
 	end #create
@@ -41,7 +41,7 @@ class AdmPagesController < ApplicationController
 		id = params[:id]
 		@article = Article.find(params[:id])
 		@page = params[:page]
-		@setting = Option.find(1)
+		
 	end #def edit
 
 	def update
@@ -56,7 +56,7 @@ class AdmPagesController < ApplicationController
 			redirect_to "/adm/pages?page="+page
 		else
 			#if saving failure, this object need to cast
-			@setting = Option.find(1) 
+			 
 
 			render 'edit'
 		end #if @article_update

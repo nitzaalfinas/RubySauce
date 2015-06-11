@@ -7,11 +7,11 @@ class AdmSettingsController < ApplicationController
 	layout "adm_layout"
 
 	def index
-		@setting = Option.find(1)
+		
 	end
 
 	def update
-		@setting = Option.find(1)
+		
 		@setting.site_title = params[:option][:site_title]
 		@setting.site_description = params[:option][:site_description]
 		@setting.site_domain = params[:option][:site_domain]

@@ -8,7 +8,7 @@ class AdmDiscussController < ApplicationController
 
 	def index
 		@discusses = VDiscuss.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-		@setting = Option.find(1)
+		
 	end #index
 
 	def approve
