@@ -1,25 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+article_first:
   title: Ini adalah title pertama
   body: body yang dituliskan bla-bla-bla
-  author_id: 1
-  permalink: "test_title"
+  author_id: <%= User.first.id %>
+  permalink: "test_title_pertama"
   excerp: "ini adalah excerp"
   comment_status: "yes"
-  publish_status: "publish"
-  publish_visibility: "public"
-  article_type: "article"
+  Publish_status: "Publish"
+  Publish_visibility: "Public"
+  article_type: "Article"
   article_vcount: 1
 
-two:
+article_second:
   title: Ini adalah title kedua
   body: body ble-ble-ble coy
-  author_id: 1
-  permalink: "test_title"
+  author_id: <%= User.first.id %>
+  permalink: "test_title_kedua"
   excerp: "ini adalah excerp"
   comment_status: "yes"
-  publish_status: "publish"
-  publish_visibility: "public"
-  article_type: "article"
+  Publish_status: "Publish"
+  Publish_visibility: "Public"
+  article_type: "Article"
+  article_vcount: 1
+  
+article_third:
+  title: Ini adalah title ketiga
+  body: body ble-ble-ble coy
+  author_id: <%= User.first.id %>
+  permalink: "test_title_kedua"
+  excerp: "ini adalah excerp"
+  comment_status: "yes"
+  Publish_status: "Publish"
+  Publish_visibility: "Public"
+  article_type: "Page"
   article_vcount: 1

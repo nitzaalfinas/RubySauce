@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  
+
   test "should create article" do
     article = Article.new
     article.title = "Test title"
@@ -19,22 +19,20 @@ class ArticleTest < ActiveSupport::TestCase
   end
   
   test "should find article" do
-    article_id = Article.where(title: "Ini adalah title kedua").take.id
+    article_id = articles(:article_first).id
     
     assert_nothing_raised do 
       Article.find(article_id) 
     end
-    
   end
   
   test "should update article" do
-    article = Article.where(title: "Ini adalah title kedua").take
-    
+    article = articles(:article_first)
     assert article.update_attributes(:title => "New Title")
   end
   
   test "should destroy article" do
-    article = Article.where(title: "Ini adalah title kedua").take
+    article = articles(:article_first)
     article.destroy
     
     assert_raise(ActiveRecord::RecordNotFound) {

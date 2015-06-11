@@ -3,7 +3,7 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string :cat_name
       t.string :cat_description
-      t.string :cat_slug
+      t.string :cat_slug, :unique => true
       t.integer :cat_count
 
       t.timestamps null: false

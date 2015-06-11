@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+arcat_one:
+  article: article_first (Article)
+  category: cat_one (Category)
+
+arcat_two:
+  article: article_first (Article)
+  category: cat_two (Category)
+
+arcat_three:
+  article: article_two (Article)
+  category: cat_one (Category)

@@ -1,10 +1,10 @@
-#require 'test_helper'
-#
-#class UserTest < ActiveSupport::TestCase
-#  # test "the truth" do
-#  #   assert true
-#  # end
-#  
+require 'test_helper'
+
+class UserTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+  
 #  test "should create user" do
 #    user = User.new
 #    user.email = "testing@email.com"
@@ -12,4 +12,4 @@
 #    
 #    assert user.save
 #  end
-#end
+end
