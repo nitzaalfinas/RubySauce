@@ -3,14 +3,16 @@ RoR-CMS is a CMS based on Ruby on Rails.<br>
 
 The RoR-CMS has a back-end features that are similiar to Wordpress.
 <br><br>
-<h3>Installation</h3>
-1. Make sure the repository successfully clone<br>
-2. Copy config/database.yml.sample and rename it into config/database.yml<br>
-3. Change the username and the database according to your configuration<br>
-4. Run "bundle install"<br>
-5. Run "rake db:migrate"<br>
-6. Run the server with "rails s"<br>
-<br>
+<div>
+  <h3>Installation</h3>
+  1. Make sure the repository successfully clone<br>
+  2. Copy config/database.yml.sample and rename it into config/database.yml<br>
+  3. Change the username and the database according to your configuration<br>
+  4. Run "bundle install"<br>
+  5. Run "rake db:migrate"<br>
+  6. Run the server with "rails s"<br>
+  <br>
+</div>
 <h3>Sign in</h3>
 Email: admin@email.com<br>
 Password: 11111111<br>
