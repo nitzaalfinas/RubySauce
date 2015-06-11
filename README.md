@@ -9,10 +9,11 @@ The RoR-CMS has a back-end features that are similiar to Wordpress.
 3. Change the username and the database according to your configuration<br>
 4. Run "bundle install"<br>
 5. Run "rake db:migrate"<br>
-6. Insert a data into options table<br>
-7. Run the server with "rails s"<br>
-8. Create a user from the "/users/sign_up" page<br>
+6. Run the server with "rails s"<br>
 <br>
+<h3>Sign in</h3>
+Email: admin@email.com<br>
+Password: 11111111<br>
 <h3>Prevent user from sign up</h3>
 If the application for personal use and you don't want another user for the application, you can remove sign up URL.<br>
 Open app/models/user.rb and remove :registerable so your file look like below;
@@ -23,5 +24,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
 end
 </pre>
-
+<br>
 More information about devise: https://github.com/plataformatec/devise
