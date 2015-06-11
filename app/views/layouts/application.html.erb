@@ -16,9 +16,9 @@
     <meta name="keywords" content="<%= @dynamic_keyword %>" />
 
     <!-- facebook -->
-    <meta property="og:title" content="<%= Option.find(1).site_title %> - <%= @dynamic_title %>" />
+    <meta property="og:title" content="<%= $appset.site_title %> - <%= @dynamic_title %>" />
     <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="<%= Option.find(1).site_title %>" />
+    <meta property="og:site_name" content="<%= $appset.site_title %>" />
     <meta property="og:image" content="<%= image_url @dynamic_image %>" />
     <meta property="og:description" content="<%= @dynamic_description %>" />
     <!--
@@ -27,10 +27,10 @@
 
     <!-- twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="<%= Option.find(1).site_title %> - <%= @dynamic_title %>" />
+    <meta name="twitter:title" content="<%= $appset.site_title %> - <%= @dynamic_title %>" />
     <meta name="twitter:description" content="<%= @dynamic_description %>" />
     <meta name="twitter:image" content="<%= image_url @dynamic_image %>" />
-    <meta name="twitter:domain" content="<%= Option.find(1).site_domain %>" />
+    <meta name="twitter:domain" content="<%= $appset.site_domain %>" />
 
 
   	<!-- Bootstrap -->
