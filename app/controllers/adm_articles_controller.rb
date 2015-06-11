@@ -48,16 +48,19 @@ class AdmArticlesController < ApplicationController
 	end #def create
 
 	def edit
-		id = params[:id]
-		@article = Article.find(params[:id])
+		id = params[:id].to_i
+    page = params[:page].to_i
+    
+		@article = Article.find(id)
 		@categories = Category.all
-		@page = params[:page]
-		@setting = Option.find(1)
+		@page = page
+		@setting = Option.first
 	end #def edit
 
 	def update
-		page = params[:page]
-		id = params[:id]
+    id = params[:id].to_i
+		page = params[:page].to_i
+		
 		@article = Article.find(id)
 		@article_update = @article.update(article_params)
 
@@ -78,16 +81,17 @@ class AdmArticlesController < ApplicationController
 		end #params[:category]
 
 		if @article_update
-			redirect_to "/adm/articles?page="+page
+      redirect_to adm_articles_path(:page => page)
 		else
 			#if saving failure, this object need to cast
-			@setting = Option.find(1) 
+			@setting = Option.first
 			@categories = Category.all
 			render 'edit'
 		end #if @article_update
 	end #def update
 
 	def destroy
+    page = params[:page].to_i
 		#find article id
 		@art = Article.find(params[:id])
 
@@ -97,7 +101,7 @@ class AdmArticlesController < ApplicationController
 		#destroy article based on id
 		@art.destroy
 		
-		redirect_to adm_articles_path
+		redirect_to adm_articles_path(:page => page)
 	end #def destroy
 
 

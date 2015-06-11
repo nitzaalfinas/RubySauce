@@ -30,6 +30,19 @@ class AdmArticlesControllerTest < ActionController::TestCase
   end
   
   test "should get edit" do
-    get :edit
+    get :edit, :id => @article.to_param, :article => @article.attributes
+    assert_response :success
+  end
+  
+  test "should update article" do
+    put :update, :id => @article.to_param, :page => 1, :article => @article.attributes
+    assert_redirected_to adm_articles_path(:page => 1)
+  end
+  
+  test "should destroy article" do
+    assert_difference('Article.count', -1) do
+      delete :destroy, :id => @article.to_param, :page => 1
+    end
+    assert_redirected_to adm_articles_path(:page => 1)
   end
 end
