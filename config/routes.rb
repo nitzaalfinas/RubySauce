@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-
-	#PERBAIKI UNTUK MENCEGAH RECRUSIVE DOWNLOAD IMAGE
-  
-	devise_for :users
+  devise_for :users
 
 	resources :articles
 
@@ -53,35 +50,35 @@ Rails.application.routes.draw do
 	post 'adm/pages/create', to: 'adm_pages#create'
 	get 'adm/pages/edit', to: 'adm_pages#edit'
 	patch 'adm/pages/update/:id', to: 'adm_pages#update'
-  	delete 'adm/pages/destroy/:id', to: 'adm_pages#destroy'
+  delete 'adm/pages/destroy/:id', to: 'adm_pages#destroy'
 
-  	get 'adm/media_win', to: 'adm_media_win#index'
-  	get 'adm/media_win/the_page', to: 'adm_media_win#the_page'
+  get 'adm/media_win', to: 'adm_media_win#index'
+  get 'adm/media_win/the_page', to: 'adm_media_win#the_page'
 
-  	get 'adm/discusses', to: 'adm_discuss#index'
-  	post 'adm/discusses/approve', to: 'adm_discuss#approve'
-  	post 'adm/discusses/unapprove', to: 'adm_discuss#unapprove'
+  get 'adm/discusses', to: 'adm_discuss#index'
+  post 'adm/discusses/approve', to: 'adm_discuss#approve'
+  post 'adm/discusses/unapprove', to: 'adm_discuss#unapprove'
   	
-  	get 'adm/users', to: 'adm_users#index'
+  get 'adm/users', to: 'adm_users#index'
 	get 'adm/users/new', to: 'adm_users#new'
 	post 'adm/users/create', to: 'adm_users#create'
 	get 'adm/users/edit', to: 'adm_users#edit'
 	patch 'adm/users/update/:id', to: 'adm_users#update'
-  	delete 'adm/users/destroy/:id', to: 'adm_users#destroy'
+  delete 'adm/users/destroy/:id', to: 'adm_users#destroy'
 
-  	get 'adm/akun/edit', to: 'adm_akun#edit'
-  	post 'adm/akun/update', to: 'adm_akun#update'
-  	patch 'adm/akun/update', to: 'adm_akun#update'
+  get 'adm/akun/edit', to: 'adm_akun#edit'
+  post 'adm/akun/update', to: 'adm_akun#update'
+  patch 'adm/akun/update', to: 'adm_akun#update'
 
 
-  	get 'adm/menu', to: 'adm_menu#index'
-  	get 'adm/menu/edit', to: 'adm_menu#edit'
-  	post 'adm/menu/update', to: 'adm_menu#update'
-  	post 'adm/menu/update_draft', to: 'adm_menu#update_draft'
-  	get 'adm/menu/draft_menu_element', to: 'adm_menu#draft_menu_element'
-  	get 'adm/menu/current_menu_element', to: 'adm_menu#current_menu_element'
-  	get 'adm/menu/save_menus', to: 'adm_menu#save_menus'
-  	get 'adm/menu/form_manual', to: 'adm_menu#form_manual'
-  	post 'adm/menu/form_manual_update', to: 'adm_menu#form_manual_update'
+  get 'adm/menu', to: 'adm_menu#index'
+  get 'adm/menu/edit', to: 'adm_menu#edit'
+  post 'adm/menu/update', to: 'adm_menu#update'
+  post 'adm/menu/update_draft', to: 'adm_menu#update_draft'
+  get 'adm/menu/draft_menu_element', to: 'adm_menu#draft_menu_element'
+  get 'adm/menu/current_menu_element', to: 'adm_menu#current_menu_element'
+  get 'adm/menu/save_menus', to: 'adm_menu#save_menus'
+  get 'adm/menu/form_manual', to: 'adm_menu#form_manual'
+  post 'adm/menu/form_manual_update', to: 'adm_menu#form_manual_update'
 
 end
