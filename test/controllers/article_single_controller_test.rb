@@ -1,14 +1,12 @@
 require 'test_helper'
 
 class ArticleSingleControllerTest < ActionController::TestCase
-  
-  setup do
-    
-    @article = articles(:one)
-  end
+  include Devise::TestHelpers
   
   test "should get index" do
-     get :index, :permalink => @article.to_param , :article => @article.attributes
-     assert_response :success
+    sign_in users(:udin)
+    @article = articles(:article_first)
+    get :index, :permalink => @article.permalink , :article => @article.attributes
+    assert_response :success
   end
 end

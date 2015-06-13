@@ -1,78 +1,76 @@
-<% @option = Option.find(1) %>
-
 <footer>
-	<div class="container">
-		
-		<div class="col-lg-3">
-			<h3>Contact</h3>
-			<ul>
-				<li>
-					Apartemen Kalibata City<br>
-					Jakarta Selatan<br>
-					Indonesia<br>
-					<br>
-					Phone: +62 852 888 ****<br>
-					Email: ********@*****
-				</li>
-			</ul>
-		</div>
+  <div class="container">
 
-		<div class="col-lg-3">
-			<h3>Pages</h3>
-			<div id="menu_footer">
-				<%= render "widget/pages" %>
-			</div>
-		</div>
+    <div class="col-lg-3">
+      <h3>Contact</h3>
+      <ul>
+        <li>
+          Apartemen Kalibata City<br>
+          Jakarta Selatan<br>
+          Indonesia<br>
+          <br>
+          Phone: +62 852 888 ****<br>
+          Email: ********@*****
+        </li>
+      </ul>
+    </div>
 
-		<div class="col-lg-3">
-			<h3>Links</h3>
-			<div id="menu_footer">
-				<ul>
-					<% if !current_user %>
-					<li>
-						<%= link_to "Register", "/users/sign_up" %>			
-					</li>
-					<li>
-						<%= link_to "Sign in", "/users/sign_in" %>			
-					</li>
-					<% else %>
-					<li>
-						<%= link_to "Panel Page", "/adm/articles", :method => :get %>	
-					</li>
-					<li>
-						<%= link_to "Edit Profil", "/adm/akun/edit", :method => :get %>	
-					</li>
-					<li>
-						<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>	
-					</li>
-					<% end %>
-				</ul>	
-			</div>
-		</div>
+    <div class="col-lg-3">
+      <h3>Pages</h3>
+      <div id="menu_footer">
+        <%= render "widget/pages" %>
+      </div>
+    </div>
 
-		<div class="col-lg-3">
-			<h3>Categories</h3>
-			<div id="menu_footer">
-				<%= render "widget/categories" %>
-			</div>
-		</div>
-		
-	</div>
-	<div class="bottom-footer">
-		<div class="container">
-			<div class="left">
-				2014 © RoR <strong>CMS</strong>. All rights reserved.	
-			</div>
-			<div class="right">
-				<ul class="social">
-					<li><a><i class="fa fa-facebook icon-s-facebook"></i></a></li>
-					<li><a><i class="fa fa-twitter icon-s-twitter"></i></a></li>
-					<li><a><i class="fa fa-pinterest icon-s-pinterest"></i></a></li>
-					<li><a><i class="fa fa-instagram icon-s-instagram"></i></a></li>
-					<li><a><i class="fa fa-flickr icon-s-flickr"></i></a></li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
+    <div class="col-lg-3">
+      <h3>Links</h3>
+      <div id="menu_footer">
+        <ul>
+          <% if !current_user %>
+            <li>
+              <%= link_to "Register", "/users/sign_up" %>			
+            </li>
+            <li>
+              <%= link_to "Sign in", "/users/sign_in" %>			
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Panel Page", "/adm/articles", :method => :get %>	
+            </li>
+            <li>
+              <%= link_to "Edit Profil", "/adm/akun/edit", :method => :get %>	
+            </li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>	
+            </li>
+          <% end %>
+        </ul>	
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <h3>Categories</h3>
+      <div id="menu_footer">
+        <%= render "widget/categories" %>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-footer">
+    <div class="container">
+      <div class="left">
+        2014 © RoR <strong>CMS</strong>. All rights reserved.	
+      </div>
+      <div class="right">
+        <ul class="social">
+          <li><a><i class="fa fa-facebook icon-s-facebook"></i></a></li>
+          <li><a><i class="fa fa-twitter icon-s-twitter"></i></a></li>
+          <li><a><i class="fa fa-pinterest icon-s-pinterest"></i></a></li>
+          <li><a><i class="fa fa-instagram icon-s-instagram"></i></a></li>
+          <li><a><i class="fa fa-flickr icon-s-flickr"></i></a></li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
 </footer>

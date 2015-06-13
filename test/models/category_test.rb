@@ -25,6 +25,25 @@ class CategoryTest < ActiveSupport::TestCase
   # should find category
   test "should find category" do
     category = categories(:cat_one)
+    
+    assert_nothing_raised do 
+      Category.find(category.id) 
+    end
+  end
+  
+  #should update category
+  test "should update category" do
+    category = categories(:cat_one)
+    assert category.update_attributes(:cat_name => "New Title")
+  end
+  
+  test "should destroy category" do
+    category = categories(:cat_one)
+    category.destroy
+    
+    assert_raise(ActiveRecord::RecordNotFound) {
+      Category.find(category.id)
+    }
   end
   
 end
