@@ -61,10 +61,10 @@ Rails.application.routes.draw do
   
   get 'adm/templates', to: 'adm_templates#index'
   get 'adm/templates/new', to: 'adm_templates#new'
-	post 'adm/templates/create', to: 'adm_templates#create'
-	get 'adm/templates/edit', to: 'adm_templates#edit'
-	patch 'adm/templates/update/:id', to: 'adm_templates#update'
-  delete 'adm/templates/destroy/:id', to: 'adm_templates#destroy'
+	post 'adm/templates/upload', to: 'adm_templates#upload'
+#	get 'adm/templates/edit', to: 'adm_templates#edit'
+#	patch 'adm/templates/update/:id', to: 'adm_templates#update'
+#  delete 'adm/templates/destroy/:id', to: 'adm_templates#destroy'
   	
   get 'adm/users', to: 'adm_users#index'
 	get 'adm/users/new', to: 'adm_users#new'

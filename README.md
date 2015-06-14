@@ -12,7 +12,9 @@ The RoR-CMS has a back-end features that are similiar to Wordpress.
   5. Run "rake db:migrate"<br>
   6. Run the server with "rails s"<br>
   <br>
-  Note: The application use ImageMagic to resize images. So, make sure you have the ImageMagic installed on your server.
+  Note: 
+  <li>The application use ImageMagic to resize images. So, make sure you have the ImageMagic installed on your server.</li>
+  <li>The application use Zip to unzip file with commandline. So, make sure you have the Zip installed on your server.</li>
 </div>
 <h3>Sign in</h3>
 Email: admin@email.com<br>

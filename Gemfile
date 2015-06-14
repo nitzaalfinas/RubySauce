@@ -27,6 +27,11 @@ gem 'devise'
 
 gem 'bootstrap-sass-extras'
 
+#https://github.com/rubyzip/rubyzip
+#https://rubygems.org/gems/rubyzip/versions/1.1.7
+#gem 'rubyzip' # not good enaugh
+
+
 #pagination
 gem 'will_paginate', '~> 3.0'
 
