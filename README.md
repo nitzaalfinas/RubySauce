@@ -1,7 +1,7 @@
 # RoR-CMS
 RoR-CMS is a CMS based on Ruby on Rails.<br>
+The RoR-CMS has a template management system.
 
-The RoR-CMS has a back-end features that are similiar to Wordpress.
 <br><br>
 <div id="installation">
   <h3>Installation</h3>
