@@ -1,0 +1,42 @@
+<%= render "support/fixed_nav" %>
+
+<div class="container">
+	<ol class="breadcrumb">
+		<li><a href="/">Home</a></li>
+		<li class="active">Sign in</li>
+	</ol>
+</div>
+	
+
+<div class="container">
+	
+		<h1>Sign in</h1>
+
+		<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal") do |f| %>
+			<div class="form-group">
+				<%= f.label :email, class: "control-label" %>
+				<%= f.email_field :email, autofocus: true, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.label :password, class: "control-label" %>
+				<%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+			</div>
+
+			<% if devise_mapping.rememberable? -%>
+			<div class="form-group">
+				<%= f.label :remember_me, class: "control-label" %>
+				<%= f.check_box :remember_me %> 
+			</div>
+			<% end -%>
+
+			<div class="form-group">
+				<%= f.submit "Log in", class: "btn btn-primary" %>	
+			</div>
+		<% end %>
+
+		<%= render "devise/shared/links" %>
+	
+</div> <!-- .container -->
+
+<%= render "support/footer" %>

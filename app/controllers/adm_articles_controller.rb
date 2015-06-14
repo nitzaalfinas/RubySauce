@@ -8,13 +8,11 @@ class AdmArticlesController < ApplicationController
 
 	def index
 		@articles = VArticle.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-		
 	end #index
 
 	def new
 		@article = Article.new
-		@categories = Category.all
-		
+		@categories = Category.all		
 	end #new
 
 	def create

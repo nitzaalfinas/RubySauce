@@ -1,0 +1,17 @@
+<h1 class="mt0 mb15">Templates</h1>
+
+<div class="col-lg-12 pl0 mb15">
+  <%= link_to "Add New", adm_templates_new_path, html={ "class" => "btn btn-primary" } %>
+</div>
+
+<div class="mb30">
+  <img src="/images/templates/<%= @default.name  %>/template.png" style="max-width: 200px;">
+</div>
+
+<div>
+  <% @templates.each do |template| %>
+    <img src="/images/templates/<%= template.name  %>/template.png" style="max-width: 200px;">
+  <% end %>
+</div>
+
+<script>$('#pill_templates').addClass('active');</script>

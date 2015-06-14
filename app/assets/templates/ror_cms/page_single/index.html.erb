@@ -1,0 +1,52 @@
+<%= render "support/fixed_nav" %>
+
+<div class="container">
+	<ol class="breadcrumb">
+		<li>
+			<a href="/"><i class="fa fa-angle-double-right"></i> Home</a>
+		</li>
+		<li class="active">
+			<%= @article.title %>
+		</li>
+	</ol>
+</div>
+	
+
+<div class="container">
+	<div class="col-lg-9">
+		<h1><%= @article.title %></h1>
+		<%= image_tag("show/"+@article.feat_img) %>
+		<h2>
+			oleh 
+			<% if @article.full_name == nil %>
+				Tim
+			<% else %>
+				<%= @article.full_name %>
+			<% end %>
+		</h2>
+		<h3><%= @article.created_at %></h3>
+		<%= @article.body.html_safe %>
+		<div class="clear line" style="margin-right:50px"></div>
+
+	</div>
+
+	<div class="col-lg-3">
+		<div>
+			<%= render "widget/right_pages" %>
+		</div>
+
+		<div>
+			<%= render "widget/right_categories" %>
+		</div>
+
+		<div>
+			<%= render "widget/recent_article" %>
+		</div>
+		
+		<div>
+			<%= render "widget/new_user" %>	
+		</div>
+	</div>
+</div>
+
+<%= render "support/footer" %>

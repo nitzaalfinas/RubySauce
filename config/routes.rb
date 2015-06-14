@@ -58,6 +58,13 @@ Rails.application.routes.draw do
   get 'adm/discusses', to: 'adm_discuss#index'
   post 'adm/discusses/approve', to: 'adm_discuss#approve'
   post 'adm/discusses/unapprove', to: 'adm_discuss#unapprove'
+  
+  get 'adm/templates', to: 'adm_templates#index'
+  get 'adm/templates/new', to: 'adm_templates#new'
+	post 'adm/templates/create', to: 'adm_templates#create'
+	get 'adm/templates/edit', to: 'adm_templates#edit'
+	patch 'adm/templates/update/:id', to: 'adm_templates#update'
+  delete 'adm/templates/destroy/:id', to: 'adm_templates#destroy'
   	
   get 'adm/users', to: 'adm_users#index'
 	get 'adm/users/new', to: 'adm_users#new'
@@ -80,5 +87,7 @@ Rails.application.routes.draw do
   get 'adm/menu/save_menus', to: 'adm_menu#save_menus'
   get 'adm/menu/form_manual', to: 'adm_menu#form_manual'
   post 'adm/menu/form_manual_update', to: 'adm_menu#form_manual_update'
+  
+  
 
 end

@@ -14,7 +14,6 @@ class AdmMediaController < ApplicationController
 		@media = Media.new
 	end
 
-
 	def upload
 		@media = Media.new
 		@media.med_storage_name = params[:media][:med_storage_name]
@@ -29,14 +28,16 @@ class AdmMediaController < ApplicationController
 
 		if @media_save
 
-			med_storage_name = params[:media][:med_storage_name] # Assign a file like this, or
+			med_storage_name = params[:media][:med_storage_name] # Assign a file like this
+      randomx = Random.new
+      random_id = randomx.rand(1000000...100000000).to_s
 
 			#upload original
 			original = File.open(Rails.root.join('public/images/original',med_storage_name.original_filename),'wb') do |file|
 				file.write(med_storage_name.read)
 			end
 
-			#rename original if it has been uploaded
+			#rename original if it uploaded
 			if original 
 				#get file extension
 				file_ex = File.extname(Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename)
@@ -47,29 +48,28 @@ class AdmMediaController < ApplicationController
 				## old name
 				old_name = Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename
 				## new name with extension
-				new_name = Rails.root.to_s+'/public/images/original/'+table_id+file_ex
+				new_name = Rails.root.to_s+'/public/images/original/'+table_id+'-'+random_id+file_ex
 
 				## executing rename file
 				file_rename = File.rename(old_name, new_name)
 
-				###UPDATE DATABASE BECAUSE IMAGE HAS NEW NAME
+				###UPDATE DATABASE BECAUSE IMAGE HAS A NEW NAME
 				@medup = Media.where(id: @media.id).take
-				@medup.med_storage_name = table_id+file_ex
+				@medup.med_storage_name = table_id+'-'+random_id+file_ex
 				@medup.save
-
 
 				#if it renamed, then copy and resize for thumbnail and show
 				if file_rename
 
 					#THUMBNAIL
-					FileUtils.cp new_name, Rails.root.to_s+'/public/images/thumb/'+table_id+file_ex
-					MiniMagick::Image.new(Rails.root.join('public/images/thumb',table_id+file_ex)) do |b|
+					FileUtils.cp new_name, Rails.root.to_s+'/public/images/thumb/'+table_id+'-'+random_id+file_ex
+					MiniMagick::Image.new(Rails.root.join('public/images/thumb',table_id+'-'+random_id+file_ex)) do |b|
 					  b.resize "250x200>"
 					end
 
 					#SHOW
-					FileUtils.cp new_name, Rails.root.to_s+'/public/images/show/'+table_id+file_ex					
-					MiniMagick::Image.new(Rails.root.join('public/images/show',table_id+file_ex)) do |b|
+					FileUtils.cp new_name, Rails.root.to_s+'/public/images/show/'+table_id+'-'+random_id+file_ex
+					MiniMagick::Image.new(Rails.root.join('public/images/show',table_id+'-'+random_id+file_ex)) do |b|
 					  b.resize "800x800>"
 					end
 				end #end file_rename
