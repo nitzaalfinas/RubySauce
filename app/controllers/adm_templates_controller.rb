@@ -63,13 +63,24 @@ class AdmTemplatesController < ApplicationController
     template.active = 1
     template.save
     
-    del_copy_dir(template.name,'article_single')
-    del_copy_dir(template.name,'confirmable')
-    del_copy_dir(template.name,'devise')
-    del_copy_dir(template.name,'galleries')
-    del_copy_dir(template.name,'landing')
-    del_copy_dir(template.name,'page_single')
-    del_copy_dir(template.name,'percategory')
+    #views
+    del_copy_views_dir(template.name,'article_single')
+    del_copy_views_dir(template.name,'confirmable')
+    del_copy_views_dir(template.name,'devise')
+    del_copy_views_dir(template.name,'galleries')
+    del_copy_views_dir(template.name,'landing')
+    del_copy_views_dir(template.name,'page_single')
+    del_copy_views_dir(template.name,'percategory')
+    
+    #helpers
+    del_copy_helper(template.name,'application_helper.rb')
+    del_copy_helper(template.name,'article_page_helper.rb')
+    del_copy_helper(template.name,'article_single_helper.rb')
+    del_copy_helper(template.name,'discuss_helper.rb')
+    del_copy_helper(template.name,'galleries_helper.rb')
+    del_copy_helper(template.name,'landing_helper.rb')
+    del_copy_helper(template.name,'page_single_helper.rb')
+    del_copy_helper(template.name,'percategory_helper.rb')
     
     #layout
     template_layout_application = Rails.root.join('app/assets/templates/'+template.name+'/views/layouts/application.html.erb')
@@ -87,7 +98,7 @@ class AdmTemplatesController < ApplicationController
   # * +template_dir+ - The directory to delete and create a new one in app/views
   # * +the_dir+ - The directory to delete and create a new one in app/views
   # 
-  def del_copy_dir(template_dir,the_dir)
+  def del_copy_views_dir(template_dir,the_dir)
     
     real_template_dir = Rails.root.join('app/assets/templates/'+template_dir).to_s     # /app/assets/templates/ror_cms
     real_view_dir = Rails.root.join('app/views/'+the_dir).to_s                         # /app/views/[landing,devise,article_single,...]
@@ -100,6 +111,22 @@ class AdmTemplatesController < ApplicationController
     #template directory
     if Dir.exists?(real_template_dir+'/views/'+the_dir)
       FileUtils.cp_r real_template_dir+'/views/'+the_dir+'/.', real_view_dir
+    end
+    
+  end
+  
+  def del_copy_helper(template_dir,helper_filename)
+    real_template_helpers_dir = Rails.root.join('app/assets/templates/'+template_dir+'/helpers').to_s
+    real_helpers_dir = Rails.root.join('app/helpers').to_s
+    
+    #helpers file delete
+    if File.exists?(real_helpers_dir+'/'+helper_filename)
+      FileUtils.rm real_helpers_dir+'/'+helper_filename
+    end
+    
+    #copy helpers in the template to helpers folder
+    if File.exists?(real_template_helpers_dir+'/'+helper_filename)
+      FileUtils.cp real_template_helpers_dir+'/'+helper_filename, real_helpers_dir+'/'+helper_filename
     end
     
   end
