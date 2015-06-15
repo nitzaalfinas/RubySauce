@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-	resources :articles
+	#resources :articles
 
 	#---------------------------
 	root  "landing#index"
@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   get 'adm/templates', to: 'adm_templates#index'
   get 'adm/templates/new', to: 'adm_templates#new'
 	post 'adm/templates/upload', to: 'adm_templates#upload'
+  post 'adm/templates/active/:id', to: 'adm_templates#active'
 #	get 'adm/templates/edit', to: 'adm_templates#edit'
 #	patch 'adm/templates/update/:id', to: 'adm_templates#update'
 #  delete 'adm/templates/destroy/:id', to: 'adm_templates#destroy'

@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
-gem 'bootstrap-sass-extras'
+#gem 'bootstrap-sass-extras'
 
 #https://github.com/rubyzip/rubyzip
 #https://rubygems.org/gems/rubyzip/versions/1.1.7

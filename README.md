@@ -1,7 +1,6 @@
 # RoR-CMS
 RoR-CMS is a CMS based on Ruby on Rails.<br>
 The RoR-CMS has a template management system.
-
 <br><br>
 <div id="installation">
   <h3>Installation</h3>
@@ -33,15 +32,21 @@ end
 More information about devise: https://github.com/plataformatec/devise
 <br>
 <div>
-<h3>Setting Email in Production Environment</h3>
-Please fit this into your configuration.<br>
-<pre>
-config.action_mailer.default_url_options = {:host => 'nitzaalfinas.com'}
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :address => "127.0.0.1",
-  :port    => 25,
-  :domain  => 'nitzaalfinas.com'
-}
-</pre>
+    <h3>Setting Email in Production Environment</h3>
+    Please fit this into your configuration.<br>
+    <pre>
+    config.action_mailer.default_url_options = {:host => 'nitzaalfinas.com'}
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "127.0.0.1",
+      :port    => 25,
+      :domain  => 'nitzaalfinas.com'
+    }
+    </pre>
+</div>
+<div>
+    <h3>Best Features</h3>
+    <li>Admin Page</li>
+    <li>Templates System</li>
+    <li>Changing URI easily</li>
 </div>

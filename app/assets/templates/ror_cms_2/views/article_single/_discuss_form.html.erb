@@ -1,0 +1,17 @@
+<% if current_user %>
+  <h1>Leave a Reply</h1>
+  <div class="content left" style="margin-right:20px">
+    <div class="user-avatar">
+      <i class="fa fa-user"></i>
+      <div class="user-image" style="background-image:url('image/user-pic/22_Jekkynwr.jpg')"></div>
+    </div>	
+  </div>
+  <div class="content left" style="margin:0;width: 88%;">
+    <form id="discuss_form">
+      <h2><%= current_user.full_name %></h2>
+      <input type="hidden" name="article_id" value="<%= @article.id %>" >
+      <textarea id="dis_body" name="dis_body" class="full" placeholder="write a comment..."></textarea>
+      <button id="discuss_submit_btn" class="btn">Submit</button>	
+    </form>
+  </div>
+<% end %>

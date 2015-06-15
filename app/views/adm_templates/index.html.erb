@@ -13,13 +13,13 @@
 
 <h3>Templates</h3>
 <div class="col-lg-12 pl0 mb15">
-  <%= link_to "Add New", adm_templates_new_path, html={ "class" => "btn btn-primary" } %>
+  <%= link_to "Add New", adm_templates_new_path, class: "btn btn-primary"  %>
 </div>
 <div>
   <% @templates.each do |template| %>
     <div class="col-lg-12 mb30 pl0 pr0">
       <div class="pull-right">
-        <%= link_to "Activate", "#", class: "btn btn-primary" %>
+        <%= link_to "Activate", "/adm/templates/active/"+template.id.to_s, :"data-method" => "post", class: "btn btn-primary" %>
         <%= link_to "Delete", "#", class: "btn btn-default" %>
       </div>
       <div class="col-lg-3 pl0">
