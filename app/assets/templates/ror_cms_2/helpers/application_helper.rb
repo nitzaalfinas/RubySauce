@@ -1,0 +1,3 @@
+module ApplicationHelper
+  #xx
+end

@@ -2,5 +2,7 @@
     "name": "ror_cms_2",
     "author": "Nitza Alfinas",
     "email": "itsme@nitzaalfinas.com",
-    "about": "Ini adalah template yang ke 2 yang dibuat oleh Nitza Alfinas Rahman"
+    "description": "Ini adalah bla.... bla..",
+    "css_files": ["application.css.scss","bootstrap.css","discuss.scss","galleries.scss","landing.scss","page_single.scss","percategory.scss"],
+    "javascripts": ["application.js","article_single.js","discuss.js","galleries.js","landing.js","page_single.js","percategory.js"]
 }

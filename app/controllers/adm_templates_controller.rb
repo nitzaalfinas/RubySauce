@@ -54,7 +54,7 @@ class AdmTemplatesController < ApplicationController
     #get template by id
     template = Template.find(id)
     
-    # current template active set to 0
+    # current template active set to inactive or active = 0
     current_template_active = Template.where(:active => 1).take
     current_template_active.active = 0
     current_template_active.save
@@ -82,15 +82,18 @@ class AdmTemplatesController < ApplicationController
     del_copy_helper(template.name,'page_single_helper.rb')
     del_copy_helper(template.name,'percategory_helper.rb')
     
+    
     #layout
     template_layout_application = Rails.root.join('app/assets/templates/'+template.name+'/views/layouts/application.html.erb')
     real_layout_application = Rails.root.join('app/views/layouts/application.html.erb')
     FileUtils.cp template_layout_application, real_layout_application 
     
+    
+    
     redirect_to adm_templates_path
   end
   
-  # private ------------------------------------------------------------
+  # PRIVATE START FROM HERE! ------------------------------------------------------------
   private
   ##
   # Delete the directory and create a new one

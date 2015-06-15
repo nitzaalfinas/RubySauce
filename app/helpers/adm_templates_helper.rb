@@ -7,7 +7,7 @@ module AdmTemplatesHelper
       "<div>Name: "+datax['name']+"</div>
       <div>Author: "+datax['author']+"</div>
       <div>Email: "+datax['email']+"</div>
-      <div>About: "+datax['about']+"</div>"
+      <div>Description: "+datax['description']+"</div>"
     else
       ""
     end

@@ -8,11 +8,7 @@ class AdmMenuController < ApplicationController
 
 	def index
 
-		
-
-		@menu = Option.find(1)
-
-		# if @menu.site_menu == "<ol class='sortable'></ol>" || @menu.site_menu == "" || @menu.site_menu == nil
+		# if $appset.site_menu == "<ol class='sortable'></ol>" || $appset.site_menu == "" || $appset.site_menu == nil
 		# 	menu_string = "<ol class='sortable'>"
 		# 	@pages = VPage.where("publish_status = 'Publish'")
 		# 	if @pages.present?
@@ -24,8 +20,8 @@ class AdmMenuController < ApplicationController
 		# 	menu_string = menu_string+"</ol>"	
 
 		# 	#saving menu
-		# 	@menu.site_menu = menu_string
-		# 	@menu.save
+		# 	$appset.site_menu = menu_string
+		# 	$appset.save
 		# end
 
 		redirect_to adm_menu_edit_path		
@@ -37,49 +33,43 @@ class AdmMenuController < ApplicationController
 	end
 
 	def draft_menu_element
-		@menu = Option.find(1)
 		render :layout => false
 	end
 
 	def current_menu_element
-		@menu = Option.find(1)
 		render :layout => false
 	end
 
 	def update_draft
-		@menu = Option.find(1)
-
-		@menu.site_menu_draft = params[:data]
-		@menu.save
+		
+		$appset.site_menu_draft = params[:data]
+		$appset.save
 		render inline: "success"
 	end #update_draft
 
 	def update
-		@menu = Option.find(1)
-
+		
 		menu_str_a = params[:data].gsub "<ol", "<ul"
 		menu_str_b = menu_str_a.gsub "</ol", "</ul"
 		menu_str_c = menu_str_b.gsub "sortable ui-sortable", "" #replace sortable
 		menu_str_d = menu_str_c.gsub "menu_page_", "page_" #replace page
 		menu_str = menu_str_d
 		
-		@menu.site_menu = menu_str
-		@menu.save
+		$appset.site_menu = menu_str
+		$appset.save
 		render inline: "success"
 	end #update
 
 	def form_manual
-		@menu = Option.find(1)
 		render :layout => false
 	end #form_manual
 
 	def form_manual_update
-		@menu = Option.find(1)
 
 		menu_str = params[:data]
 		
-		@menu.site_menu = menu_str
-		@menu.save
+		$appset.site_menu = menu_str
+		$appset.save
 		render inline: "success"
 	end #form_manual_update
 

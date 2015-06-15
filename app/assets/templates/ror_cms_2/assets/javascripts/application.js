@@ -13,21 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//
-//= require adm_jquery-ui
-//= require adm_nestedSortable
-//
-//= require adm_akun
-//= require adm_articles
-//= require adm_bootstrap
-//= require adm_categories
-//= require adm_dashboard
-//= require adm_discuss
-//= require adm_media
-//= require adm_media_win
-//= require adm_menu
-//= require adm_pages
-//= require adm_settings
-//= require adm_templates
-//= require adm_users
-
+// require_tree .  // REQUIRE_TREE DISABLED!!!!!!!!!!!!!!!!!!!!!
+//= require article_single
+//= require discuss
+//= require galleries
+//= require landing
+//= require page_single
+//= require percategory
