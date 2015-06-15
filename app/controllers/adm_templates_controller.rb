@@ -71,6 +71,8 @@ class AdmTemplatesController < ApplicationController
     del_copy_views_dir(template.name,'landing')
     del_copy_views_dir(template.name,'page_single')
     del_copy_views_dir(template.name,'percategory')
+    del_copy_views_dir(template.name,'support')
+    del_copy_views_dir(template.name,'widget')
     
     #helpers
     del_copy_helper(template.name,'application_helper.rb')
@@ -85,12 +87,17 @@ class AdmTemplatesController < ApplicationController
     #js
     replace_js(template.name,current_template_active.name)
     
+    #css
+    replace_css(template.name,current_template_active.name)
+    
+    #supplement
+    replace_supplement(template.name,current_template_active.name)
+    
     #layout
     template_layout_application = Rails.root.join('app/assets/templates/'+template.name+'/views/layouts/application.html.erb')
     real_layout_application = Rails.root.join('app/views/layouts/application.html.erb')
     FileUtils.cp template_layout_application, real_layout_application 
-    
-    
+      
     redirect_to adm_templates_path
   end
   
@@ -166,6 +173,110 @@ class AdmTemplatesController < ApplicationController
         the_real_file = Rails.root.join('app/assets/javascripts/'+item).to_s
         if File.exists?(the_file)
           FileUtils.cp the_file, the_real_file
+        end
+      end
+    end
+  end
+  
+  ##
+  # Replace old template css with new one
+  # ==== Attributes
+  # * +template_dir+ - The directory of new template. (not full path). Ex: ror_cms
+  # * +old_template_dir+ - The directory of old template (not full path). Ex: ror_cms_2
+  #
+  def replace_css(template_dir,old_template_dir)
+    
+    #delete old css | Please make old_template_dir
+    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
+      datax = JSON.parse(data_json)
+      datax["css_files"].each do |item|
+        #delete real assets css
+        the_file = Rails.root.join('app/assets/stylesheets/'+item).to_s
+        if File.exists?(the_file)
+          FileUtils.rm(the_file)
+        end
+      end
+    end
+    
+    # copy and paste new css to assets/stylesheets directory
+    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
+      datax = JSON.parse(data_json)
+      datax["css_files"].each do |item|
+        the_file = Rails.root.join('app/assets/templates/'+template_dir+'/assets/stylesheets/'+item).to_s
+        the_real_file = Rails.root.join('app/assets/stylesheets/'+item).to_s
+        if File.exists?(the_file)
+          FileUtils.cp the_file, the_real_file
+        end
+      end
+    end
+  end
+  
+  ##
+  # Replace old supplement with new one
+  # ==== Attributes
+  # * +template_dir+ - The directory of new template. (not full path). Ex: ror_cms
+  # * +old_template_dir+ - The directory of old template (not full path). Ex: ror_cms_2
+  #
+  def replace_supplement(template_dir,old_template_dir)
+    
+    # remove old_template
+    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
+      datax = JSON.parse(data_json)
+      
+      if defined?(datax["supplements"].each)
+        datax["supplements"].each do |supp|
+          # remove file
+          if(supp["copy_type"] == "file") 
+            the_file = Rails.root.join(supp["copy_to"]+'/'+supp["name"]).to_s
+            if File.exists?(the_file)
+              FileUtils.rm(the_file)
+            end
+          end
+
+          # remove folder
+          if(supp["copy_type"] == "folder")
+            the_folder = Rails.root.join(supp["copy_to"]+'/'+supp["name"]).to_s
+            if Dir.exists?(the_folder)
+              FileUtils.remove_dir(the_folder)
+            end
+          end
+        end
+      end    
+    end # end of remove old_template
+    
+    # apply new template
+    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
+      datax = JSON.parse(data_json)
+      if defined?(datax["supplements"].each)
+        datax["supplements"].each do |supp|  
+          # co-pas file
+          if(supp["copy_type"] == "file") 
+            the_file_temp = Rails.root.to_s+'/app/assets/templates/'+template_dir+'/supplements/'+supp["name"]
+            the_file_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]
+            if File.exists?(the_file_temp)
+              FileUtils.cp(the_file_temp, the_file_copy_to) 
+            end
+          end
+
+          # co-pas folder
+          if(supp["copy_type"] == "folder")
+            the_folder_temp = Rails.root.to_s+'/app/assets/templates'+template_dir+'/supplements/'+supp["name"]
+            the_folder_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]
+
+            # remove destination folder as mention in http://ruby-doc.org/stdlib-2.0.0/libdoc/fileutils/rdoc/FileUtils.html#method-c-copy_entry
+            if Dir.exists?(the_folder_copy_to)
+              FileUtils.remove_dir(the_folder_copy_to)
+            end
+
+            # copy
+            if Dir.exists?(the_folder_temp)
+              FileUtils.copy_entry(the_folder_temp,the_folder_copy_to)
+            end
+          end
         end
       end
     end

@@ -6,7 +6,9 @@ module AdmTemplatesHelper
       datax = JSON.parse(data_json)
       "<div>Name: "+datax['name']+"</div>
       <div>Author: "+datax['author']+"</div>
+      <div>URL: "+datax['url']+"</div>
       <div>Email: "+datax['email']+"</div>
+      <div>License: "+datax['license']+"</div>
       <div>Description: "+datax['description']+"</div>"
     else
       ""
