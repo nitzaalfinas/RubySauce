@@ -82,6 +82,8 @@ class AdmTemplatesController < ApplicationController
     del_copy_helper(template.name,'page_single_helper.rb')
     del_copy_helper(template.name,'percategory_helper.rb')
     
+    #js
+    replace_js(template.name,current_template_active.name)
     
     #layout
     template_layout_application = Rails.root.join('app/assets/templates/'+template.name+'/views/layouts/application.html.erb')
@@ -89,12 +91,12 @@ class AdmTemplatesController < ApplicationController
     FileUtils.cp template_layout_application, real_layout_application 
     
     
-    
     redirect_to adm_templates_path
   end
   
   # PRIVATE START FROM HERE! ------------------------------------------------------------
   private
+  
   ##
   # Delete the directory and create a new one
   # ==== Attributes
@@ -132,5 +134,40 @@ class AdmTemplatesController < ApplicationController
       FileUtils.cp real_template_helpers_dir+'/'+helper_filename, real_helpers_dir+'/'+helper_filename
     end
     
+  end
+  
+  ##
+  # Replace old template javascript with new one
+  # ==== Attributes
+  # * +template_dir+ - The directory of new template. (not full path). Ex: ror_cms
+  # * +old_template_dir+ - The directory of old template (not full path). Ex: ror_cms_2
+  #
+  def replace_js(template_dir,old_template_dir)
+    
+    #delete old javascripts | Please make old_template_dir
+    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
+      datax = JSON.parse(data_json)
+      datax["js_files"].each do |item|
+        #delete real assets js
+        the_file = Rails.root.join('app/assets/javascripts/'+item).to_s
+        if File.exists?(the_file)
+          FileUtils.rm(the_file)
+        end
+      end
+    end
+    
+    # copy and paste new javascripts to assets/javascripts directory
+    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
+      datax = JSON.parse(data_json)
+      datax["js_files"].each do |item|
+        the_file = Rails.root.join('app/assets/templates/'+template_dir+'/assets/javascripts/'+item).to_s
+        the_real_file = Rails.root.join('app/assets/javascripts/'+item).to_s
+        if File.exists?(the_file)
+          FileUtils.cp the_file, the_real_file
+        end
+      end
+    end
   end
 end

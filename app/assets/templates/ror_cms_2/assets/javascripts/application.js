@@ -20,3 +20,7 @@
 //= require landing
 //= require page_single
 //= require percategory
+
+
+
+//template ini adalah template ror_cms_2
