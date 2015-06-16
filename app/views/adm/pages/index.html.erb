@@ -1,0 +1,36 @@
+<h1 class="mt0 mb15">Pages</h1>
+<div class="col-lg-12 pl0 mb15">
+  <%= link_to "Add New", new_adm_page_path, class: "btn btn-primary" %>
+</div>
+
+<table id="pages_table" class="table table-stripped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td>
+          <div><%= article.title %></div>
+          <div>
+            <%= link_to "edit", edit_adm_page_path(id: article.id, page: @articles.current_page) %>
+            | <%= link_to 'trash', adm_page_path(id: article.id, page: @articles.current_page), method: :delete, data: {confirm:'Are you sure?'} %>
+            | <%= link_to 'view', $appset.site_domain.to_s+"/"+article.permalink.to_s %>
+          </div>
+        </td>
+        <td><%= article.nick_name %></td>
+        <td></td>
+        <td><%= article.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @articles %>
+
+<script>$('#pill_pages').addClass('active');</script>
+

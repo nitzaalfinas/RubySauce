@@ -3,7 +3,7 @@ var n_menu = {
         console.log('function current_menu_element');
 
         $.ajax({
-            url: '/adm/menu/current_menu_element',
+            url: '/adm/menus/current_menu_element',
             success: function(response) {
                 $('#current_menu').html(response);
             }
@@ -21,7 +21,7 @@ var n_menu = {
     draft_menu_element: function() {
         console.log('function draft_menu_element');
         $.ajax({
-            url: '/adm/menu/draft_menu_element',
+            url: '/adm/menus/draft_menu_element',
             success: function(response) {
                 $('#draft_menu_element').html(response);
 
@@ -37,7 +37,7 @@ var n_menu = {
         setTimeout(function() {
             var data = $('#draft_menu_input').val();
             $.ajax({
-                url: '/adm/menu/update_draft',
+                url: '/adm/menus/update_draft',
                 data: "data=" + data,
                 type: 'POST',
                 success: function(response) {
@@ -54,7 +54,7 @@ var n_menu = {
             var data_input = $('#draft_menu_input').val($('#draft_menu_element').html());
             var data = $('#draft_menu_input').val();
             $.ajax({
-                url: '/adm/menu/update',
+                url: '/adm/menus/update',
                 type: 'POST',
                 data: 'data=' + data,
                 success: function() {
@@ -134,7 +134,7 @@ var n_menu = {
     },
     form_manual: function() {
         $.ajax({
-            url: '/adm/menu/form_manual',
+            url: '/adm/menus/form_manual',
             success: function(response) {
                 $('#current_menu').html(response);
                 $('#current_menu_click_me').hide();
@@ -144,7 +144,7 @@ var n_menu = {
     form_manual_update: function() {
         var data = $('#form_manual_textarea').val();
         $.ajax({
-            url: '/adm/menu/form_manual_update',
+            url: '/adm/menus/form_manual_update',
             data: 'data=' + data,
             type: 'POST',
             success: function() {

@@ -40,10 +40,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="/" target="blank">Visit Site <span class="sr-only">(current)</span></a></li>
-            <li><%= link_to "New Article", adm_articles_new_path %></li>
-            <li><%= link_to "New Category", adm_categories_new_path %></li>
-            <li><%= link_to "New Media", adm_media_new_path %></li>
-            <li><%= link_to "New Page", adm_pages_new_path %></li>
+            <li><%= link_to "New Article", new_adm_article_path %></li>
+            <li><%= link_to "New Category", new_adm_category_path %></li>
+            <li><%= link_to "New Media", '/adm/media/new' %></li>
+            <li><%= link_to "New Page", new_adm_page_path %></li>
           </ul>
           <!--
           <form class="navbar-form navbar-left" role="search">
@@ -84,7 +84,7 @@
       <div id="adm_sidemenu" class="col-lg-2 pl0 pr0">
         <ul class="nav nav-pills nav-stacked">
           <li role="presentation" id="pill_dashboard">
-            <%= link_to 'Dashboard', adm_dashboard_path %></a>
+            <%= link_to 'Dashboard', '/adm/dashboard' %></a>
           </li>
           <li role="presentation" id="pill_articles">
             <%= link_to 'Articles', adm_articles_path %></a>
@@ -97,7 +97,7 @@
           </li>
 
           <li role="presentation" id="pill_discusses">
-            <%= link_to "Discusses", adm_discusses_path %>
+            <%= link_to "Discussion", '/adm/discuss' %>
           </li>
           
           <% if current_user.level == "Admin" %>
@@ -120,13 +120,13 @@
 
           <% if current_user.level == "Admin" %>			
             <li role="presentation" id='pill_menu'>
-              <%= link_to "Menu/Navigation", adm_menu_path %>
+              <%= link_to "Menu/Navigation", '/adm/menus' %>
             </li>
           <% end %>			
 
           <% if current_user.level == "Admin" %>
             <li role="presentation" id="pill_settings">
-              <%= link_to "Settings", adm_settings_path %>				
+              <%= link_to "Settings", '/adm/settings' %>				
             </li>
           <% end %>
         </ul>

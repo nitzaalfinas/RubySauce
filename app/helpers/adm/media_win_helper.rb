@@ -1,0 +1,2 @@
+module Adm::MediaWinHelper
+end

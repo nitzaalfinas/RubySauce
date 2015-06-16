@@ -1,0 +1,2 @@
+module Adm::MediaHelper
+end

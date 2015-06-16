@@ -1,0 +1,2 @@
+module Adm::ArticlesHelper
+end

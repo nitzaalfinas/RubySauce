@@ -1,0 +1,2 @@
+module Adm::AkunHelper
+end

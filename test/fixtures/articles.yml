@@ -3,7 +3,7 @@
 article_first:
   title: Ini adalah title pertama
   body: body yang dituliskan bla-bla-bla
-  author_id: <%= User.first.id %>
+  author_id: 2
   permalink: "test_title_pertama"
   excerp: "ini adalah excerp"
   feat_img: "default.png"
@@ -16,7 +16,7 @@ article_first:
 article_second:
   title: Ini adalah title kedua
   body: body ble-ble-ble coy
-  author_id: <%= User.first.id %>
+  author_id: 2
   permalink: "test_title_kedua"
   excerp: "ini adalah excerp"
   feat_img: "default.png"
@@ -29,7 +29,7 @@ article_second:
 article_third:
   title: Ini adalah title ketiga
   body: body ble-ble-ble coy
-  author_id: <%= User.first.id %>
+  author_id: 2
   permalink: "test_title_kedua"
   excerp: "ini adalah excerp"
   feat_img: "default.png"

@@ -1,0 +1,2 @@
+module Adm::DiscussHelper
+end
