@@ -1,5 +1,7 @@
 {
     "name": "ror_cms",
+    "template_version": "1.0",
+    "cms_version": "1.0",
     "author": "Nitza Alfinas",
     "email": "itsme@nitzaalfinas.com",
     "url": "http://nitzaalfinas.com",

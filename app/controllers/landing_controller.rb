@@ -7,7 +7,7 @@ class LandingController < ApplicationController
       @articles = VArticle.where('publish_status = "Publish" and publish_visibility = "public"').order('created_at DESC').paginate(page: params[:page], per_page: 10)
     end
 		
-		@dynamic_title = "Ruby on Rails"
+		@dynamic_title = "Ruby on Rails CMS"
 		@dynamic_author = "nitzaalfinas"
 		@dynamic_description = "Ruby on Rails CMS"
 		@dynamic_keyword = "ruby on rails, rails, ruby, cms"

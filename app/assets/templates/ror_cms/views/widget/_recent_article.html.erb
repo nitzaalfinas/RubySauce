@@ -4,22 +4,26 @@
 #Description: Showing 5 recent article
 %>
 
-<% @larts = VArticle.order('created_at desc').take(5) %>
+<% if current_user %>
+  <%  @larts = VArticle.where('publish_status = "Publish"').order('created_at DESC').take(5) %>
+<% else %>
+  <% @larts = VArticle.where('publish_status = "Publish" and publish_visibility = "public"').order('created_at DESC').take(5) %>
+<% end %>
 
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">Recent</h3>
-	</div>
-	<div class="panel-body">
-		<% @larts.each do |lar| %>
-		<li>
-			<a href="/<%= lar.permalink %>">
-				<div>
-					<%= lar.title %>
-					<small><%= lar.created_at %></small>		
-				</div>	
-			</a>
-		</li>
-		<% end %>
-	</div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent</h3>
+  </div>
+  <div class="panel-body">
+    <% @larts.each do |lar| %>
+      <li>
+        <a href="/<%= lar.permalink %>">
+          <div>
+            <%= lar.title %>
+            <small><%= lar.created_at %></small>		
+          </div>	
+        </a>
+      </li>
+    <% end %>
+  </div>
 </div>

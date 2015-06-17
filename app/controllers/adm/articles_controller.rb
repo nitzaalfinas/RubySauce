@@ -12,7 +12,7 @@ class Adm::ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
-		@categories = Category.all		
+		@categories = Category.all.order('cat_name ASC')		
 	end #new
 
 	def create
@@ -50,7 +50,7 @@ class Adm::ArticlesController < ApplicationController
     page = params[:page].to_i
     
 		@article = Article.find(id)
-		@categories = Category.all
+		@categories = Category.all.order('cat_name ASC')
 		@page = page
 		
 	end #def edit

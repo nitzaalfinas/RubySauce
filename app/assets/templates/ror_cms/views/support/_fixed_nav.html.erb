@@ -13,14 +13,11 @@
 
     <!-- navbar-collapse -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li id="menu_home">
-          <a href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-
+      
       <ul class="nav navbar-nav navbar-right">
-        <%= $appset.site_menu.html_safe %>
+        <% $page_menus.each do |pm| %>
+        <li><a href="/page/<%= pm.permalink %>"><%= pm.title %></a></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

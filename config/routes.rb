@@ -71,11 +71,16 @@ Rails.application.routes.draw do
       end
     end
     
+    resources :media do
+      collection do
+        get 'media_win', to: 'media_win#index'
+      end
+    end
     
   
   end
 
-  get 'adm/media_win', to: 'adm_media_win#index'
+#  get 'adm/media_win', to: 'adm_media_win#index'
   get 'adm/media_win/the_page', to: 'adm_media_win#the_page'
 
   
