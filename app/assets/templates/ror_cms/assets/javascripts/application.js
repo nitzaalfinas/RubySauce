@@ -20,3 +20,4 @@
 //= require landing
 //= require page_single
 //= require percategory
+//= require search

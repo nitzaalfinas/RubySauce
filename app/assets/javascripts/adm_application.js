@@ -24,7 +24,6 @@
 //= require adm_dashboard
 //= require adm_discuss
 //= require adm_media
-//= require adm_media_win
 //= require adm_menu
 //= require adm_pages
 //= require adm_settings

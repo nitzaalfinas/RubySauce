@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-	#resources :articles
-
 	#---------------------------
 	root  "landing#index"
 
+  get 'search', to: 'search#index'
+  
 	get 'galleries', to: 'galleries#index'
 
 	get ':permalink', to: 'article_single#index'
@@ -16,8 +16,7 @@ Rails.application.routes.draw do
 	get 'category/:permalink', to: 'percategory#index'	
 
 	post 'discuss/send_insert', to: 'discuss#send_insert'
-
-
+  
 	#---------------------------
 
   namespace :adm do

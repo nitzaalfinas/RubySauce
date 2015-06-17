@@ -18,6 +18,7 @@ class CreateVArticles < ActiveRecord::Migration
 				articles.publish_visibility,
 				articles.article_type,
 				articles.article_vcount,
+        concat(articles.title,' ',articles.body,' ',articles.permalink,' ',articles.excerp) as article_all,
 				articles.created_at,
 				articles.updated_at
 			from

@@ -1,5 +1,6 @@
 {
-    "name": "ror_cms_2",
+    "folder_name": "ror_cms_2",
+    "name": "Clean Blog",
     "template_version": "1.0",
     "cms_version": "1.0",
     "author": "Clean Blog",

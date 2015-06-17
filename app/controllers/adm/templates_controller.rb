@@ -78,6 +78,7 @@ class Adm::TemplatesController < ApplicationController
     del_copy_views_dir(template.name,'landing')
     del_copy_views_dir(template.name,'page_single')
     del_copy_views_dir(template.name,'percategory')
+    del_copy_views_dir(template.name,'search')
     del_copy_views_dir(template.name,'support')
     del_copy_views_dir(template.name,'widget')
     

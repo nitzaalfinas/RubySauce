@@ -1,10 +1,10 @@
 <% @hals = VPage.where("publish_status = 'Publish'") %>
 <ul>
-  <% @hals.each do |u| %>
-    <li>
-      <a href="/page/<%= u.permalink %>">
-        <%= u.title %>
-      </a>
-    </li>
-  <% end %>
+	<% @hals.each do |u| %>
+	<li>
+		<a href="/page/<%= u.permalink %>">
+			<%= u.title %>
+		</a>
+	</li>
+	<% end %>
 </ul>

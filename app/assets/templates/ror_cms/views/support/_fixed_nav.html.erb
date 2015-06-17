@@ -13,7 +13,12 @@
 
     <!-- navbar-collapse -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
+      <form action="/search" method="get" class="navbar-form navbar-right" role="search" id="form_search_fixed">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
       <ul class="nav navbar-nav navbar-right">
         <% $page_menus.each do |pm| %>
         <li><a href="/page/<%= pm.permalink %>"><%= pm.title %></a></li>

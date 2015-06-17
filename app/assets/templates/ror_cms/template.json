@@ -1,5 +1,6 @@
 {
-    "name": "ror_cms",
+    "folder_name": "ror_cms",
+    "name": "Default",
     "template_version": "1.0",
     "cms_version": "1.0",
     "author": "Nitza Alfinas",
@@ -8,5 +9,5 @@
     "description": "Ini adalah bla.... bla..",
     "license": "license",
     "css_files": ["application.css.scss","bootstrap.css","discuss.scss","galleries.scss","landing.scss","page_single.scss","percategory.scss"],
-    "js_files": ["application.js","article_single.js","discuss.js","galleries.js","landing.js","page_single.js","percategory.js"]
+    "js_files": ["application.js","article_single.js","discuss.js","galleries.js","landing.js","page_single.js","percategory.js","search.js"]
 }

@@ -22,7 +22,8 @@ class CreateVArticleCategories < ActiveRecord::Migration
 				article_categories.category_id,
 					categories.cat_name,
 					categories.cat_slug,
-					categories.cat_count
+					categories.cat_count,
+        concat(articles.title,' ',articles.body,' ',articles.permalink,' ',articles.excerp,' ',categories.cat_name) as article_all
 			from
 				article_categories
 					left join categories on article_categories.category_id = categories.id
