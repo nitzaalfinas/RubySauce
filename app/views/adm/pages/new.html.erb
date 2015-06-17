@@ -17,48 +17,28 @@
   <!-- barisan content form -->
   <div class="col-lg-9 pl0">
     <div class="form-group">
-      <%= f.text_field :title, html_options={ "id" => "article_title" ,"class" => "form-control", "placeholder" => "Title", "onkeyup" => "createPermalink();" } %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title", onkeyup: "adm_pages.create_permalink();" %>
     </div>
 
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><%= $appset.site_domain %>/page/</span>
-        <%= f.text_field :permalink, html_options={ "id" => "article_permalink", "class" => "form-control", "placeholder" => "Permalink" } %>
+        <%= f.text_field :permalink, class: "form-control", placeholder: "Permalink" %>
       </div>
     </div>		
 
     <div class="form-group">
-      <%= f.text_area :body, html_options={ "id" => "article_body", "placeholder" => "Article" } %>
+      <%= f.text_area :body, placeholder: "Article", style: "min-height: 300px" %>
     </div>
 
     <%= render "adm/articles/panel_ext" %>
   </div>
 
   <div class="col-lg-3">
-    <%= render "panel_publish", :locals => { @article => @article } %>
-    <%= render "panel_featured_image", :locals => { @article => @article } %>
+    <%= render "panel_publish" %>
+    <%= render "panel_featured_image" %>
   </div>
 
 <% end %>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    setTimeout(function() {
-      tinyMCE.init({
-        menubar: false,
-        selector: '#article_body'
-      });
-      console.log('jalan');
-    }, 500);
-
-    $('#pill_pages').addClass('active');
-  });
-
-  function createPermalink() {
-    var title = $('#article_title').val();
-    var tit_a = title.replace(/\W+/g, "-");
-    var permalink = tit_a.toLowerCase();
-
-    $('#article_permalink').val(permalink);
-  }
-</script>
+<script>adm_pages.onload();</script>

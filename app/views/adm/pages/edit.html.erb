@@ -19,18 +19,18 @@
   <!-- barisan content form -->
   <div class="col-lg-9 pl0">
     <div class="form-group">
-      <%= f.text_field :title, html_options={ "class" => "form-control", "placeholder" => "Title" } %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
     </div>
 
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"><%= $appset.site_domain %>/page/</span>
-        <%= f.text_field :permalink, html_options={ "id" => "article_permalink", "class" => "form-control", "placeholder" => "Permalink" } %>
+        <%= f.text_field :permalink, class: "form-control", placeholder: "Permalink" %>
       </div>
     </div>	
 
     <div class="form-group">
-      <%= f.text_area :body, html_options={ "id" => "article_body", "placeholder" => "Article" } %>
+      <%= f.text_area :body, placeholder: "Article", style: "min-height: 300px;" %>
     </div>
 
     <%= render "adm/articles/panel_ext" %>
@@ -44,17 +44,4 @@
 
 <% end %>
 
-<script>
-  $(document).ready(function() {
-    setTimeout(function() {
-      tinyMCE.init({
-        menubar: false,
-        selector: '#article_body'
-      });
-      console.log('jalan');
-    }, 500);
-
-    $('#pill_pages').addClass('active');
-  });
-
-</script>
+<script>adm_pages.onload();</script>

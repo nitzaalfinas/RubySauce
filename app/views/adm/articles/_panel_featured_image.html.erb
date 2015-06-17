@@ -1,49 +1,29 @@
 <div class="panel panel-default">
-	<div class="panel-heading">
-		Featured Image
-	</div>
-	<div class="panel-body">
-		<div id="feat_img_display">
-			<% case %>
-				<% when @article.feat_img == "" %>
-					<%= image_tag('thumb/default.png', style: "width:100%;") %>
-					<% @value_feat = 'default.png' %>
-				<% when !@article.feat_img %>
-					<%= image_tag('thumb/default.png', style: "width:100%;") %>
-					<% @value_feat = 'default.png' %>
-				<% else %>
-					<%= image_tag('thumb/'+@article.feat_img, style: "width:100%;") %>
-					<% @value_feat = @article.feat_img %>
-			<% end %>
-		</div>
+  <div class="panel-heading">
+    Featured Image
+  </div>
+  <div class="panel-body">
+    <div id="feat_img_display">
+      <% case %>
+      <% when @article.feat_img == "" %>
+        <%= image_tag('thumb/default.png', style: "width:100%;") %>
+        <% @value_feat = 'default.png' %>
+      <% when !@article.feat_img %>
+        <%= image_tag('thumb/default.png', style: "width:100%;") %>
+        <% @value_feat = 'default.png' %>
+      <% else %>
+        <%= image_tag('thumb/'+@article.feat_img, style: "width:100%;") %>
+        <% @value_feat = @article.feat_img %>
+      <% end %>
+    </div>
 
-		<div id="feat_img">
-			<a href="#" onclick="showMediaWin();">Set Featured Image</a>
-		</div>
-		
-		<input type="hidden" name="article[feat_img]" id="article_feat_img_input" value="<%= @value_feat %>">
-		
-	</div>
+    <div id="feat_img">
+      <a href="#" onclick="adm_articles.show_media_win();">Set Featured Image</a>
+    </div>
+
+    <input type="hidden" name="article[feat_img]" id="article_feat_img_input" value="<%= @value_feat %>">
+
+  </div>
 </div>
 
 <div id="media_win"></div>
-
-<script type="text/javascript">
-function showMediaWin() {
-	//checking media_win_modal
-	var check = $('#media_win_modal').length;
-
-	if(check == 0) {
-		$.ajax({
-			url: '/adm/media_win?page=1&rows=5&sort=id&order=desc',
-			success: function(response) {
-				$('#media_win').html(response);
-				$('#media_win_modal').modal();
-			}
-		});
-	}
-	else {
-		$('#media_win_modal').modal();
-	}
-}
-</script>

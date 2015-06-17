@@ -11,7 +11,7 @@
           </a>		
           <h3 class="mb10"><%= article.created_at %></h3>
           <div>
-            <%= show_excerp(article) %>
+            <%= show_excerp(article).html_safe %>
           </div>
         </div>
       </article>

@@ -271,9 +271,11 @@ class Adm::TemplatesController < ApplicationController
 
           # co-pas folder
           if(supp["copy_type"] == "folder")
-            the_folder_temp = Rails.root.to_s+'/app/assets/templates'+template_dir+'/supplements/'+supp["name"]
+            the_folder_temp = Rails.root.to_s+'/app/assets/templates/'+template_dir+'/supplements/'+supp["name"]
             the_folder_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]
 
+            puts the_folder_temp+"-------------------------------------------"
+            
             # remove destination folder as mention in http://ruby-doc.org/stdlib-2.0.0/libdoc/fileutils/rdoc/FileUtils.html#method-c-copy_entry
             if Dir.exists?(the_folder_copy_to)
               FileUtils.remove_dir(the_folder_copy_to)

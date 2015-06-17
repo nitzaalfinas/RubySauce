@@ -1,42 +1,42 @@
 <h1 class="mt0 mb15">Discusses</h1>
 
 <table id="articles_table" class="table table-stripped">
-	<thead>
-		<tr>
-			<th>Author</th>
-			<th>Article Title</th>
-			<th>Discuss</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @discusses.each do |dis| %>
-		<tr>
-			<td>
-				<%= dis.full_name %>
-			</td>
-			<td>
-				<div>
-					<%= dis.title %>	
-				</div>
-				<div>
-					<% if dis.dis_approve == "no" %>
-						<a href="#" data-disid="<%= dis.id %>" class="apr_btn">Approve</a>  
-					<% else %>
-						<a href="#" data-disid="<%= dis.id %>" class="unapr_btn">Unapprove</a>  
-					<% end %>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Article Title</th>
+      <th>Discuss</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @discusses.each do |dis| %>
+      <tr>
+        <td>
+          <%= dis.full_name %>
+        </td>
+        <td>
+          <div>
+            <%= dis.title %>	
+          </div>
+          <div>
+            <% if dis.dis_approve == "no" %>
+              <a href="javascript: adm_discuss.approve(<%= dis.id %>)" class="apr_btn">Approve</a>  
+            <% else %>
+              <a href="javascript: adm_discuss.disapprove(<%= dis.id %>)" class="unapr_btn">Disapprove</a>  
+            <% end %>
 
-					| Trash	
-				</div>
-			</td>
-			<td>
-				<%= dis.dis_body %>
-			</td>
-		</tr>
-		<% end %>
-	</tbody>
+            | Trash	
+          </div>
+        </td>
+        <td>
+          <%= dis.dis_body %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <%= will_paginate @discusses %>
 
-<script>$('#pill_discusses').addClass('active');</script>
+<script>adm_discuss.onload();</script>
 

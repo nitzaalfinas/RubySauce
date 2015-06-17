@@ -19,7 +19,7 @@ class Adm::DiscussController < ApplicationController
 		render inline: "success"
 	end #approve
 
-	def unapprove
+	def disapprove
 		@discuss_id = params[:discuss_id]
 		@discuss = Discuss.find(@discuss_id.to_i)
 		@discuss.dis_approve = "no"

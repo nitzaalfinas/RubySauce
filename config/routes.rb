@@ -31,13 +31,16 @@ Rails.application.routes.draw do
         get 'edit'
         patch 'update/:id', to: 'media#update'
         delete 'destroy/:id', to: 'media#destroy'
+        
+        get 'media_win', to: 'media#media_win_index'
+        get 'media_win/the_page', to: 'media#media_win_the_page'
       end
     end
     
     resources :discuss do
       collection do
         post 'approve', to: 'discuss#approve'
-        post 'unapprove', to: 'discuss#unapprove'
+        post 'disapprove', to: 'discuss#disapprove'
       end
     end
     
@@ -71,23 +74,14 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :media do
+    resources :akun do
       collection do
-        get 'media_win', to: 'media_win#index'
+        get 'edit', to: 'akun#edit'
+        post 'update', to: 'akun#update'
+        patch 'update', to: 'akun#update'
       end
     end
     
-  
   end
-
-#  get 'adm/media_win', to: 'adm_media_win#index'
-  get 'adm/media_win/the_page', to: 'adm_media_win#the_page'
-
-  
-  get 'adm/akun/edit', to: 'adm_akun#edit'
-  post 'adm/akun/update', to: 'adm_akun#update'
-  patch 'adm/akun/update', to: 'adm_akun#update'
-
-  
-  
+ 
 end

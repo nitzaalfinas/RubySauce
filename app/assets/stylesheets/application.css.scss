@@ -9,8 +9,9 @@
 */
 
 html, body {
-    font-family: 'Raleway', sans-serif;
-    /*    font-weight: lighter;*/
+    font-family: 'Lora', sans-serif;
+/*    font-family: 'Raleway', sans-serif;*/
+        font-weight: lighter;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     font-smoothing: antialiased;
@@ -57,6 +58,14 @@ html, body {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.t-justify {
+    text-align: justify;
+}
+
+.t-line-h-150 {
+    line-height: 190%;
 }
 
 #adm_sidemenu {
@@ -162,9 +171,6 @@ $u_color_2: #990100;
 
 
 
-
-
-
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
@@ -191,22 +197,6 @@ a:focus {
 form {
     margin: 0;
     padding: 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin-left: 0;
-}
-
-h1 {
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-h4 {
-    font-weight: 200;
-    margin-top: -20px;
-    font-style: italic;
-    color: #888;
 }
 
 table, tr, td {
@@ -1411,34 +1401,6 @@ table, tr, td {
     color: #373737;
     padding-top: 5px;
     margin-bottom: -2px;
-}
-
-.btn {
-    background-color: #990100;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 16px;
-    text-transform: uppercase;;
-    border: 0;
-}
-
-.btn:hover {
-    background-color: #ffbe00;
-    color: #fff;
-}
-
-.btn i {
-    font-size: 12px;
-    border: 1px solid #fff;
-    vertical-align: middle;
-    text-align: center;
-    border-radius: 100%;
-    line-height: 1.5;
-    height: 18px;
-    width: 18px;
-    margin-right: 10px;
 }
 
 #login-form a.btn {

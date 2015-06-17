@@ -1,41 +1,21 @@
 <div class="panel panel-default">
-	<div class="panel-heading">
-		Featured Image
-	</div>
-	<div class="panel-body">
-		<div id="feat_img_display">
-			<% if @article.feat_img %>
-				<%= image_tag('upload/thumb/'+@article.feat_img.to_s, style: "width:100%;") %>
-			<% end %>
-		</div>
+  <div class="panel-heading">
+    Featured Image
+  </div>
+  <div class="panel-body">
+    <div id="feat_img_display">
+      <% if @article.feat_img %>
+        <%= image_tag('thumb/'+@article.feat_img.to_s, style: "width:100%;") %>
+      <% end %>
+    </div>
 
-		<div id="feat_img">
-			<a href="#" onclick="showMediaWin();">Set Featured Image</a>
-		</div>
+    <div id="feat_img">
+      <a href="#" onclick="adm_articles.show_media_win();">Set Featured Image</a>
+    </div>
 
-		<input type="hidden" name="article[feat_img]" id="article_feat_img_input" value="<%= @article.feat_img %>">
+    <input type="hidden" name="article[feat_img]" id="article_feat_img_input" value="<%= @article.feat_img %>">
 
-	</div>
+  </div>
 </div>
 
 <div id="media_win"></div>
-
-<script type="text/javascript">
-function showMediaWin() {
-	//checking media_win_modal
-	var check = $('#media_win_modal').length;
-
-	if(check == 0) {
-		$.ajax({
-			url: '/adm/media_win',
-			success: function(response) {
-				$('#media_win').html(response);
-				$('#media_win_modal').modal();
-			}
-		});
-	}
-	else {
-		$('#media_win_modal').modal();
-	}
-}
-</script>
