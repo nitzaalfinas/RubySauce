@@ -104,7 +104,9 @@ class Adm::TemplatesController < ApplicationController
     #layout
     template_layout_application = Rails.root.join('app/assets/templates/'+template.name+'/views/layouts/application.html.erb')
     real_layout_application = Rails.root.join('app/views/layouts/application.html.erb')
-    FileUtils.cp template_layout_application, real_layout_application 
+    if File.exists?(template_layout_application)
+      FileUtils.cp template_layout_application, real_layout_application 
+    end
       
     redirect_to adm_templates_path
   end
@@ -266,6 +268,13 @@ class Adm::TemplatesController < ApplicationController
             the_file_temp = Rails.root.to_s+'/app/assets/templates/'+template_dir+'/supplements/'+supp["name"]
             the_file_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]
             if File.exists?(the_file_temp)
+              
+              # create directory if doesn't exist
+              unless File.directory?(Rails.root.to_s+'/'+supp["copy_to"])
+                FileUtils.mkdir_p(Rails.root.to_s+'/'+supp["copy_to"])
+              end
+              
+              # copy the file into directory
               FileUtils.cp(the_file_temp, the_file_copy_to) 
             end
           end
@@ -273,9 +282,7 @@ class Adm::TemplatesController < ApplicationController
           # co-pas folder
           if(supp["copy_type"] == "folder")
             the_folder_temp = Rails.root.to_s+'/app/assets/templates/'+template_dir+'/supplements/'+supp["name"]
-            the_folder_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]
-
-            puts the_folder_temp+"-------------------------------------------"
+            the_folder_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]            
             
             # remove destination folder as mention in http://ruby-doc.org/stdlib-2.0.0/libdoc/fileutils/rdoc/FileUtils.html#method-c-copy_entry
             if Dir.exists?(the_folder_copy_to)
