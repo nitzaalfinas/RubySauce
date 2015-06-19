@@ -1,0 +1,28 @@
+<div class="content left">
+	<h1><%= @articles.first.cat_name %></h1>
+
+	<div id="landing_articles">
+		<% @articles.each do |article| %>
+		<article class="mb20">
+			<div class="feat_img">
+				<%= image_tag("upload/thumb/"+article.feat_img) %>
+			</div>
+			<div class="title_article">
+				<a href="/<%= article.permalink %>">
+					<h2 class="mb5"><%= article.title %></h2>
+				</a>		
+				<h3 class="mb10"><%= article.created_at %></h3>
+				<div>
+					<%= article.excerp %>
+				</div>
+			</div>
+		</article>
+		<% end %>
+
+		<%= will_paginate @articles %>
+	</div>
+</div>
+
+<div class="clear"></div>
+<div class="line"></div>
+	

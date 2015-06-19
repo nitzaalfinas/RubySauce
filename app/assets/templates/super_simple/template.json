@@ -11,9 +11,9 @@
     "css_files": [],
     "js_files": [],
     "supplements": [
-        { "copy_type": "file", "name": "application.js", "copy_to": "public/js" },
-        { "copy_type": "file", "name": "application.css", "copy_to": "public/css" },
-        { "copy_type": "file", "name": "bootstrap.min.css", "copy_to": "public/js" },
-        { "copy_type": "file", "name": "bootstrap.min.js", "copy_to": "public/css" }
+        { "copy_type": "folder", "name": "stylesheets", "copy_to": "public" },
+        { "copy_type": "file", "name": "application.js", "copy_to": "public/javascripts" },
+        { "copy_type": "file", "name": "bootstrap.min.js", "copy_to": "public/javascripts" },
+        { "copy_type": "file", "name": "jquery.min.js", "copy_to": "public/javascripts" }
     ]
 }

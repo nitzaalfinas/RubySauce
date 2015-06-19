@@ -1,4 +1,5 @@
 class PageSingleController < ApplicationController
+  include Adm::Helper
 
 	def index
 		permalink = params[:permalink].to_s

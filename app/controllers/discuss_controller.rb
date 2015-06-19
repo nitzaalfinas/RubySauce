@@ -1,4 +1,5 @@
 class DiscussController < ApplicationController
+  include Adm::Helper
 
 	def send_insert
 		@discuss = Discuss.new

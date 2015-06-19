@@ -1,0 +1,11 @@
+<% if current_user %>
+  <h1>Leave a Reply</h1>
+  <div class="col-lg-12 pl0 mb30">
+    <form id="discuss_form">
+      <h2><%= current_user.full_name %></h2>
+      <input type="hidden" name="article_id" value="<%= @article.id %>" >
+      <textarea id="dis_body" name="dis_body" class="full" placeholder="write a comment..."></textarea>
+      <button id="discuss_submit_btn" class="btn btn-primary">Submit</button>	
+    </form>
+  </div>
+<% end %>

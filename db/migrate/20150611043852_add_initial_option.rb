@@ -1,6 +1,6 @@
 class AddInitialOption < ActiveRecord::Migration
   def up
-    Option.create(:site_title => 'RoR-CMS', :site_description => 'CMS based on Ruby on Rails', :site_domain => 'localhost:3000')
+    Option.create(site_title: 'RoR-CMS', site_description: 'CMS based on Ruby on Rails', site_domain: 'localhost:3000', article_size: 10)
   end
  
   def down

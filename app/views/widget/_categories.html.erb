@@ -1,0 +1,10 @@
+<% @categories = Category.all %>
+<ul>
+	<% @categories.each do |u| %>
+	<li>
+		<a href="/category/<%= u.cat_slug %>">
+			<%= u.cat_name %>
+		</a>
+	</li>
+	<% end %>
+</ul>

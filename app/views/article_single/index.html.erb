@@ -1,0 +1,59 @@
+<%= render "support/fixed_nav" %>
+
+<div class="container">
+  <ol class="breadcrumb">
+    <li>
+      <a href="/"><i class="fa fa-angle-double-right"></i> Home</a>
+    </li>
+    <li>
+      <% @article_categories.each do |ac| %>
+        <a class="cats" href="/category/<%= ac.cat_slug %>"><%= ac.cat_name %></a> 
+      <% end %>
+    </li>
+    <li class="active">
+      <%= @article.title %>
+    </li>
+  </ol>
+</div>
+
+
+<div class="container">
+  <div class="col-lg-9">
+    <h1><%= @article.title %></h1>
+    <h3 class="mb30">
+      by  
+      <% if @article.full_name == nil %>
+        Tim
+      <% else %>
+        <%= @article.full_name %>
+      <% end %>
+        on <%= @article.created_at %> 
+    </h3> 
+    
+    <div class="mb30">
+      <%= image_tag("show/"+@article.feat_img) %>
+    </div>
+  
+    <article class="t-justify t-line-h-150 mb30">
+      <%= @article.body.html_safe %>
+    </article>
+    
+    <div class="clear line" style="margin-right:50px"></div>
+
+    <%= render "discuss_list" %>
+    <%= render "discuss_form" %>
+  </div>
+
+  <div class="col-lg-3">
+    <div>
+      <%= render "widget/right_categories" %>
+    </div>
+
+    <div>
+      <%= render "widget/recent_article" %>
+    </div>
+
+  </div>
+</div>
+
+<%= render "support/footer" %>

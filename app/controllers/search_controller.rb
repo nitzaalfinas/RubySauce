@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  include Adm::Helper
   
   def index
     @q = params[:q]
@@ -12,6 +13,6 @@ class SearchController < ApplicationController
       @qa = @qa+"article_all like '%"+q+"%' and "
     end
     
-    @articles = VArticle.where(@qa[0..(@qa.length - 5)]).paginate(page: params[:page], per_page: 10)
+    @articles = VArticle.where(@qa[0..(@qa.length - 5)]).paginate(page: params[:page], per_page: $appset.article_size)
   end
 end

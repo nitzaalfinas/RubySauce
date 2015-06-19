@@ -1,0 +1,22 @@
+<% 
+#Title: Right Categories
+#Author: nitzaalfinas@gmail.com
+#Description: Showing all categories
+%>
+
+<% @categories = Category.all.order('cat_name') %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Categories</h3>
+  </div>
+  <div class="panel-body">
+    <% @categories.each do |u| %>
+      <li>
+        <a href="/category/<%= u.cat_slug %>">
+          <%= u.cat_name %>
+        </a>
+      </li>
+    <% end %>
+  </div>
+</div>

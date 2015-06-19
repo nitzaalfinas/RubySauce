@@ -1,10 +1,18 @@
+<%= render "support/fixed_nav" %>
 
 <div class="container">
-  <% @articles.each do |article| %>
-    <article class="col-lg-12">
-      <h1><%= article.title %></h1>
-      <div><%= article.body.html_safe %></div>
-    </article>
-  <% end %>
+  <div class="col-lg-9">
+    <%= render partial: "articles" %>  	
+  </div>
+  <div class="col-lg-3">
+    <%= render partial: "widget/popular_article" %>
+    <%= render partial: "widget/recent_article" %>
+  </div>
 </div>
 
+<hr>
+<%= render "support/footer" %>
+
+<script type="text/javascript">
+  landing.onload();
+</script>
