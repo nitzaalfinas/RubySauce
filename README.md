@@ -1,5 +1,5 @@
 # RoR-CMS
-RoR-CMS is a CMS based on Ruby on Rails.<br>
+RubySauce-CMS is a CMS based on Ruby on Rails.<br>
 The RoR-CMS has a template management system.
 <br><br>
 <div id="installation">
