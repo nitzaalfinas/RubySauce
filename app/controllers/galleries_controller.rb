@@ -1,8 +1,8 @@
 class GalleriesController < ApplicationController
   include Adm::Helper
 
-	def index
-		
-	end
+  def index
+
+  end
 
 end

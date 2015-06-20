@@ -1,11 +1,11 @@
 class Adm::TemplatesController < ApplicationController
-  
+
   before_action :authenticate_user!
 
-	include Adm::Helper
+  include Adm::Helper
 
-	layout "adm_layout"
-  
+  layout "adm_layout"
+
   def index
     count_active = Template.where(:active => 1).count
     if count_active == 0
@@ -13,63 +13,63 @@ class Adm::TemplatesController < ApplicationController
       tact.active = 1
       tact.save
     end
-    
+
     @default = Template.where(:active => 1).take
     @templates = Template.where('active <> 1').order('created_at DESC').paginate(page: params[:page], per_page: 10)
   end
-  
+
   def new
     @template = Template.new
   end
-  
-  
+
+
   def upload
     #params 
     t_filename = params[:template][:name]
-    
+
     #path
     f_path = Rails.root.join('app/assets/templates')
-    
+
     #unzip command 
     unzip_command = 'unzip '+Rails.root.to_s+'/app/assets/templates/tmp/'+t_filename.original_filename.to_s+' -d '+f_path.to_s
-    
-    @template = Template.new
-		@template.name = t_filename.original_filename.gsub(".zip","")
-		@template_save = @template.save
 
-		if @template_save
-      
-			#upload original
-			File.open(Rails.root.join('app/assets/templates/tmp',t_filename.original_filename),'wb') do |file|
-				file.write(t_filename.read)
-			end
-      
+    @template = Template.new
+    @template.name = t_filename.original_filename.gsub(".zip","")
+    @template_save = @template.save
+
+    if @template_save
+
+      #upload original
+      File.open(Rails.root.join('app/assets/templates/tmp',t_filename.original_filename),'wb') do |file|
+        file.write(t_filename.read)
+      end
+
       #unzip
       system(unzip_command)
-      
-			redirect_to adm_templates_path
 
-		else
-			render "new"
-		end
+      redirect_to adm_templates_path
+
+    else
+      render "new"
+    end
   end
-  
-  
+
+
   def active
     id = params[:id]
-    
+
     #get template by id
     template = Template.find(id)
-    
+
     # current template active set to inactive or active = 0
     current_template_active = Template.where(:active => 1).take
     current_template_active.active = 0
     current_template_active.save
-    
+
     # assign template active to a new one
     template.active = 1
     template.save
-    
+
     #views
     del_copy_views_dir(template.name,'article_single')
     del_copy_views_dir(template.name,'confirmable')
@@ -81,7 +81,7 @@ class Adm::TemplatesController < ApplicationController
     del_copy_views_dir(template.name,'search')
     del_copy_views_dir(template.name,'support')
     del_copy_views_dir(template.name,'widget')
-    
+
     #helpers
     del_copy_helper(template.name,'application_helper.rb')
     del_copy_helper(template.name,'article_page_helper.rb')
@@ -91,29 +91,29 @@ class Adm::TemplatesController < ApplicationController
     del_copy_helper(template.name,'landing_helper.rb')
     del_copy_helper(template.name,'page_single_helper.rb')
     del_copy_helper(template.name,'percategory_helper.rb')
-    
+
     #js
     replace_js(template.name,current_template_active.name)
-    
+
     #css
     replace_css(template.name,current_template_active.name)
-    
+
     #supplement
     replace_supplement(template.name,current_template_active.name)
-    
+
     #layout
     template_layout_application = Rails.root.join('app/assets/templates/'+template.name+'/views/layouts/application.html.erb')
     real_layout_application = Rails.root.join('app/views/layouts/application.html.erb')
     if File.exists?(template_layout_application)
       FileUtils.cp template_layout_application, real_layout_application 
     end
-      
+
     redirect_to adm_templates_path
   end
-  
+
   # PRIVATE START FROM HERE! ------------------------------------------------------------
   private
-  
+
   ##
   # Delete the directory and create a new one
   # ==== Attributes
@@ -121,38 +121,38 @@ class Adm::TemplatesController < ApplicationController
   # * +the_dir+ - The directory to delete and create a new one in app/views
   # 
   def del_copy_views_dir(template_dir,the_dir)
-    
+
     real_template_dir = Rails.root.join('app/assets/templates/'+template_dir).to_s     # /app/assets/templates/ror_cms
     real_view_dir = Rails.root.join('app/views/'+the_dir).to_s                         # /app/views/[landing,devise,article_single,...]
-    
+
     #view directory
     if Dir.exists?(real_view_dir)
       FileUtils.rm_rf(Dir.glob(real_view_dir+'/*'))
     end
-    
+
     #template directory
     if Dir.exists?(real_template_dir+'/views/'+the_dir)
       FileUtils.cp_r real_template_dir+'/views/'+the_dir+'/.', real_view_dir
     end
-    
+
   end
-  
+
   def del_copy_helper(template_dir,helper_filename)
     real_template_helpers_dir = Rails.root.join('app/assets/templates/'+template_dir+'/helpers').to_s
     real_helpers_dir = Rails.root.join('app/helpers').to_s
-    
+
     #helpers file delete
     if File.exists?(real_helpers_dir+'/'+helper_filename)
       FileUtils.rm real_helpers_dir+'/'+helper_filename
     end
-    
+
     #copy helpers in the template to helpers folder
     if File.exists?(real_template_helpers_dir+'/'+helper_filename)
       FileUtils.cp real_template_helpers_dir+'/'+helper_filename, real_helpers_dir+'/'+helper_filename
     end
-    
+
   end
-  
+
   ##
   # Replace old template javascript with new one
   # ==== Attributes
@@ -160,7 +160,7 @@ class Adm::TemplatesController < ApplicationController
   # * +old_template_dir+ - The directory of old template (not full path). Ex: ror_cms_2
   #
   def replace_js(template_dir,old_template_dir)
-    
+
     #delete old javascripts | Please make old_template_dir
     if File.exist?(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
       data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
@@ -173,7 +173,7 @@ class Adm::TemplatesController < ApplicationController
         end
       end
     end
-    
+
     # copy and paste new javascripts to assets/javascripts directory
     if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
       data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
@@ -187,7 +187,7 @@ class Adm::TemplatesController < ApplicationController
       end
     end
   end
-  
+
   ##
   # Replace old template css with new one
   # ==== Attributes
@@ -195,7 +195,7 @@ class Adm::TemplatesController < ApplicationController
   # * +old_template_dir+ - The directory of old template (not full path). Ex: ror_cms_2
   #
   def replace_css(template_dir,old_template_dir)
-    
+
     #delete old css | Please make old_template_dir
     if File.exist?(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
       data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
@@ -208,7 +208,7 @@ class Adm::TemplatesController < ApplicationController
         end
       end
     end
-    
+
     # copy and paste new css to assets/stylesheets directory
     if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
       data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
@@ -222,7 +222,7 @@ class Adm::TemplatesController < ApplicationController
       end
     end
   end
-  
+
   ##
   # Replace old supplement with new one
   # ==== Attributes
@@ -230,12 +230,12 @@ class Adm::TemplatesController < ApplicationController
   # * +old_template_dir+ - The directory of old template (not full path). Ex: ror_cms_2
   #
   def replace_supplement(template_dir,old_template_dir)
-    
+
     # remove old_template
     if File.exist?(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
       data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+old_template_dir+'/template.json')
       datax = JSON.parse(data_json)
-      
+
       if defined?(datax["supplements"].each)
         datax["supplements"].each do |supp|
           # remove file
@@ -256,7 +256,7 @@ class Adm::TemplatesController < ApplicationController
         end
       end    
     end # end of remove old_template
-    
+
     # apply new template
     if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
       data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template_dir+'/template.json')
@@ -268,12 +268,12 @@ class Adm::TemplatesController < ApplicationController
             the_file_temp = Rails.root.to_s+'/app/assets/templates/'+template_dir+'/supplements/'+supp["name"]
             the_file_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]
             if File.exists?(the_file_temp)
-              
+
               # create directory if doesn't exist
               unless File.directory?(Rails.root.to_s+'/'+supp["copy_to"])
                 FileUtils.mkdir_p(Rails.root.to_s+'/'+supp["copy_to"])
               end
-              
+
               # copy the file into directory
               FileUtils.cp(the_file_temp, the_file_copy_to) 
             end
@@ -283,7 +283,7 @@ class Adm::TemplatesController < ApplicationController
           if(supp["copy_type"] == "folder")
             the_folder_temp = Rails.root.to_s+'/app/assets/templates/'+template_dir+'/supplements/'+supp["name"]
             the_folder_copy_to = Rails.root.to_s+'/'+supp["copy_to"]+'/'+supp["name"]            
-            
+
             # remove destination folder as mention in http://ruby-doc.org/stdlib-2.0.0/libdoc/fileutils/rdoc/FileUtils.html#method-c-copy_entry
             if Dir.exists?(the_folder_copy_to)
               FileUtils.remove_dir(the_folder_copy_to)
