@@ -1,78 +1,78 @@
 class Adm::PagesController < ApplicationController
 
-	before_action :authenticate_user!
+  before_action :authenticate_user!
 
-	include Adm::Helper
+  include Adm::Helper
 
-	layout "adm_layout"
+  layout "adm_layout"
 
-	def index
-		adm_check current_user.level
+  def index
+    adm_check current_user.level
 
-		@articles = VPage.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-		
-	end #def index
+    @articles = VPage.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
 
-	def new
-		adm_check current_user.level
+  end #def index
 
-		@article = Article.new
-		
-	end
+  def new
+    adm_check current_user.level
 
-	def create
-		adm_check current_user.level
+    @article = Article.new
 
-		@article = Article.new(article_params)
-		@article.article_type = "Page"
-		@article_save = @article.save
+  end
 
-		if @article_save
-			redirect_to "/adm/pages"
-		else
-			 
-			render 'new'
-		end
-	end #create
+  def create
+    adm_check current_user.level
 
-	def edit
-		adm_check current_user.level
+    @article = Article.new(article_params)
+    @article.article_type = "Page"
+    @article_save = @article.save
 
-		id = params[:id]
-		@article = Article.find(params[:id])
-		@page = params[:page]
-		
-	end #def edit
+    if @article_save
+      redirect_to "/adm/pages"
+    else
 
-	def update
-		adm_check current_user.level
+      render 'new'
+    end
+  end #create
 
-		page = params[:page]
-		id = params[:id]
-		@article = Article.find(id)
-		@article_update = @article.update(article_params)
+  def edit
+    adm_check current_user.level
 
-		if @article_update
-			redirect_to "/adm/pages?page="+page
-		else
-			#if saving failure, this object need to cast
-			 
+    id = params[:id]
+    @article = Article.find(id)
+    @page = params[:page]
 
-			render 'edit'
-		end #if @article_update
-	end #def update
+  end #def edit
 
-	def destroy
-		adm_check current_user.level
-		
-		@art = Article.find(params[:id])
-		@art.destroy
-		redirect_to adm_pages_path
-	end #destroy
+  def update
+    adm_check current_user.level
 
-	private
-		def article_params
-			params.require(:article).permit(:title, :body, :permalink, :publish_status, :excerp, :author_id, :feat_img)
-		end
+    page = params[:page]
+    id = params[:id]
+    @article = Article.find(id)
+    @article_update = @article.update(article_params)
+
+    if @article_update
+      redirect_to "/adm/pages?page="+page
+    else
+      #if saving failure, this object need to cast
+
+
+      render 'edit'
+    end #if @article_update
+  end #def update
+
+  def destroy
+    adm_check current_user.level
+
+    @art = Article.find(params[:id])
+    @art.destroy
+    redirect_to adm_pages_path
+  end #destroy
+
+  private
+  def article_params
+    params.require(:article).permit(:title, :body, :permalink, :publish_status, :excerp, :author_id, :feat_img)
+  end
 
 end
