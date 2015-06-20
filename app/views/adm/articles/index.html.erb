@@ -3,6 +3,19 @@
   <%= link_to "Add New", new_adm_article_path, :class => "btn btn-primary" %>
 </div>
 
+<div class="col-lg-12 pr0 mb15">
+  <div class="col-lg-offset-8 col-lg-4 pr0">
+    <%= form_tag '/adm/articles', method: 'get' do %>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Searching for title and content" name="q" value="<%= @q %>">
+        <div class="input-group-btn">
+          <input type="submit" value="Search" class="btn btn-primary">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <table id="articles_table" class="table table-stripped">
   <thead>
     <tr>
