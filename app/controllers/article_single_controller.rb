@@ -1,9 +1,9 @@
 class ArticleSingleController < ApplicationController
   include Adm::Helper
 
-	def index
-		permalink = params[:permalink]
-		@article = VArticle.where("permalink = ?",permalink).take
+  def index
+    permalink = params[:permalink]
+    @article = VArticle.where("permalink = ?",permalink).take
     @article_categories = VArticleCategory.where('article_id = ?',@article.id)
     
     # redirect if its private and guest user
@@ -25,5 +25,5 @@ class ArticleSingleController < ApplicationController
     @dynamic_keyword = ""
     @dynamic_image = 'upload/thumb/'+@article.feat_img
         
-	end #index	
+  end #index	
 end
