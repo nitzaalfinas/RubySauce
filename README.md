@@ -32,7 +32,7 @@ end
 More information about devise: https://github.com/plataformatec/devise
 <br>
 <div>
-    <h3>Setting Email in Production Environment</h3>
+    <h3>Email Configuration in Production Environment</h3>
     Please fit this into your configuration.<br>
     <pre>
     config.action_mailer.default_url_options = {:host => 'nitzaalfinas.com'}
