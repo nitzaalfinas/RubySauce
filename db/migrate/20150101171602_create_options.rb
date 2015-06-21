@@ -8,7 +8,7 @@ class CreateOptions < ActiveRecord::Migration
 			  	site_domain varchar(255) DEFAULT NULL,
 			  	site_menu text,
 			  	site_menu_draft text,
-          template_active varchar(255) DEFAULT NULL, 
+          site_keywords varchar(255) DEFAULT NULL, 
           article_size int(11) DEFAULT NULL,
 			  	created_at datetime NOT NULL,
 			  	updated_at datetime NOT NULL,

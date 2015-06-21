@@ -18,21 +18,28 @@
     <div class="form-group">
       <label class="col-lg-3">Site Title</label>	
       <div class="col-lg-9">
-        <%= fg.text_field :site_title, html_options={ "class" => "form-control" } %>		
+        <%= fg.text_field :site_title, class: 'form-control' %>		
       </div>
     </div>
 
     <div class="form-group">
       <label class="col-lg-3">Site Description</label>	
       <div class="col-lg-9">
-        <%= fg.text_field :site_description, html_options={ "class" => "form-control" } %>		
+        <%= fg.text_field :site_description, class: 'form-control' %>		
       </div>
     </div>
 
     <div class="form-group">
       <label class="col-lg-3">Domain</label>	
       <div class="col-lg-9">
-        <%= fg.text_field :site_domain, html_options={ "class" => "form-control" } %>		
+        <%= fg.text_field :site_domain, class: 'form-control' %>		
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-lg-3">Keywords</label>	
+      <div class="col-lg-9">
+        <%= fg.text_field :site_keywords, class: 'form-control' %>		
       </div>
     </div>
 

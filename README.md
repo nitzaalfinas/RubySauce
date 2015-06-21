@@ -1,6 +1,6 @@
 # RubySauce
 RubySauce is a CMS based on Ruby on Rails.<br>
-The RoR-CMS has a template management system.
+RubySauce has a template management system.
 <br><br>
 <div id="installation">
   <h3>Installation</h3>

@@ -15,6 +15,7 @@ class Adm::SettingsController < ApplicationController
     $appset.site_title = params[:option][:site_title]
     $appset.site_description = params[:option][:site_description]
     $appset.site_domain = params[:option][:site_domain]
+    $appset.site_keywords = params[:option][:site_keywords]
     @setting_save = $appset.save
 
 
