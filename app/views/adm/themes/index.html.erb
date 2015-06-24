@@ -1,0 +1,34 @@
+<h3 class="mt0 mb15">Active Theme</h3>
+<div class="col-lg-12 mb30 pl0 pr0">
+  <div class="col-lg-3 pl0">
+    <img src="/images/themes/<%= @default.folder_name  %>/theme.png" style="max-width: 200px;">
+  </div>
+  <div class="col-lg-9">
+    <%= read_json(@default).html_safe %>
+  </div>
+</div>
+
+<h3>Themes</h3>
+<div class="col-lg-12 pl0 mb15">
+  <%= link_to "Add New", '/adm/themes/new', class: "btn btn-primary"  %>
+</div>
+<div>
+  <% @themes.each do |theme| %>
+    <div class="col-lg-12 mb30 pl0 pr0">
+      <div class="pull-right">
+        <%= link_to "Activate", "/adm/themes/active/"+theme.id.to_s, :"data-method" => "post", class: "btn btn-primary" %>
+        <%= link_to "Delete", "#", class: "btn btn-default" %>
+      </div>
+      <div class="col-lg-3 pl0">
+        <img src="/images/themes/<%= theme.folder_name  %>/theme.png" style="max-width: 200px;">
+      </div>
+      <div class="col-lg-9">
+        <%= read_json(theme).html_safe %>
+      </div>
+    </div>
+  <% end %>
+  
+  <%= will_paginate @themes %>
+</div>
+
+<script>$('#pill_themes').addClass('active');</script>

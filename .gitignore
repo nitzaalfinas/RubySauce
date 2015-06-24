@@ -13,7 +13,14 @@
 /tmp
 
 # Ignoring images
-public/images/
+public/images/original/*
+!public/images/original/default.png
+public/images/show/*
+!public/images/show/default.png
+public/images/thumb/*
+!public/images/thumb/default.png
+public/images/themes/*
+
 
 # Ignore database configuration
 config/database.yml

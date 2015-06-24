@@ -1,11 +1,11 @@
-module Adm::TemplatesHelper
+module Adm::ThemesHelper
   
-  def read_json(template)
-    if File.exist?(Rails.root.to_s+'/app/assets/templates/'+template.name+'/template.json')
-      data_json = File.read(Rails.root.to_s+'/app/assets/templates/'+template.name+'/template.json')
+  def read_json(theme)
+    if File.exist?(Rails.root.to_s+'/app/assets/themes/'+theme.folder_name+'/theme.json')
+      data_json = File.read(Rails.root.to_s+'/app/assets/themes/'+theme.folder_name+'/theme.json')
       datax = JSON.parse(data_json)
       "<div>Name: "+datax['name']+"</div>
-      <div>Version: "+datax['template_version']+"</div>
+      <div>Version: "+datax['theme_version']+"</div>
       <div>Author: "+datax['author']+"</div>
       <div>URL: "+datax['url']+"</div>
       <div>Email: "+datax['email']+"</div>

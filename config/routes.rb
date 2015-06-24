@@ -45,10 +45,10 @@ Rails.application.routes.draw do
     
     resources :pages
     
-    resources :templates do
+    resources :themes do
       collection do
-        post 'upload', to: 'templates#upload'
-        post 'active/:id', to: 'templates#active'
+        post 'upload', to: 'themes#upload'
+        post 'active/:id', to: 'themes#active'
       end
     end
     
