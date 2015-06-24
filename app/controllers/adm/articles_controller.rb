@@ -6,6 +6,9 @@ class Adm::ArticlesController < ApplicationController
 
   layout "adm_layout"
 
+  # Displaying articles
+  # ==== Path
+  # get /adm/articles
   def index
     @q = params[:q]
 
@@ -23,11 +26,19 @@ class Adm::ArticlesController < ApplicationController
     end
   end #index
 
+  
+  # Showing new article page
+  # ==== Path
+  # get /adm/articles/new
   def new
     @article = Article.new
     @categories = Category.all.order('cat_name ASC')		
   end #new
 
+  
+  # Insert a new article into database
+  # ==== Path
+  # post /adm/articles
   def create
     @article = Article.new(article_params)
     @article.article_type = 'Article'
@@ -58,6 +69,10 @@ class Adm::ArticlesController < ApplicationController
     end #if @article_save
   end #def create
 
+  
+  # Showing article edit page
+  # ==== Path
+  # get /adm/articles/:id/edit
   def edit
     id = params[:id].to_i
     page = params[:page].to_i
@@ -65,9 +80,11 @@ class Adm::ArticlesController < ApplicationController
     @article = Article.find(id)
     @categories = Category.all.order('cat_name ASC')
     @page = page
+  end
 
-  end #def edit
-
+  # Update an article
+  # ==== Path
+  # patch /adm/articles/:id
   def update
     id = params[:id].to_i
     page = params[:page].to_i
@@ -101,6 +118,9 @@ class Adm::ArticlesController < ApplicationController
     end #if @article_update
   end #def update
 
+  # Delete an article
+  # ==== Path
+  # delete /adm/articles/:id
   def destroy
     page = params[:page].to_i
     #find article id

@@ -18,10 +18,14 @@
       <% @media.each do |med| %>
         <tr>
           <td>
-            <%= image_tag('thumb/'+med.med_storage_name, alt: med.med_alt, style: "margin-bottom: 10px;") %>
+            <%= image_tag('thumb/'+med.med_storage_name, alt: med.med_alt, style: "margin-bottom: 10px; max-width: 300px;") %>
           </td>
           <td>
             <%= med.med_title %>
+            <br>
+            /images/thumb/<%= med.med_storage_name %>
+            <br>
+            /images/show/<%= med.med_storage_name %>
           </td>
           <td>
             <%= med.med_caption %>
