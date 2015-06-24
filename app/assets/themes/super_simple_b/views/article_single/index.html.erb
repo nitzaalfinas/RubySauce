@@ -1,0 +1,18 @@
+<%= render partial: 'landing/nav' %>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li>
+      <% @article_categories.each do |ac| %>
+        <a href="/category/<%= ac.cat_slug %>"><%= ac.cat_name %></a>
+      <% end %>
+    </li>
+    <li class="active"><%= @article.title %></li>
+  </ol>
+</div>
+<article class="container">
+  <h1><%= @article.title %></h1>
+  <div>
+    <%= @article.body.html_safe %>
+  </div>
+</article>

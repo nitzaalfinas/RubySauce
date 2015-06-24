@@ -1,0 +1,15 @@
+<%= render partial: 'nav' %>
+<div class="container">
+  <% @articles.each do |article| %>
+    <article class="col-lg-12">
+      <h1><%= article.title %></h1>
+      
+      <div>
+        <%= strip_tags(article.body)[0..400].html_safe %>
+        <a href="/<%= article.permalink %>">[Read more ...]</a>
+      </div>
+    </article>
+    <hr>
+  <% end %>
+  <%= will_paginate @articles %>
+</div>

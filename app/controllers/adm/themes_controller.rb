@@ -22,23 +22,22 @@ class Adm::ThemesController < ApplicationController
     @theme = Theme.new
   end
 
-
   def upload
-    #params 
+    # params 
     t_filename = params[:theme][:folder_name]
 
-    #path
-    f_path = Rails.root.join('app/assets/themes')
+    # path
+    f_path = Rails.root.join('app/assets/themes').to_s
 
-    #unzip command 
-    unzip_command = 'unzip '+Rails.root.to_s+'/app/assets/themes/tmp/'+t_filename.original_filename.to_s+' -d '+f_path.to_s
+    # unzip command 
+    unzip_command = 'unzip '+f_path+'/tmp/'+t_filename.original_filename.to_s+' -d '+f_path
 
     @theme = Theme.new
     @theme.folder_name = t_filename.original_filename.gsub(".zip","")
     @theme_save = @theme.save
 
+    
     if @theme_save
-
       #upload original
       File.open(Rails.root.join('app/assets/themes/tmp',t_filename.original_filename),'wb') do |file|
         file.write(t_filename.read)
@@ -46,6 +45,8 @@ class Adm::ThemesController < ApplicationController
 
       #unzip
       system(unzip_command)
+      
+      cp_image_to_public(t_filename.original_filename.gsub(".zip",""))
 
       redirect_to adm_themes_path
 
@@ -53,7 +54,6 @@ class Adm::ThemesController < ApplicationController
       render "new"
     end
   end
-
 
   def active
     id = params[:id]
@@ -113,6 +113,20 @@ class Adm::ThemesController < ApplicationController
 
   # PRIVATE START FROM HERE! ------------------------------------------------------------
   private
+  
+  def cp_image_to_public(theme_dir)
+    real_theme_dir = Rails.root.join('app/assets/themes/'+theme_dir).to_s       # theme directory
+    dir_dest = Rails.root.to_s+'/public/images/themes/'+theme_dir               # destination directory
+    file_src = real_theme_dir+'/theme.png'                                      # file source
+    file_dest = dir_dest+'/theme.png'                                           # file destination
+    
+    if Dir.exists?(dir_dest)
+      FileUtils.cp file_src, file_dest
+    else
+      FileUtils.mkdir Rails.root.to_s+'/public/images/themes/'+theme_dir
+      FileUtils.cp file_src, file_dest
+    end
+  end
 
   ##
   # Delete the directory and create a new one
