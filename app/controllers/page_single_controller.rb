@@ -1,8 +1,22 @@
 class PageSingleController < ApplicationController
   include Adm::Helper
 
+  # The page is an article with type = page. <br>
+  # So, the page has the same properties with article.
+  # * *Path* :
+  # get /page/:permalink
+  # * *Path Params* :
+  #   - +permalink+ -> Page permalink 
+  # * *Args* :
+  # * *Returns* :
+  #   - <code>@article</code> -> articles
+  #   - <code>@dynamic_title</code> -> SEO
+  #   - <code>@dynamic_author</code> -> SEO
+  #   - <code>@dynamic_description</code> -> SEO
+  #   - <code>@dynamic_keyword</code> -> SEO
+  #   - <code>@dynamic_image</code> -> SEO
   def index
-    permalink = params[:permalink].to_s
+    permalink = params[:permalink]
     @article = VPage.where("permalink = ?",permalink).take
 
     # redirect if its private and guest user
@@ -18,10 +32,10 @@ class PageSingleController < ApplicationController
     @ina.save
 
     #SEO
-    @dynamic_title = "Ruby on Rails CMS"
-    @dynamic_author = "nitzaalfinas"
-    @dynamic_description = "Ruby on Rails CMS"
-    @dynamic_keyword = "ruby on rails, rails, ruby, cms"
+    @dynamic_title = @article.title
+    @dynamic_author = ""
+    @dynamic_description = @article.excerp
+    @dynamic_keyword = ""
     @dynamic_image = 'upload/thumb/'+@article.feat_img
 
   end #index

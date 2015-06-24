@@ -1,6 +1,13 @@
 class SearchController < ApplicationController
   include Adm::Helper
   
+  # Searcing for articles
+  # * *Path* :
+  # get /search
+  # * *Path Params* :
+  # * *Args* :
+  # * *Returns* :
+  #   - <code>@articles</code> -> articles
   def index
     @q = params[:q]
 
