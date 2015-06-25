@@ -71,26 +71,12 @@ class Adm::ThemesController < ApplicationController
     theme.save
 
     #views
-    del_copy_views_dir(theme.folder_name,'article_single')
-    del_copy_views_dir(theme.folder_name,'confirmable')
-    del_copy_views_dir(theme.folder_name,'devise')
-    del_copy_views_dir(theme.folder_name,'galleries')
-    del_copy_views_dir(theme.folder_name,'landing')
-    del_copy_views_dir(theme.folder_name,'page_single')
-    del_copy_views_dir(theme.folder_name,'percategory')
-    del_copy_views_dir(theme.folder_name,'search')
-    del_copy_views_dir(theme.folder_name,'support')
-    del_copy_views_dir(theme.folder_name,'widget')
+    view_arr = ['article_single','confirmable','devise','galleries','landing','page_single','percategory','search','support','widget']
+    del_copy_views_dir(theme.folder_name,view_arr)
 
     #helpers
-    del_copy_helper(theme.folder_name,'application_helper.rb')
-    del_copy_helper(theme.folder_name,'article_page_helper.rb')
-    del_copy_helper(theme.folder_name,'article_single_helper.rb')
-    del_copy_helper(theme.folder_name,'discuss_helper.rb')
-    del_copy_helper(theme.folder_name,'galleries_helper.rb')
-    del_copy_helper(theme.folder_name,'landing_helper.rb')
-    del_copy_helper(theme.folder_name,'page_single_helper.rb')
-    del_copy_helper(theme.folder_name,'percategory_helper.rb')
+    helper_arr = ['application_helper.rb','article_page_helper.rb','article_single_helper.rb','discuss_helper.rb','discuss_helper.rb','galleries_helper.rb','landing_helper.rb','page_single_helper.rb','percategory_helper.rb']
+    del_copy_helper(theme.folder_name,helper_arr)
 
     #js
     replace_js(theme.folder_name,current_theme_active.folder_name)
@@ -134,37 +120,39 @@ class Adm::ThemesController < ApplicationController
   # * +theme_dir+ - The directory to delete and create a new one in app/views
   # * +the_dir+ - The directory to delete and create a new one in app/views
   # 
-  def del_copy_views_dir(theme_dir,the_dir)
+  def del_copy_views_dir(theme_dir,the_dir_arr)
+    
+    the_dir_arr.each do |the_dir|
+      real_theme_dir = Rails.root.join('app/assets/themes/'+theme_dir).to_s     # /app/assets/themes/ror_cms
+      real_view_dir = Rails.root.join('app/views/'+the_dir).to_s                # /app/views/[landing,devise,article_single,...]
 
-    real_theme_dir = Rails.root.join('app/assets/themes/'+theme_dir).to_s     # /app/assets/themes/ror_cms
-    real_view_dir = Rails.root.join('app/views/'+the_dir).to_s                         # /app/views/[landing,devise,article_single,...]
+      #view directory
+      if Dir.exists?(real_view_dir)
+        FileUtils.rm_rf(Dir.glob(real_view_dir+'/*'))
+      end
 
-    #view directory
-    if Dir.exists?(real_view_dir)
-      FileUtils.rm_rf(Dir.glob(real_view_dir+'/*'))
+      #theme directory
+      if Dir.exists?(real_theme_dir+'/views/'+the_dir)
+        FileUtils.cp_r real_theme_dir+'/views/'+the_dir+'/.', real_view_dir
+      end
     end
-
-    #theme directory
-    if Dir.exists?(real_theme_dir+'/views/'+the_dir)
-      FileUtils.cp_r real_theme_dir+'/views/'+the_dir+'/.', real_view_dir
-    end
-
   end
 
-  def del_copy_helper(theme_dir,helper_filename)
-    real_theme_helpers_dir = Rails.root.join('app/assets/themes/'+theme_dir+'/helpers').to_s
-    real_helpers_dir = Rails.root.join('app/helpers').to_s
+  def del_copy_helper(theme_dir,helper_filename_arr)
+    helper_filename_arr.each do |helper_filename|
+      real_theme_helpers_dir = Rails.root.join('app/assets/themes/'+theme_dir+'/helpers').to_s
+      real_helpers_dir = Rails.root.join('app/helpers').to_s
 
-    #helpers file delete
-    if File.exists?(real_helpers_dir+'/'+helper_filename)
-      FileUtils.rm real_helpers_dir+'/'+helper_filename
+      #helpers file delete
+      if File.exists?(real_helpers_dir+'/'+helper_filename)
+        FileUtils.rm real_helpers_dir+'/'+helper_filename
+      end
+
+      #copy helpers in the theme to helpers folder
+      if File.exists?(real_theme_helpers_dir+'/'+helper_filename)
+        FileUtils.cp real_theme_helpers_dir+'/'+helper_filename, real_helpers_dir+'/'+helper_filename
+      end
     end
-
-    #copy helpers in the theme to helpers folder
-    if File.exists?(real_theme_helpers_dir+'/'+helper_filename)
-      FileUtils.cp real_theme_helpers_dir+'/'+helper_filename, real_helpers_dir+'/'+helper_filename
-    end
-
   end
 
   ##
