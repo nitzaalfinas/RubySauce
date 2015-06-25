@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       collection do
         post 'upload', to: 'themes#upload'
         post 'active/:id', to: 'themes#active'
+        delete 'destroy/:id', to: 'themes#destroy'
       end
     end
     

@@ -16,8 +16,8 @@
   <% @themes.each do |theme| %>
     <div class="col-lg-12 mb30 pl0 pr0">
       <div class="pull-right">
-        <%= link_to "Activate", "/adm/themes/active/"+theme.id.to_s, :"data-method" => "post", class: "btn btn-primary" %>
-        <%= link_to "Delete", "#", class: "btn btn-default" %>
+        <%= link_to "Activate", "/adm/themes/active/#{theme.id}", method: "post", class: "btn btn-primary" %>
+        <%= link_to "Delete", "/adm/themes/destroy/#{theme.id}", method: "delete", data: {confirm: 'Are you sure?'}, class: "btn btn-default" %>
       </div>
       <div class="col-lg-3 pl0">
         <img src="/images/themes/<%= theme.folder_name  %>/theme.png" style="max-width: 200px;">

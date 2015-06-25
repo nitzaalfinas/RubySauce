@@ -35,8 +35,7 @@ class Adm::ThemesController < ApplicationController
     @theme = Theme.new
     @theme.folder_name = t_filename.original_filename.gsub(".zip","")
     @theme_save = @theme.save
-
-    
+  
     if @theme_save
       #upload original
       File.open(Rails.root.join('app/assets/themes/tmp',t_filename.original_filename),'wb') do |file|
@@ -47,6 +46,9 @@ class Adm::ThemesController < ApplicationController
       system(unzip_command)
       
       cp_image_to_public(t_filename.original_filename.gsub(".zip",""))
+      
+      # remove theme zip
+      FileUtils.rm f_path+'/tmp/'+t_filename.original_filename.to_s 
 
       redirect_to adm_themes_path
 
@@ -97,6 +99,20 @@ class Adm::ThemesController < ApplicationController
     redirect_to adm_themes_path
   end
 
+  def destroy
+    id = params[:id]
+    @theme = Theme.find(id)
+    
+    FileUtils.rm_rf Rails.root.to_s+"/app/assets/themes/#{@theme.folder_name}" 
+    
+    FileUtils.rm_rf Rails.root.to_s+"/public/images/themes/#{@theme.folder_name}" 
+    
+    @theme.destroy
+    
+    redirect_to adm_themes_path
+#     render inline: Rails.root.to_s+"/app/assets/themes/#{@theme.folder_name}" 
+  end
+  
   # PRIVATE START FROM HERE! ------------------------------------------------------------
   private
   
