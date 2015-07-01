@@ -6,6 +6,7 @@ module Adm::ThemesHelper
       datax = JSON.parse(data_json)
       "<div>Name: "+datax['name']+"</div>
       <div>Version: "+datax['theme_version']+"</div>
+      <div>Tags: "+datax['tags']+"</div>
       <div>Author: "+datax['author']+"</div>
       <div>URL: "+datax['url']+"</div>
       <div>Email: "+datax['email']+"</div>
