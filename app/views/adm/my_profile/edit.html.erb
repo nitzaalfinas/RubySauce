@@ -35,3 +35,38 @@
     </div>
   </div>
 </div>
+
+<!-- content -->
+<div class="col-lg-12">
+  <%= form_for(@user, url: '/adm/my_profile/update', multipart: true) do |f| %>
+  <table>
+    <tr>
+      <td valign="top">
+        <%= image_tag('thumb/avatar-no.gif') %>
+        <%= f.file_field(:avatar_file) %>
+      </td>
+      <td valign="top">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>Full Name</td>
+              <td>:</td>
+              <td><%= f.text_field(:full_name, class: 'form-control') %></td>
+            </tr>
+            <tr>
+              <td>Avatar Name</td>
+              <td>:</td>
+              <td><%= f.text_field(:nick_name, class: 'form-control') %></td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <input type="submit" class="btn btn-primary" value="Save">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <% end %>
+</div>

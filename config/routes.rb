@@ -78,7 +78,6 @@ Rails.application.routes.draw do
       collection do
         get 'edit', to: 'my_profile#edit'
         post 'update', to: 'my_profile#update'
-        patch 'update', to: 'my_profile#update'
       end
     end
     
