@@ -8,5 +8,4 @@ module Adm::Helper
 		end #if current_user != "Admin"
 	end #def adm_check
 
-	
 end

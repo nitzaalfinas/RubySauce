@@ -1,6 +1,6 @@
 /**
  *= require adm_bootstrap
- *= require adm_akun
+ *= require adm_my_profile
  *= require adm_articles
  *= require adm_categories
  *= require adm_dashboard
@@ -16,17 +16,23 @@
 
 html, body {
     font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 100%;
 }
 
 .pt10 { padding-top: 10px !important; }
+.pt20 { padding-top: 20px !important; }
 .pr0 { padding-right: 0 !important; }
 .pb0 { padding-bottom: 0px !important; }
 .pb10 { padding-bottom: 10px !important; }
 .pl0 { padding-left: 0 !important; }
+.pl15 { padding-left: 15px !important; }
 
 
 .mt0 { margin-top: 0 !important; }
 .mt5 { margin-top: 5px !important; }
+.mt10 { margin-top: 10px !important; }
+.mt20 { margin-top: 20px !important; }
 
 .mr10 { margin-right: 10px !important; }
 
@@ -40,6 +46,13 @@ html, body {
 
 .ml10 { margin-left: 10px !important; }
 
+.fs1 {
+    font-size: 1em;
+}
+.fs2 {
+    font-size: 2em;
+}
+
 .w100 {
     width: 100% !important;
 }
@@ -51,12 +64,21 @@ html, body {
     display: table;
 }
 
+.t-white {
+    color: #fff;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
 
+#adm_wrapper {
+    height: 100%;
+}
+
 #adm_sidemenu {
     background-color: #444;
+    height: 100%;
     a {
         color: #fff;
     }
@@ -67,9 +89,28 @@ html, body {
 }
 
 /* bootstrap hack */
+.navbar {
+    border-radius: 0 !important;
+    border-color: #f96758;
+    margin-bottom: 0;
+}
+
+.navbar-default {
+    background-color: #f96758;
+    
+    .navbar-nav > li > a {
+        color: #fff;
+    }
+}
+
+.breadcrumb {
+    background: transparent;
+}
+
 .form-control {
     border-radius: 0 !important;
 }
+
 .nav-pills>li>a {
     border-radius: 0 !important;
 }
@@ -88,6 +129,20 @@ html, body {
 .panel {
     border-radius: 0;	
 }
+
+
+.panel_title {
+    background: #fbfbfb;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    display: table;
+    margin-bottom: 30px;
+    width: 100%;
+    
+    .breadcrumb {
+        margin-bottom: 0px;
+    }
+}
+
 
 /*just for adm_articles */
 #articles_table {
@@ -118,40 +173,3 @@ html, body {
 #feat_img_display img {
     width: 100%;
 }
-
-
-/* --------------------------------------------------------------- */
-$u_color_1: #ffbe00;
-$u_color_2: #990100;
-
-#landing_articles {
-    article {
-        display: table;
-        width: 100%;
-        .feat_img {
-            float: left;
-            margin-right: 15px;
-            img {
-                width: 200px;
-            } 
-        }
-        .title_article {
-            text-align: justify;
-        }
-    }
-}
-
-#menu_footer {
-    ul {
-        float: left !important;
-        li {
-            border-bottom: thin dotted #aaa;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            a:before {
-                content: "> ";
-            }
-        }
-    }
-}
-/* --------------------------------------------------------------- */

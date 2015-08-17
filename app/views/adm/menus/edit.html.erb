@@ -1,37 +1,67 @@
-<h1 class="mt0">Menu</h1>
-
-<div class="col-lg-4 pl0">
-  <%= render 'panel_pages' %>
-  <%= render 'panel_categories' %>
-  <%= render 'panel_custom' %>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">Menus</h1>
+    </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-send"></i>
+            Menus
+          </li>
+        </ol>
+      </small>
+    </div>
+  </div>
 </div>
 
+<div class="col-lg-12">
+  <div class="col-lg-4 pl0">
+    <%= render 'panel_pages' %>
+    <%= render 'panel_categories' %>
+    <%= render 'panel_custom' %>
+  </div>
 
-<!-- DRAFT MENU -->
-<div class="col-lg-8 pr0">
-    <div class="mb30 dis-table w100">
-        <h2 class="mt0">Draft</h2>
-        <!-- beware of #draft_menu_element, I found this incompatible when activating some of google chrome extension -->
-        <div class="col-lg-12" id="draft_menu_element">
 
-        </div>
-        <input type="hidden" id="draft_menu_input">    
-        <div class="pull-right">
-            <button class="btn btn-primary" onclick="n_menu.update_draft_to_current_menu();">Save Menu</button>
-        </div>    
-    </div>
-    <hr>
-    <div class="mb30">
-        <h2>Current Menu</h2>
-        <div id="current_menu" class="mb15 w100 dis-table">
-            
-        </div>    
-        <div id="current_menu_click_me">
-            <button class="btn btn-primary" onclick="n_menu.form_manual();">Click this</button> to create or edit menu manually
-        </div>
-    </div>
-    
+  <!-- DRAFT MENU -->
+  <div class="col-lg-8 pr0">
+      <div class="mb30 dis-table w100">
+          <h2 class="mt0">Draft</h2>
+          <!-- beware of #draft_menu_element, I found this incompatible when activating some of google chrome extension -->
+          <div class="col-lg-12" id="draft_menu_element">
+
+          </div>
+          <input type="hidden" id="draft_menu_input">    
+          <div class="pull-right">
+              <button class="btn btn-primary" onclick="n_menu.update_draft_to_current_menu();">Save Menu</button>
+          </div>    
+      </div>
+      <hr>
+      <div class="mb30">
+          <h2>Current Menu</h2>
+          <div id="current_menu" class="mb15 w100 dis-table">
+
+          </div>    
+          <div id="current_menu_click_me">
+              <button class="btn btn-primary" onclick="n_menu.form_manual();">Click this</button> to create or edit menu manually
+          </div>
+      </div>
+
+  </div>
 </div>
+  
 	
 
 <script>

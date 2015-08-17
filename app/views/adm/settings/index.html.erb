@@ -1,56 +1,86 @@
-<h1 class="mt0 mb30">General Settings</h1>
-
-<div class="form-horizontal">
-  <%= form_for($appset, url: "/adm/settings/update") do |fg| %>
-
-    <!-- barisan flash error -->
-    <% if $appset.errors.any? %>
-      <div id="errors" class="alert alert-danger">
-        <h2 class="mt5 mb5"><%= pluralize($appset.errors.count, "error") %> prevent this post from saving</h2>
-        <ul>
-          <% $appset.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <label class="col-lg-3">Site Title</label>	
-      <div class="col-lg-9">
-        <%= fg.text_field :site_title, class: 'form-control' %>		
-      </div>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">Settings</h1>
     </div>
-
-    <div class="form-group">
-      <label class="col-lg-3">Site Description</label>	
-      <div class="col-lg-9">
-        <%= fg.text_field :site_description, class: 'form-control' %>		
-      </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-cog"></i>
+            Settings
+          </li>
+        </ol>
+      </small>
     </div>
-
-    <div class="form-group">
-      <label class="col-lg-3">Domain</label>	
-      <div class="col-lg-9">
-        <%= fg.text_field :site_domain, class: 'form-control' %>		
-      </div>
-    </div>
-    
-    <div class="form-group">
-      <label class="col-lg-3">Keywords</label>	
-      <div class="col-lg-9">
-        <%= fg.text_field :site_keywords, class: 'form-control' %>		
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-lg-12">
-        <input type="submit" class="btn btn-primary" value="Save Changes">
-      </div>
-    </div>
-
-  <% end %>
+  </div>
 </div>
+
+<div class="col-lg-12">
+  <div class="form-horizontal">
+    <%= form_for($appset, url: "/adm/settings/update") do |fg| %>
+
+      <!-- barisan flash error -->
+      <% if $appset.errors.any? %>
+        <div id="errors" class="alert alert-danger">
+          <h2 class="mt5 mb5"><%= pluralize($appset.errors.count, "error") %> prevent this post from saving</h2>
+          <ul>
+            <% $appset.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <label class="col-lg-3">Site Title</label>	
+        <div class="col-lg-9">
+          <%= fg.text_field :site_title, class: 'form-control' %>		
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-3">Site Description</label>	
+        <div class="col-lg-9">
+          <%= fg.text_field :site_description, class: 'form-control' %>		
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-3">Domain</label>	
+        <div class="col-lg-9">
+          <%= fg.text_field :site_domain, class: 'form-control' %>		
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-3">Keywords</label>	
+        <div class="col-lg-9">
+          <%= fg.text_field :site_keywords, class: 'form-control' %>		
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-12">
+          <input type="submit" class="btn btn-primary" value="Save Changes">
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
 <script type="text/javascript">
   $(document).ready(function() {
     $('#pill_settings').addClass('active');

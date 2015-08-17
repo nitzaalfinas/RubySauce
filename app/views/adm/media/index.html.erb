@@ -1,50 +1,81 @@
-<h1 class="mt0 mb15">Media</h1>
-<div class="col-lg-12 pl0 mb15">
-  <%= link_to "Add New", '/adm/media/new', class: "btn btn-primary" %>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">Medium</h1>
+    </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-picture"></i>&nbsp;
+            Medium
+          </li>
+        </ol>
+      </small>
+    </div>
+  </div>
 </div>
 
-<div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Title</th>
-        <th>Caption</th>
-        <th>Author ID</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @media.each do |med| %>
+<div class="col-lg-12">
+  <div class="col-lg-12 pl0 mb15">
+    <%= link_to "Add New", '/adm/media/new', class: "btn btn-primary" %>
+  </div>
+
+  <div>
+    <table class="table">
+      <thead>
         <tr>
-          <td>
-            <%= image_tag('thumb/'+med.med_storage_name, alt: med.med_alt, style: "margin-bottom: 10px; max-width: 300px;") %>
-          </td>
-          <td>
-            <%= med.med_title %>
-            <br>
-            /images/thumb/<%= med.med_storage_name %>
-            <br>
-            /images/show/<%= med.med_storage_name %>
-          </td>
-          <td>
-            <%= med.med_caption %>
-          </td>
-          <td>
-            <%= med.med_author_id %>
-          </td>
-          <td>
-            <div class="btn-group-vertical" role="group">
-              <%= link_to "Edit", "/adm/media/edit?id=#{med.id}&page=#{@media.current_page}", class: "btn btn-default" %>
-                <%= link_to 'Delete', "/adm/media/destroy/#{med.id}", method: :delete, data: {confirm:'Are you sure?'}, class: "btn btn-default" %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Caption</th>
+          <th>Author ID</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @media.each do |med| %>
+          <tr>
+            <td>
+              <%= image_tag('thumb/'+med.med_storage_name, alt: med.med_alt, style: "margin-bottom: 10px; max-width: 300px;") %>
+            </td>
+            <td>
+              <%= med.med_title %>
+              <br>
+              /images/thumb/<%= med.med_storage_name %>
+              <br>
+              /images/show/<%= med.med_storage_name %>
+            </td>
+            <td>
+              <%= med.med_caption %>
+            </td>
+            <td>
+              <%= med.med_author_id %>
+            </td>
+            <td>
+              <div class="btn-group-vertical" role="group">
+                <%= link_to "Edit", "/adm/media/edit?id=#{med.id}&page=#{@media.current_page}", class: "btn btn-default" %>
+                  <%= link_to 'Delete', "/adm/media/destroy/#{med.id}", method: :delete, data: {confirm:'Are you sure?'}, class: "btn btn-default" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+    </table>
+  </div>
 
-    <%= will_paginate @media %>
+  <%= will_paginate @media %>
+</div>
 
-    <script>$('#pill_media').addClass('active');</script>
+
+<script>$('#pill_media').addClass('active');</script>

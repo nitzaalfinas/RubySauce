@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserExtTest < ActiveSupport::TestCase
+class Adm::MyProfileControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

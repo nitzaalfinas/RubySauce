@@ -1,40 +1,71 @@
-<h1 class="mt0 mb15">Categories</h1>
-<div class="col-lg-12 pl0 mb15">
-  <%= link_to "Add New", new_adm_category_path, class: "btn btn-primary" %>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">Categories</h1>
+    </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-tags"></i>&nbsp;
+            Categories
+          </li>
+        </ol>
+      </small>
+    </div>
+  </div>
 </div>
 
-<table class="table table-stripped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Slug</th>
-      <th>Cont</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |cat| %>
+<!-- content -->
+<div class="col-lg-12">
+  <div class="col-lg-12 pl0 mb15">
+    <%= link_to "Add New", new_adm_category_path, class: "btn btn-primary" %>
+  </div>
+
+  <table class="table table-stripped">
+    <thead>
       <tr>
-        <td>
-          <div><%= cat.cat_name %></div>
-          <div>
-            <%= link_to "edit", edit_adm_category_path(cat.id) %>
-            | <%= link_to 'trash', "/adm/categories/#{cat.id}", method: :delete, data: {confirm:'Are you sure?'} %>
-          </div>
-        </td>
-        <td>
-          <% if cat.cat_description? %>
-            <%= cat.cat_description.html_safe %>
-          <% end %>
-        </td>
-        <td><%= cat.cat_slug %></td>
-        <td><%= cat.cat_count %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Slug</th>
+        <th>Cont</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @categories.each do |cat| %>
+        <tr>
+          <td>
+            <div><%= cat.cat_name %></div>
+            <div>
+              <%= link_to "edit", edit_adm_category_path(cat.id) %>
+              | <%= link_to 'trash', "/adm/categories/#{cat.id}", method: :delete, data: {confirm:'Are you sure?'} %>
+            </div>
+          </td>
+          <td>
+            <% if cat.cat_description? %>
+              <%= cat.cat_description.html_safe %>
+            <% end %>
+          </td>
+          <td><%= cat.cat_slug %></td>
+          <td><%= cat.cat_count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= will_paginate @categories %>
-
+  <%= will_paginate @categories %>
+</div>
+  
 <script>$('#pill_categories').addClass('active');</script>
 

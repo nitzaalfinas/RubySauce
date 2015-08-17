@@ -2,7 +2,8 @@ class Adm::MediaController < ApplicationController
 
   before_action :authenticate_user!
 
-  include Adm::Helper
+  helper Adm::Helper # to call from view
+  include Adm::Helper # to call within controller
 
   layout "adm_layout"
 

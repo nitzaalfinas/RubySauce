@@ -1,69 +1,109 @@
-<h1 class="mt0 mb30">Upload New Media</h1>
-
-<div class="form-horizontal">
-  <%= form_for @media, url: "/adm/media/upload", :html => {:multipart => true} do |f| %>
-
-    <% if @media.errors.any? %>
-      <div id="errors" class="alert alert-danger">
-        <h2 class="mt5 mb5"><%= pluralize(@media.errors.count, "error") %> prevent this post from saving</h2>
-        <ul>
-          <% @media.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :med_title, 'Title', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.text_field :med_title, html_options={ "class" => "form-control" } %>	
-      </div>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">
+        Medium
+        <small>New</small>
+      </h1>
     </div>
-
-    <div class="form-group">
-      <%= f.label :med_caption, 'Caption', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.text_field :med_caption, html_options={ "class" => "form-control" } %>	
-      </div>
-    </div>		
-
-    <div class="form-group">
-      <%= f.label :med_alt, 'Alt Text', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.text_field :med_alt, html_options={ "class" => "form-control" } %>	
-      </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/adm/media">
+              <i class="glyphicon glyphicon-picture"></i>
+              Medium
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-file"></i>&nbsp;
+            New
+          </li>
+        </ol>
+      </small>
     </div>
-
-    <div class="form-group">
-      <%= f.label :med_description, 'Description', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.text_area :med_description, html_options={ "class" => "form-control" } %>	
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :gallery, 'Gallery', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.select :gallery, options_for_select([['Ya','yes'],['Tidak','no']]), html_options={ :class => "form-control" }  %>	
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :med_storage_name, 'File', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.file_field :med_storage_name, html_options={ "class" => "form-control" } %>	
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-lg-12">
-        <input type="submit" value="Upload New Media" class="btn btn-primary">
-      </div>
-    </div>
-
-  <% end %>
+  </div>
 </div>
+
+<div class="col-lg-12">
+  <div class="form-horizontal">
+    <%= form_for @media, url: "/adm/media/upload", :html => {:multipart => true} do |f| %>
+
+      <% if @media.errors.any? %>
+        <div id="errors" class="alert alert-danger">
+          <h2 class="mt5 mb5"><%= pluralize(@media.errors.count, "error") %> prevent this post from saving</h2>
+          <ul>
+            <% @media.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :med_title, 'Title', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.text_field :med_title, html_options={ "class" => "form-control" } %>	
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :med_caption, 'Caption', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.text_field :med_caption, html_options={ "class" => "form-control" } %>	
+        </div>
+      </div>		
+
+      <div class="form-group">
+        <%= f.label :med_alt, 'Alt Text', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.text_field :med_alt, html_options={ "class" => "form-control" } %>	
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :med_description, 'Description', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.text_area :med_description, html_options={ "class" => "form-control" } %>	
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :gallery, 'Gallery', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.select :gallery, options_for_select([['Ya','yes'],['Tidak','no']]), html_options={ :class => "form-control" }  %>	
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :med_storage_name, 'File', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.file_field :med_storage_name, html_options={ "class" => "form-control" } %>	
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-12">
+          <input type="submit" value="Upload New Media" class="btn btn-primary">
+          <a href="/adm/media" class="btn btn-default">Cancel</a>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
 
 
 <script>$('#pill_media').addClass('active');</script>

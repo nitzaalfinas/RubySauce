@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :full_name
       t.string :nick_name
+      t.string :avatar_file
       t.string :level
 
       ## Recoverable

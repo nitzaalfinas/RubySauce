@@ -74,11 +74,11 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :akun do
+    resources :my_profile do
       collection do
-        get 'edit', to: 'akun#edit'
-        post 'update', to: 'akun#update'
-        patch 'update', to: 'akun#update'
+        get 'edit', to: 'my_profile#edit'
+        post 'update', to: 'my_profile#update'
+        patch 'update', to: 'my_profile#update'
       end
     end
     

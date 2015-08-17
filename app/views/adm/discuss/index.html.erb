@@ -1,42 +1,72 @@
-<h1 class="mt0 mb15">Discusses</h1>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">Discussions</h1>
+    </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-comment"></i>
+            Discussions
+          </li>
+        </ol>
+      </small>
+    </div>
+  </div>
+</div>
 
-<table id="articles_table" class="table table-stripped">
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Article Title</th>
-      <th>Discuss</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @discusses.each do |dis| %>
+<div class="col-lg-12">
+  <table id="articles_table" class="table table-stripped">
+    <thead>
       <tr>
-        <td>
-          <%= dis.full_name %>
-        </td>
-        <td>
-          <div>
-            <%= dis.title %>	
-          </div>
-          <div>
-            <% if dis.dis_approve == "no" %>
-              <a href="javascript: adm_discuss.approve(<%= dis.id %>)" class="apr_btn">Approve</a>  
-            <% else %>
-              <a href="javascript: adm_discuss.disapprove(<%= dis.id %>)" class="unapr_btn">Disapprove</a>  
-            <% end %>
-
-            | Trash	
-          </div>
-        </td>
-        <td>
-          <%= dis.dis_body %>
-        </td>
+        <th>Author</th>
+        <th>Article Title</th>
+        <th>Discuss</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @discusses.each do |dis| %>
+        <tr>
+          <td>
+            <%= dis.full_name %>
+          </td>
+          <td>
+            <div>
+              <%= dis.title %>	
+            </div>
+            <div>
+              <% if dis.dis_approve == "no" %>
+                <a href="javascript: adm_discuss.approve(<%= dis.id %>)" class="apr_btn">Approve</a>  
+              <% else %>
+                <a href="javascript: adm_discuss.disapprove(<%= dis.id %>)" class="unapr_btn">Disapprove</a>  
+              <% end %>
 
-<%= will_paginate @discusses %>
+              | Trash	
+            </div>
+          </td>
+          <td>
+            <%= dis.dis_body %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @discusses %>
+</div>
+
 
 <script>adm_discuss.onload();</script>
 

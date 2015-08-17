@@ -17,7 +17,7 @@
 //= require adm_jquery-ui
 //= require adm_nestedSortable
 //
-//= require adm_akun
+//= require adm_my_profile
 //= require adm_articles
 //= require adm_bootstrap
 //= require adm_categories
@@ -30,3 +30,7 @@
 //= require adm_templates
 //= require adm_users
 
+
+var adm_core = {
+    
+};

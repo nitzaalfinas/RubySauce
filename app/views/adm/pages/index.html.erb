@@ -1,36 +1,67 @@
-<h1 class="mt0 mb15">Pages</h1>
-<div class="col-lg-12 pl0 mb15">
-  <%= link_to "Add New", new_adm_page_path, class: "btn btn-primary" %>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">Pages</h1>
+    </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-briefcase"></i>
+            Pages
+          </li>
+        </ol>
+      </small>
+    </div>
+  </div>
 </div>
 
-<table id="pages_table" class="table table-stripped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td>
-          <div><%= article.title %></div>
-          <div>
-            <%= link_to "edit", edit_adm_page_path(id: article.id, page: @articles.current_page) %>
-            | <%= link_to 'trash', adm_page_path(id: article.id, page: @articles.current_page), method: :delete, data: {confirm:'Are you sure?'} %>
-            | <%= link_to 'view', $appset.site_domain.to_s+"/"+article.permalink.to_s %>
-          </div>
-        </td>
-        <td><%= article.nick_name %></td>
-        <td></td>
-        <td><%= article.created_at %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="col-lg-12">
+  <div class="col-lg-12 pl0 mb15">
+    <%= link_to "Add New", new_adm_page_path, class: "btn btn-primary" %>
+  </div>
 
-<%= will_paginate @articles %>
+  <table id="pages_table" class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td>
+            <div><%= article.title %></div>
+            <div>
+              <%= link_to "edit", edit_adm_page_path(id: article.id, page: @articles.current_page) %>
+              | <%= link_to 'trash', adm_page_path(id: article.id, page: @articles.current_page), method: :delete, data: {confirm:'Are you sure?'} %>
+              | <%= link_to 'view', $appset.site_domain.to_s+"/"+article.permalink.to_s %>
+            </div>
+          </td>
+          <td><%= article.nick_name %></td>
+          <td></td>
+          <td><%= article.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @articles %>
+</div>
+
 
 <script>$('#pill_pages').addClass('active');</script>
 
