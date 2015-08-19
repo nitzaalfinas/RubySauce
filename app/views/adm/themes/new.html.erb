@@ -1,34 +1,74 @@
-<h1 class="mt0 mb30">Upload New Theme</h1>
-
-<div class="form-horizontal">
-  <%= form_for @theme, url: "/adm/themes/upload", :html => {:multipart => true} do |f| %>
-
-    <% if @theme.errors.any? %>
-      <div id="errors" class="alert alert-danger">
-        <h2 class="mt5 mb5"><%= pluralize(@theme.errors.count, "error") %> prevent this post from saving</h2>
-        <ul>
-          <% @theme.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= f.label :folder_name, 'File', html_options={ "class" => "col-lg-3" } %>
-      <div class="col-lg-9">
-        <%= f.file_field :folder_name, html_options={ "class" => "form-control" } %>	
-      </div>
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">
+        Themes
+        <small>New</small>
+      </h1>
     </div>
-
-    <div class="form-group">
-      <div class="col-lg-12">
-        <input type="submit" value="Upload New Template" class="btn btn-primary">
-      </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/adm/themes">
+              <i class="glyphicon glyphicon-heart"></i>
+              Themes
+            </a>
+            
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-file"></i>
+            New
+          </li>
+        </ol>
+      </small>
     </div>
-
-  <% end %>
+  </div>
 </div>
+
+<div class="col-lg-12">
+  <div class="form-horizontal">
+    <%= form_for @theme, url: "/adm/themes/upload", :html => {:multipart => true} do |f| %>
+
+      <% if @theme.errors.any? %>
+        <div id="errors" class="alert alert-danger">
+          <h2 class="mt5 mb5"><%= pluralize(@theme.errors.count, "error") %> prevent this post from saving</h2>
+          <ul>
+            <% @theme.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :folder_name, 'File', html_options={ "class" => "col-lg-3" } %>
+        <div class="col-lg-9">
+          <%= f.file_field :folder_name, html_options={ "class" => "form-control" } %>	
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-12">
+          <input type="submit" value="Upload New Template" class="btn btn-primary">
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
 
 
 <script>$('#pill_themes').addClass('active');</script>

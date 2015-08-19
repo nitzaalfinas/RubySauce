@@ -47,7 +47,7 @@
         <% @media.each do |med| %>
           <tr>
             <td>
-              <%= image_tag('thumb/'+med.med_storage_name, alt: med.med_alt, style: "margin-bottom: 10px; max-width: 300px;") %>
+              <%= show_image(med.med_storage_name) %>
             </td>
             <td>
               <%= med.med_title %>
@@ -65,12 +65,12 @@
             <td>
               <div class="btn-group-vertical" role="group">
                 <%= link_to "Edit", "/adm/media/edit?id=#{med.id}&page=#{@media.current_page}", class: "btn btn-default" %>
-                  <%= link_to 'Delete', "/adm/media/destroy/#{med.id}", method: :delete, data: {confirm:'Are you sure?'}, class: "btn btn-default" %>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
+                <%= link_to 'Delete', "/adm/media/destroy/#{med.id}", method: :delete, data: {confirm:'Are you sure?'}, class: "btn btn-default" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 

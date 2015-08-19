@@ -42,7 +42,7 @@
   <table>
     <tr>
       <td valign="top">
-        <%= image_tag('thumb/avatar-no.gif') %>
+        <%= image_tag('thumb/'+current_user.avatar_file) %>
         <%= f.file_field(:avatar_file) %>
       </td>
       <td valign="top">
