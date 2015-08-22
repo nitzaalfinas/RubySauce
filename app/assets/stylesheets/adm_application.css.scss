@@ -173,3 +173,11 @@ html, body {
 #feat_img_display img {
     width: 100%;
 }
+
+.table-head-column:hover .order_head {
+    display: block;
+}
+.order_head {
+    float: right;
+    display: none;
+}

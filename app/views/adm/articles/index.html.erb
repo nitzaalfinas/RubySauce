@@ -36,6 +36,10 @@
   <div class="col-lg-12 pr0 mb15">
     <div class="col-lg-offset-8 col-lg-4 pr0">
       <%= form_tag '/adm/articles', method: 'get' do %>
+        <input type="hidden" name="page" value="1">
+        <input type="hidden" name="rows" value="<%= @rows %>">
+        <input type="hidden" name="of" value="<%= @of %>">
+        <input type="hidden" name="od" value="<%= @od %>">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Searching for title and content" name="q" value="<%= @q %>">
           <div class="input-group-btn">
@@ -49,11 +53,19 @@
   <table id="articles_table" class="table table-stripped">
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Author</th>
+        <th class="table-head-column">
+          Title
+          <%= adm_articles_ordering(@rows, 'title', @q).html_safe %>
+        </th>
+        <th class="table-head-column">
+          Author
+          <%= adm_articles_ordering(@rows, 'nick_name', @q).html_safe %>
+        </th>
         <th>Categories</th>
-        <th>Tags</th>
-        <th>Date</th>
+        <th class="table-head-column">
+          Date
+          <%= adm_articles_ordering(@rows, 'created_at', @q).html_safe %>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -72,7 +84,6 @@
             <% #= # categories_per_article(article.id) %>
             <%= render :partial => "index_category_td", :locals => { :article_id => article.id } %>
           </td>
-          <td></td>
           <td><%= article.created_at %></td>
         </tr>
       <% end %>
@@ -82,4 +93,7 @@
   <%= will_paginate @articles %>
 </div>
   
-<script>$('#pill_articles').addClass('active');</script>
+<script>
+  $('#pill_articles').addClass('active');
+  $('.<%= @of %>_<%= @od %>').attr('style','display: block; color: red;');
+</script>

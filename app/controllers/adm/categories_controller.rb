@@ -8,7 +8,40 @@ class Adm::CategoriesController < ApplicationController
   layout "adm_layout"
 
   def index
-    @categories = Category.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @q = params[:q]
+    
+    if(params[:rows])
+      @rows = params[:rows]
+    else
+      @rows = 10
+    end
+    
+    # order field
+    if(params[:of])
+      @of = params[:of]
+    else
+      @of = 'created_at'
+    end
+    
+    # order direction
+    if(params[:od])
+      @od = params[:od]
+    else
+      @od = 'DESC'
+    end
+
+    if @q
+      @q.gsub!(/[^0-9a-z ]/i, '')
+
+      @arr = @q.split(" ")
+
+      @qa = ""
+      @arr.each { |q| @qa = @qa+"cat_name like '%"+q+"%' and "; }
+
+      @categories = Category.where(@qa[0..(@qa.length - 5)]).order(@of+' '+@od).paginate(page: params[:page], per_page: @rows)
+    else
+      @categories = Category.all.order(@of+' '+@od).paginate(page: params[:page], per_page: @rows)
+    end
   end
 
   def new

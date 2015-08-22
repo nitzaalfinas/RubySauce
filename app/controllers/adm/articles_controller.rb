@@ -12,6 +12,26 @@ class Adm::ArticlesController < ApplicationController
   # get /adm/articles
   def index
     @q = params[:q]
+    
+    if(params[:rows])
+      @rows = params[:rows]
+    else
+      @rows = 10
+    end
+    
+    # order field
+    if(params[:of])
+      @of = params[:of]
+    else
+      @of = 'created_at'
+    end
+    
+    # order direction
+    if(params[:od])
+      @od = params[:od]
+    else
+      @od = 'DESC'
+    end
 
     if @q
       @q.gsub!(/[^0-9a-z ]/i, '')
@@ -21,9 +41,9 @@ class Adm::ArticlesController < ApplicationController
       @qa = ""
       @arr.each { |q| @qa = @qa+"article_all like '%"+q+"%' and "; }
 
-      @articles = VArticle.where(@qa[0..(@qa.length - 5)]).order('created_at DESC').paginate(page: params[:page], per_page: 10)
+      @articles = VArticle.where(@qa[0..(@qa.length - 5)]).order(@of+' '+@od).paginate(page: params[:page], per_page: @rows)
     else
-      @articles = VArticle.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+      @articles = VArticle.all.order(@of+' '+@od).paginate(page: params[:page], per_page: @rows)
     end
   end #index
 
