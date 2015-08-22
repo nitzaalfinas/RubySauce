@@ -21,5 +21,12 @@ class Adm::UsersController < ApplicationController
 
   end
 
+  # To create a new user 
+  # <h3>Process</h3>
+  # Send the email reset password instruction to the user
+  def create
+    adm_check current_user.level
+    
+  end
 
 end
