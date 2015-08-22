@@ -1,12 +1,32 @@
-<h2>Resend confirmation instructions</h2>
+<%= render "support/fixed_nav" %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
+  
+  <h2>Resend confirmation instructions</h2>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, class: 'form-horizontal') do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :email, class: 'control-label' %>
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div><%= f.submit "Resend confirmation instructions", class: 'btn btn-primary' %></div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div> <!-- .container -->
+
+<%= render "support/footer" %>
+
+
+
+
+
+
+
+
+
+
+
