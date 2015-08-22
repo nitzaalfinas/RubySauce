@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: ror_cms_development
 -- ------------------------------------------------------
--- Server version	5.5.43-0ubuntu0.14.04.1
+-- Server version	5.5.44-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `article_categories` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `articles` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `discusses` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +116,7 @@ CREATE TABLE `media` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,8 +132,9 @@ CREATE TABLE `options` (
   `site_description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `site_domain` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `site_menu` text COLLATE utf8_unicode_ci,
+  `site_keywords` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `site_menu_draft` text COLLATE utf8_unicode_ci,
-  `template_active` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `article_size` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -154,40 +155,20 @@ CREATE TABLE `schema_migrations` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `templates`
+-- Table structure for table `themes`
 --
 
-DROP TABLE IF EXISTS `templates`;
+DROP TABLE IF EXISTS `themes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `templates` (
+CREATE TABLE `themes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `active` int(11) DEFAULT NULL,
+  `folder_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` int(11) DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `user_exts`
---
-
-DROP TABLE IF EXISTS `user_exts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_exts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description_short` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +233,8 @@ SET character_set_client = utf8;
   `category_id` tinyint NOT NULL,
   `cat_name` tinyint NOT NULL,
   `cat_slug` tinyint NOT NULL,
-  `cat_count` tinyint NOT NULL
+  `cat_count` tinyint NOT NULL,
+  `article_all` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
@@ -279,6 +261,7 @@ SET character_set_client = utf8;
   `publish_visibility` tinyint NOT NULL,
   `article_type` tinyint NOT NULL,
   `article_vcount` tinyint NOT NULL,
+  `article_all` tinyint NOT NULL,
   `created_at` tinyint NOT NULL,
   `updated_at` tinyint NOT NULL
 ) ENGINE=MyISAM */;
@@ -353,7 +336,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root_dev`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v_article_categories` AS select `article_categories`.`id` AS `id`,`article_categories`.`article_id` AS `article_id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,(select `users`.`full_name` from `users` where (`users`.`id` = `articles`.`author_id`)) AS `full_name`,(select `users`.`nick_name` from `users` where (`users`.`id` = `articles`.`author_id`)) AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_vcount` AS `article_vcount`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at`,`article_categories`.`category_id` AS `category_id`,`categories`.`cat_name` AS `cat_name`,`categories`.`cat_slug` AS `cat_slug`,`categories`.`cat_count` AS `cat_count` from ((`article_categories` left join `categories` on((`article_categories`.`category_id` = `categories`.`id`))) left join `articles` on((`article_categories`.`article_id` = `articles`.`id`))) */;
+/*!50001 VIEW `v_article_categories` AS select `article_categories`.`id` AS `id`,`article_categories`.`article_id` AS `article_id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,(select `users`.`full_name` from `users` where (`users`.`id` = `articles`.`author_id`)) AS `full_name`,(select `users`.`nick_name` from `users` where (`users`.`id` = `articles`.`author_id`)) AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_vcount` AS `article_vcount`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at`,`article_categories`.`category_id` AS `category_id`,`categories`.`cat_name` AS `cat_name`,`categories`.`cat_slug` AS `cat_slug`,`categories`.`cat_count` AS `cat_count`,concat(`articles`.`title`,' ',`articles`.`body`,' ',`articles`.`permalink`,' ',`articles`.`excerp`,' ',`categories`.`cat_name`) AS `article_all` from ((`article_categories` left join `categories` on((`article_categories`.`category_id` = `categories`.`id`))) left join `articles` on((`article_categories`.`article_id` = `articles`.`id`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -372,7 +355,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root_dev`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v_articles` AS select `articles`.`id` AS `id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,`users`.`full_name` AS `full_name`,`users`.`nick_name` AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_type` AS `article_type`,`articles`.`article_vcount` AS `article_vcount`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at` from (`articles` left join `users` on((`articles`.`author_id` = `users`.`id`))) where (`articles`.`article_type` = 'Article') */;
+/*!50001 VIEW `v_articles` AS select `articles`.`id` AS `id`,`articles`.`title` AS `title`,`articles`.`body` AS `body`,`articles`.`author_id` AS `author_id`,`users`.`full_name` AS `full_name`,`users`.`nick_name` AS `nick_name`,`articles`.`permalink` AS `permalink`,`articles`.`excerp` AS `excerp`,`articles`.`feat_img` AS `feat_img`,`articles`.`comment_status` AS `comment_status`,`articles`.`publish_status` AS `publish_status`,`articles`.`publish_visibility` AS `publish_visibility`,`articles`.`article_type` AS `article_type`,`articles`.`article_vcount` AS `article_vcount`,concat(`articles`.`title`,' ',`articles`.`body`,' ',`articles`.`permalink`,' ',`articles`.`excerp`) AS `article_all`,`articles`.`created_at` AS `created_at`,`articles`.`updated_at` AS `updated_at` from (`articles` left join `users` on((`articles`.`author_id` = `users`.`id`))) where (`articles`.`article_type` = 'Article') */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -424,7 +407,7 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-14  8:55:07
+-- Dump completed on 2015-08-20 22:04:28
 INSERT INTO schema_migrations (version) VALUES ('20141230104903');
 
 INSERT INTO schema_migrations (version) VALUES ('20141230120303');
@@ -446,8 +429,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150101171604');
 INSERT INTO schema_migrations (version) VALUES ('20150117020829');
 
 INSERT INTO schema_migrations (version) VALUES ('20150117020830');
-
-INSERT INTO schema_migrations (version) VALUES ('20150120013704');
 
 INSERT INTO schema_migrations (version) VALUES ('20150611043852');
 
