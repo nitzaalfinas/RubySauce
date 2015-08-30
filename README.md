@@ -19,6 +19,8 @@ RubySauce has a template management system.
 Path: /users/sign_in
 Email: admin@email.com<br>
 Password: 11111111<br>
+<h3>Path to panel</h3>
+Path: /adm/dashboard
 <h3>Prevent user from sign up</h3>
 If the application for personal use and you don't want another user for the application, you can remove sign up URL.<br>
 Open app/models/user.rb and remove :registerable so your file look like below;
