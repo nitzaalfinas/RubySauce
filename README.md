@@ -16,6 +16,7 @@ RubySauce has a template management system.
   <li>The application use Zip to unzip file with commandline. So, make sure you have the Zip installed on your server.</li>
 </div>
 <h3>Sign in</h3>
+Path: /users/sign_in
 Email: admin@email.com<br>
 Password: 11111111<br>
 <h3>Prevent user from sign up</h3>
