@@ -26,6 +26,16 @@ class Adm::UsersController < ApplicationController
   # Send the email reset password instruction to the user
   def create
     adm_check current_user.level
+        
+    xx = User.new
+    xx.full_name = params[:user][:full_name]
+    xx.nick_name = params[:user][:nick_name]
+    xx.email = params[:user][:email]
+    xx.password = User.new(:password => params[:user][:password]).encrypted_password
+    #xx.confirmed_at = DateTime.now
+    xx.save
+        
+    redirect_to(adm_users_path)
     
   end
 

@@ -53,7 +53,7 @@
                 <a href="javascript: adm_discuss.disapprove(<%= dis.id %>)" class="unapr_btn">Disapprove</a>  
               <% end %>
 
-              | Trash	
+              | <%= link_to 'Trash', '/adm/discuss/'+dis.id.to_s+'?page='+@discusses.current_page.to_s, method: :delete, data: {confirm:'Are you sure?'} %>
             </div>
           </td>
           <td>
@@ -68,5 +68,7 @@
 </div>
 
 
-<script>adm_discuss.onload();</script>
+<script>
+  adm_discuss.onload();
+</script>
 

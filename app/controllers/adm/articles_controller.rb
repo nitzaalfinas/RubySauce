@@ -14,7 +14,7 @@ class Adm::ArticlesController < ApplicationController
     @q = params[:q]
     
     if(params[:rows])
-      @rows = params[:rows]
+      @rows = params[:rows].to_i
     else
       @rows = 10
     end
@@ -45,7 +45,7 @@ class Adm::ArticlesController < ApplicationController
     else
       @articles = VArticle.all.order(@of+' '+@od).paginate(page: params[:page], per_page: @rows)
     end
-  end #index
+  end # index
 
   
   # Showing new article page
@@ -54,7 +54,7 @@ class Adm::ArticlesController < ApplicationController
   def new
     @article = Article.new
     @categories = Category.all.order('cat_name ASC')		
-  end #new
+  end # new
 
   
   # Insert a new article into database
@@ -87,8 +87,8 @@ class Adm::ArticlesController < ApplicationController
 
       @categories = Category.all
       render 'new'
-    end #if @article_save
-  end #def create
+    end 
+  end # create
 
   
   # Showing article edit page
@@ -96,11 +96,10 @@ class Adm::ArticlesController < ApplicationController
   # get /adm/articles/:id/edit
   def edit
     id = params[:id].to_i
-    page = params[:page].to_i
+    @page = params[:page].to_i
 
     @article = Article.find(id)
     @categories = Category.all.order('cat_name ASC')
-    @page = page
   end
 
   # Update an article
@@ -108,12 +107,12 @@ class Adm::ArticlesController < ApplicationController
   # patch /adm/articles/:id
   def update
     id = params[:id].to_i
-    page = params[:page].to_i
+    @page = params[:page].to_i
 
     @article = Article.find(id)
     @article_update = @article.update(article_params)
 
-    #deleting category by article_id and later create new category to this article
+    #delete category by article_id and create new category to this article
     ArticleCategory.where(:article_id => id).destroy_all
 
     #insert all of categories
@@ -130,21 +129,21 @@ class Adm::ArticlesController < ApplicationController
     end #params[:category]
 
     if @article_update
-      redirect_to adm_articles_path(:page => page)
+      redirect_to adm_articles_path(:page => @page)
     else
-      #if saving failure, this object need to cast
+      # if it doesn't save, this object need to cast
 
       @categories = Category.all
       render 'edit'
-    end #if @article_update
-  end #def update
+    end 
+  end # def update
 
   # Delete an article
   # ==== Path
   # delete /adm/articles/:id
   def destroy
-    page = params[:page].to_i
-    #find article id
+    @page = params[:page].to_i
+    # find article id
     @art = Article.find(params[:id])
 
     #destroy article_category
@@ -153,7 +152,7 @@ class Adm::ArticlesController < ApplicationController
     #destroy article based on id
     @art.destroy
 
-    redirect_to adm_articles_path(:page => page)
+    redirect_to adm_articles_path(:page => @page)
   end #def destroy
 
 

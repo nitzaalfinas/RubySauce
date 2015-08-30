@@ -24,4 +24,82 @@
 <!-- content -->
 <div class="col-lg-12">
   
+  <!-- head panel group -->
+  <div class="col-lg-12 pl0 pr0">
+    <!-- head panel visitors -->
+    <div class="col-lg-3 t-center panel-h-visitors">
+      <div class="col-lg-5 pt20 fs3">
+        <i class="glyphicon glyphicon-signal"></i>
+      </div>
+      <div class="col-lg-7">
+        <h3><%= @visitor_sum %></h3>
+        Visitors
+      </div>
+    </div>
+
+    <!-- head panel articles -->
+    <div class="col-lg-3 t-center panel-h-articles">
+      <div class="col-lg-5 pt20 fs3">
+        <i class="glyphicon glyphicon-align-left"></i>
+      </div>
+      <div class="col-lg-7">
+        <h3><%= @article_count %></h3>
+        Articles
+      </div>
+    </div>
+
+    <!-- head panel categories -->
+    <div class="col-lg-3 t-center panel-h-categories">
+      <div class="col-lg-5 pt20 fs3">
+        <i class="glyphicon glyphicon-tags"></i>
+      </div>
+      <div class="col-lg-7">
+        <h3><%= @category_count %></h3>
+        Categories
+      </div>
+    </div>
+
+    <!-- head panel images -->
+    <div class="col-lg-3 t-center panel-h-images">
+      <div class="col-lg-5 pt20 fs3">
+        <i class="glyphicon glyphicon-picture"></i>
+      </div>
+      <div class="col-lg-7">
+        <h3><%= @media_count %></h3>
+        Images
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-12 pl0 pr0 mt20">
+    <div class="col-lg-6 pl0">
+      <div class="panel panel-primary">
+        <div class="panel panel-heading"><h3 class="mt10">Articles</h3></div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Visitor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @articles.each do |article| %>
+              <tr>
+                <td><%= article.id %></td>
+                <td><%= article.title %></td>
+                <td><%= article.article_vcount %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+  
+<script>
+  $('#pill_dashboard').addClass('active');
+</script>

@@ -27,4 +27,12 @@ class Adm::DiscussController < ApplicationController
     @discuss.save
     render inline: "success"
   end #unapprove
+  
+  def destroy
+    @id = params[:id].to_i
+    Discuss.find(@id).destroy
+    
+    redirect_to adm_discuss_path(:page => params[:page])
+  end
+  
 end
