@@ -8,13 +8,13 @@ default: &default
 
 development:
   <<: *default
-  database: ror_cms_development
+  database: rubysauce_development
 
 
 test:
   <<: *default
-  database: ror_cms_test
+  database: rubysauce_test
 
 production:
   <<: *default
-  database: ror_cms
+  database: rubysauce_cms
