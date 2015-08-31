@@ -1,6 +1,6 @@
 # RubySauce
 <div>
-  [![Current Version]Version 1.2] Version 1.2
+  <strong>Version 1.2</strong>
   [![License]GNU GPL V2] GNU GPL V2
 </div>
 RubySauce is a CMS based on Ruby on Rails.<br>
