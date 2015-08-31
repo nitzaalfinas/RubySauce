@@ -2,6 +2,7 @@
 <div>
   <strong>Version: 1.2</strong> |
   <strong>GNU GPL V2</strong> 
+  <hr>
 </div>
 RubySauce is a CMS based on Ruby on Rails.<br>
 RubySauce has a template management system.
