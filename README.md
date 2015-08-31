@@ -1,4 +1,8 @@
 # RubySauce
+<div>
+  <span style='padding: 4px; color: #fff; background-color: #000;'>Version 1.2</span>
+  <span style='padding: 4px; color: #fff; background-color: #000;'>GNU GPL V2</span>
+</div>
 RubySauce is a CMS based on Ruby on Rails.<br>
 RubySauce has a template management system.
 <br><br>
