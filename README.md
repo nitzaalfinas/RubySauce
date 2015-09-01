@@ -58,3 +58,4 @@ More information about devise: https://github.com/plataformatec/devise
     <li>Templates System</li>
     <li>Changing URI easily</li>
 </div>
+.
