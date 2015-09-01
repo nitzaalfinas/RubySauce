@@ -1,8 +1,5 @@
 class SearchController < ApplicationController
   
-  helper Adm::Helper # to call from view
-  include Adm::Helper # to call within controller
-  
   # Searcing for articles
   # * *Path* :
   # get /search

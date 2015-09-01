@@ -1,8 +1,5 @@
 class PercategoryController < ApplicationController
   
-  helper Adm::Helper # to call from view
-  include Adm::Helper # to call within controller
-
   # Displaying articles based on the selected category
   # * *Path* :
   # get /category/:cat_slug

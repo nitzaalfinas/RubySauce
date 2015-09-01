@@ -1,6 +1,7 @@
-<%= render "support/fixed_nav" %>
+<%= render 'widget/head_top' %>
+<section class="container back-white pl0 pr0">
+  <%= render "widget/nav" %>
 
-<div class="container">
   <div class="col-lg-9">
     <%= render partial: "articles" %>  	
   </div>
@@ -8,10 +9,9 @@
     <%= render partial: "widget/popular_article" %>
     <%= render partial: "widget/recent_article" %>
   </div>
-</div>
+</section>
 
-<hr>
-<%= render "support/footer" %>
+<%= render "widget/footer" %>
 
 <script type="text/javascript">
   landing.onload();

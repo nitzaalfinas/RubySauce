@@ -1,5 +1,7 @@
 module Adm::Helper
   
+  $page_menus = VPage.where("publish_status = 'Publish'")
+  
 	def adm_check (user_level)
 		if user_level != "Admin"
 			redirect_to "/"

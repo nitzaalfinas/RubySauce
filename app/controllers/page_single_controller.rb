@@ -1,8 +1,5 @@
 class PageSingleController < ApplicationController
   
-  helper Adm::Helper # to call from view
-  include Adm::Helper # to call within controller
-
   # The page is an article with type = page. <br>
   # So, the page has the same properties with article.
   # * *Path* :

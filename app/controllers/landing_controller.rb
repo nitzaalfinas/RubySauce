@@ -1,9 +1,5 @@
 class LandingController < ApplicationController
   
-  helper Adm::Helper # to call from view
-  include Adm::Helper # to call within controller
-
-  
   # This is the root of the application
   # * *Path* :
   # get /

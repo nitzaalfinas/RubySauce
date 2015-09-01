@@ -1,8 +1,5 @@
 class ArticleSingleController < ApplicationController
   
-  helper Adm::Helper # to call from view
-  include Adm::Helper # to call within controller
-  
   # Showing single page of the article.<br>
   # The article has 2 publish type; public and private.<br> 
   # The visitor who are not logged on, he/she can't read the article with type of private

@@ -1,3 +1,15 @@
 // Place all the styles related to the landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#landing_articles {
+    article.article {
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 25px;
+    }
+    .feat_img {
+        img {
+            width: 100%;
+        }
+    }
+}
