@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="col-lg-9">
-    <div>
+    <div class="w100 dis-table">
       <%= form_tag '/search', method: 'get' do %>
         <div class="col-lg-9 pl0">
           <input type="text" name="q" value="<%= @q %>" class="form-control">
@@ -25,3 +25,5 @@
 
 <hr>
 <%= render "support/footer" %>
+
+<script>search.onload();</script>

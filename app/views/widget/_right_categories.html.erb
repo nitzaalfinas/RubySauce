@@ -4,16 +4,19 @@
 #Description: Showing all categories
 %>
 
-<% @categories = Category.all %>
+<% @categories = Category.all.order('cat_name') %>
 
-<h1>Kategori</h1>
-
-<ul class="nostyle">
-	<% @categories.each do |u| %>
-	<li class="line">
-		<a href="/category/<%= u.cat_slug %>">
-			<h2><%= u.cat_name %></h2>	
-		</a>
-	</li>
-	<% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Categories</h3>
+  </div>
+  <div class="panel-body">
+    <% @categories.each do |u| %>
+      <li>
+        <a href="/category/<%= u.cat_slug %>">
+          <%= u.cat_name %>
+        </a>
+      </li>
+    <% end %>
+  </div>
+</div>

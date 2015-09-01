@@ -23,6 +23,12 @@ class Adm::ThemesController < ApplicationController
     @theme = Theme.new
   end
 
+  # <h3>Process</h3>
+  # 1. insert folder name into database
+  # 2. upload original to app/assets/themes/tmp
+  # 3. unzip to app/assets/themes
+  # 4. copy image to public/adm/theme_images
+  # 5. remove zip in app/assets/themes/tmp folder
   def upload
     # params 
     t_filename = params[:theme][:folder_name]
@@ -38,12 +44,12 @@ class Adm::ThemesController < ApplicationController
     @theme_save = @theme.save
   
     if @theme_save
-      #upload original
+      # upload original
       File.open(Rails.root.join('app/assets/themes/tmp',t_filename.original_filename),'wb') do |file|
         file.write(t_filename.read)
       end
 
-      #unzip
+      # unzip
       system(unzip_command)
       
       cp_image_to_public(t_filename.original_filename.gsub(".zip",""))
@@ -73,24 +79,24 @@ class Adm::ThemesController < ApplicationController
     theme.active = 1
     theme.save
 
-    #views
+    # views
     view_arr = ['article_single','confirmable','devise','galleries','landing','page_single','percategory','search','support','widget']
     del_copy_views_dir(theme.folder_name,view_arr)
 
-    #helpers
+    # helpers
     helper_arr = ['application_helper.rb','article_page_helper.rb','article_single_helper.rb','discuss_helper.rb','discuss_helper.rb','galleries_helper.rb','landing_helper.rb','page_single_helper.rb','percategory_helper.rb']
     del_copy_helper(theme.folder_name,helper_arr)
 
-    #js
+    # js
     replace_js(theme.folder_name,current_theme_active.folder_name)
 
-    #css
+    # css
     replace_css(theme.folder_name,current_theme_active.folder_name)
 
-    #supplement
+    # supplement
     replace_supplement(theme.folder_name,current_theme_active.folder_name)
 
-    #layout
+    # layout
     theme_layout_application = Rails.root.join('app/assets/themes/'+theme.folder_name+'/views/layouts/application.html.erb')
     real_layout_application = Rails.root.join('app/views/layouts/application.html.erb')
     if File.exists?(theme_layout_application)
@@ -111,7 +117,6 @@ class Adm::ThemesController < ApplicationController
     @theme.destroy
     
     redirect_to adm_themes_path
-#     render inline: Rails.root.to_s+"/app/assets/themes/#{@theme.folder_name}" 
   end
   
   # PRIVATE START FROM HERE! ------------------------------------------------------------

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= $appset.site_title %></title>
+    <title><%= app_set('site_title') %></title>
 
     <link rel="icon" type="image/png" href="<%=  image_url("logo.png") %>">
     
@@ -20,7 +20,7 @@
     <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Raleway:400:700', media: 'all' %>
     
     <%= javascript_include_tag 'adm_application', 'data-turbolinks-track' => true %>
-
+    
     <%= csrf_meta_tags %>
   </head>
   <body>

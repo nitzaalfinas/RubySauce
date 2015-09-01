@@ -12,15 +12,15 @@ class PercategoryController < ApplicationController
   #   - <code>@dynamic_title</code> -> SEO
   #   - <code>@dynamic_author</code> -> SEO
   #   - <code>@dynamic_description</code> -> SEO
-  #   - <code>@dynamic_keyword</code> -> SEO
+  #   - <code>@dynamic_keywords</code> -> SEO
   #   - <code>@dynamic_image</code> -> SEO
   def index
     permalink = params[:permalink]
     
     if current_user
-      @articles = VArticle.where('cat_slug = ? and publish_status = "Publish"', permalink).order('created_at DESC').paginate(page: params[:page], per_page: $appset.article_size)
+      @articles = VArticle.where('cat_slug = ? and publish_status = "Publish"', permalink).order('created_at DESC').paginate(page: params[:page], per_page: app_set('article_size'))
     else
-      @articles = VArticle.where('cat_slug = ? and publish_status = "Publish" and publish_visibility = "Public"', permalink).order('created_at DESC').paginate(page: params[:page], per_page: $appset.article_size)
+      @articles = VArticle.where('cat_slug = ? and publish_status = "Publish" and publish_visibility = "Public"', permalink).order('created_at DESC').paginate(page: params[:page], per_page: app_set('article_size'))
     end
     
   end

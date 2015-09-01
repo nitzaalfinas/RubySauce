@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
-  include Adm::Helper
+  
+  helper Adm::Helper # to call from view
+  include Adm::Helper # to call within controller
   
   # Searcing for articles
   # * *Path* :
@@ -20,6 +22,6 @@ class SearchController < ApplicationController
       @qa = @qa+"article_all like '%"+q+"%' and "
     end
 
-    @articles = VArticle.where(@qa[0..(@qa.length - 5)]).paginate(page: params[:page], per_page: $appset.article_size)
+    @articles = VArticle.where(@qa[0..(@qa.length - 5)]).paginate(page: params[:page], per_page: app_set('article_size'))
   end
 end

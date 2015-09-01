@@ -48,7 +48,7 @@
             <div>
               <%= link_to "edit", edit_adm_page_path(id: article.id, page: @articles.current_page) %>
               | <%= link_to 'trash', adm_page_path(id: article.id, page: @articles.current_page), method: :delete, data: {confirm:'Are you sure?'} %>
-              | <%= link_to 'view', $appset.site_domain.to_s+"/"+article.permalink.to_s %>
+              | <%= link_to 'view', app_set('site_domain').to_s+"/"+article.permalink.to_s %>
             </div>
           </td>
           <td><%= article.nick_name %></td>

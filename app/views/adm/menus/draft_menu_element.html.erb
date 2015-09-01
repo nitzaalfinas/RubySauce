@@ -1,5 +1,5 @@
-<% if $appset.site_menu_draft %>
-  <%= $appset.site_menu_draft.html_safe %>
+<% if app_set('site_menu_draft') %>
+  <%= app_set('site_menu_draft').html_safe %>
 <% else %>
   <ol class="sortable"></ol>
 <% end %>

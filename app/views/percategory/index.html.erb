@@ -2,26 +2,26 @@
 
 <div id="content-wrapper">
 
-	<div id="sub-post">
-		<div class="container">
-			<i class="fa fa-home"></i> 
-			<a href="/">Home</a> 
-			<i class="fa fa-angle-double-right"></i>
-			<% if @articles.size > 0 %>
-				<a><%= @articles.first.cat_name %></a>
-			<% end %>
-		</div>
-	</div>
+  <div id="sub-post">
+    <div class="container">
+      <i class="fa fa-home"></i> 
+      <a href="/">Home</a> 
+      <i class="fa fa-angle-double-right"></i>
+      <% if @articles.size > 0 %>
+        <a><%= @articles.first.cat_name %></a>
+      <% end %>
+    </div>
+  </div>
 
-	<div class="container">
+  <div class="container">
 
-		<% if @articles.size > 0 %>
-			<%= render "articles", :locals => { @articles => @articles } %>  
-		<% else %>
-			Belum ada artikel 
-		<% end %>
+    <% if @articles.size > 0 %>
+      <%= render "articles", :locals => { @articles => @articles } %>  
+    <% else %>
+      Belum ada artikel 
+    <% end %>
 
-	</div>
+  </div>
 </div>
 
 <%= render "support/footer" %>

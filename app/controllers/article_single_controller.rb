@@ -1,5 +1,7 @@
 class ArticleSingleController < ApplicationController
-  include Adm::Helper
+  
+  helper Adm::Helper # to call from view
+  include Adm::Helper # to call within controller
   
   # Showing single page of the article.<br>
   # The article has 2 publish type; public and private.<br> 
@@ -15,7 +17,7 @@ class ArticleSingleController < ApplicationController
   #   - <code>@dynamic_title</code> -> SEO
   #   - <code>@dynamic_author</code> -> SEO
   #   - <code>@dynamic_description</code> -> SEO
-  #   - <code>@dynamic_keyword</code> -> SEO
+  #   - <code>@dynamic_keywords</code> -> SEO
   #   - <code>@dynamic_image</code> -> SEO
   def index
     permalink = params[:permalink]

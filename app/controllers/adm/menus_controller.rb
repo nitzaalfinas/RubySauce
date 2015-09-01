@@ -9,7 +9,7 @@ class Adm::MenusController < ApplicationController
 
   def index
 
-    # if $appset.site_menu == "<ol class='sortable'></ol>" || $appset.site_menu == "" || $appset.site_menu == nil
+    # if app_set('site_menu == "<ol class='sortable'></ol>" || app_set('site_menu == "" || app_set('site_menu == nil
     # 	menu_string = "<ol class='sortable'>"
     # 	@pages = VPage.where("publish_status = 'Publish'")
     # 	if @pages.present?
@@ -21,8 +21,8 @@ class Adm::MenusController < ApplicationController
     # 	menu_string = menu_string+"</ol>"	
 
     # 	#saving menu
-    # 	$appset.site_menu = menu_string
-    # 	$appset.save
+    # 	app_set('site_menu = menu_string
+    # 	app_set('save
     # end
 
     redirect_to edit_adm_menus_path		
@@ -43,8 +43,9 @@ class Adm::MenusController < ApplicationController
 
   def update_draft
 
-    $appset.site_menu_draft = params[:data]
-    $appset.save
+    @opt = Option.where("option_key = 'site_menu_draft'").take
+    @opt.option_value = params[:data]
+    @opt.save
     render inline: "success"
   end #update_draft
 
@@ -56,8 +57,9 @@ class Adm::MenusController < ApplicationController
     menu_str_d = menu_str_c.gsub "menu_page_", "page_" #replace page
     menu_str = menu_str_d
 
-    $appset.site_menu = menu_str
-    $appset.save
+    @opt = Option.where("option_key = 'site_menu'").take
+    @opt.option_value = menu_str
+    @opt.save
     render inline: "success"
   end #update
 
@@ -69,8 +71,9 @@ class Adm::MenusController < ApplicationController
 
     menu_str = params[:data]
 
-    $appset.site_menu = menu_str
-    $appset.save
+    @opt = Option.where("option_key = 'site_menu'").take 
+    @opt.option_value = menu_str
+    @opt.save
     render inline: "success"
   end #form_manual_update
 

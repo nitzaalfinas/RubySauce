@@ -1,5 +1,7 @@
 class DiscussController < ApplicationController
-  include Adm::Helper
+  
+  helper Adm::Helper # to call from view
+  include Adm::Helper # to call within controller
 
   def send_insert
     @discuss = Discuss.new
