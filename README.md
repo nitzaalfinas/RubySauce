@@ -1,6 +1,6 @@
 # RubySauce
 <div>
-  <strong>Version: 1.3</strong> |
+  <strong>Version: 1.4</strong> |
   <strong>License: GNU GPL V2</strong> 
   <hr>
 </div>
