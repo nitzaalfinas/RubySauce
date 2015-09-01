@@ -23,6 +23,12 @@ catatan_pengembangan.txt
 
 pengembangan.txt
 
+# themes
 public/images/themes/*
 !public/images/themes/clean_blog
 !public/images/themes/default
+
+# asset/themes
+app/assets/*
+!app/assets/themes/clean_blog
+!app/assets/themes/default
