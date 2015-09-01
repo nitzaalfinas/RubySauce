@@ -22,3 +22,7 @@ catatan_pengembangan.txt
 /nbproject
 
 pengembangan.txt
+
+public/images/themes/*
+!public/images/themes/clean_blog
+!public/images/themes/default
