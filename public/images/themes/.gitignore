@@ -1,4 +1,4 @@
 *
 !.gitignore
-!clean_blog
-!default
+!clean_blog/
+!default/
