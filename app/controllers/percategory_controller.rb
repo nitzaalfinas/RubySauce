@@ -9,7 +9,7 @@ class PercategoryController < ApplicationController
   # * *Path Params* :
   #   - +cat_slug+ -> A permalink for the category
   # * *Args* :
-  # * *Returns* :
+  # * *Reusable Object* :
   #   - <code>@article</code> -> articles
   #   - <code>@dynamic_title</code> -> SEO
   #   - <code>@dynamic_author</code> -> SEO
