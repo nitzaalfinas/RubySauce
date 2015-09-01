@@ -9,6 +9,9 @@
     "url": "http://nitzaalfinas.com",
     "description": "Ini adalah bla.... bla..",
     "license": "license",
-    "css_files": ["application.css.scss","bootstrap.css","discuss.scss","galleries.scss","landing.scss","page_single.scss","percategory.scss"],
-    "js_files": ["application.js","article_single.js","discuss.js","galleries.js","landing.js","page_single.js","percategory.js","search.js"]
+    "css_files": ["application.css.scss","bootstrap.css"],
+    "js_files": ["application.js","article_single.js","search.js"],
+    "supplements": [
+        { "copy_type": "folder", "name": "fonts", "copy_to": "public" }
+    ]
 }

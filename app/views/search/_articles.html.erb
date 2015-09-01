@@ -1,9 +1,9 @@
-<div class="content">
+<div class="col-lg-12 pl0 pr0">
   <div id="landing_articles">
     <% @articles.each do |article| %>
-      <article class="col-lg-12 mb30 article">
+      <article class="col-lg-12 mb30 article pl0">
         <div class="col-lg-4 feat_img">
-          <%= image_tag("thumb/"+article.feat_img) %>
+          <%= image_tag("thumb/"+article.feat_img, style: 'width: 100%') %>
         </div>
         <div class="col-lg-8 title_article">
           <a href="/<%= article.permalink %>">

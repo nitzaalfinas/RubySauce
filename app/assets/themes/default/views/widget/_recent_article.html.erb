@@ -10,7 +10,7 @@
   <% @larts = VArticle.where('publish_status = "Publish" and publish_visibility = "public"').order('created_at DESC').take(5) %>
 <% end %>
 
-<div class="panel panel-default">
+<div id="widget_recent_article" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent</h3>
   </div>
@@ -18,11 +18,10 @@
     <% @larts.each do |lar| %>
       <li>
         <a href="/<%= lar.permalink %>">
-          <div>
-            <%= lar.title %>
-            <small><%= lar.created_at %></small>		
-          </div>	
+          <%= lar.title %>	
         </a>
+        <br>
+        <small><%= lar.created_at %></small>
       </li>
     <% end %>
   </div>

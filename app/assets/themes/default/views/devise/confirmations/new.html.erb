@@ -1,12 +1,25 @@
-<h2>Resend confirmation instructions</h2>
+<%= render 'widget/head_top' %>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<section class="container back-white pl0 pr0">
+  <%= render "widget/nav" %>
+  
+  <!-- content -->
+  <div class="col-lg-12 pb10">
+    <div class="col-lg-offset-3 col-lg-6">
+      <h2>Resend confirmation instructions</h2>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+      <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+        <div><%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %></div>
 
-<%= render "devise/shared/links" %>
+        <div><%= f.submit "Resend confirmation instructions" %></div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</section>
+
+<%= render "widget/footer" %>

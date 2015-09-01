@@ -1,11 +1,5 @@
 /**
  *= require bootstrap
- *= require article_single
- *= require discuss
- *= require galleries
- *= require landing
- *= require page_single
- *= require percategory
 */
 
 html, body {
@@ -117,6 +111,26 @@ footer{
         -webkit-padding-start: 0px;
     }
     
+    li {
+        list-style: none;
+    }
+}
+
+#widget_popular_article {
+    li {
+        list-style: none;
+    }
+}
+
+#widget_recent_article {
+    li {
+        list-style: none;
+    }
+}
+
+.table-content {
+    background-color: #eaeaea;
+    padding: 15px 0 15px 15px;
     li {
         list-style: none;
     }

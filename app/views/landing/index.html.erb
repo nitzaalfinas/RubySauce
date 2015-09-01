@@ -2,12 +2,15 @@
 <section class="container back-white pl0 pr0">
   <%= render "widget/nav" %>
 
-  <div class="col-lg-9">
-    <%= render partial: "articles" %>  	
-  </div>
-  <div class="col-lg-3">
-    <%= render partial: "widget/popular_article" %>
-    <%= render partial: "widget/recent_article" %>
+  <!-- content -->
+  <div class="col-lg-12">
+    <div class="col-lg-9 pl0">
+      <%= render partial: "articles" %>  	
+    </div>
+    <div class="col-lg-3 pr0">
+      <%= render partial: "widget/popular_article" %>
+      <%= render partial: "widget/recent_article" %>
+    </div>
   </div>
 </section>
 

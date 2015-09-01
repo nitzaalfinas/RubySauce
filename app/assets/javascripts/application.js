@@ -15,9 +15,4 @@
 //= require turbolinks
 // require_tree .  // REQUIRE_TREE DISABLED!!!!!!!!!!!!!!!!!!!!!
 //= require article_single
-//= require discuss
-//= require galleries
-//= require landing
-//= require page_single
-//= require percategory
 //= require search
