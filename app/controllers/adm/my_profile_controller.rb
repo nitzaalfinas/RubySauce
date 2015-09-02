@@ -27,7 +27,7 @@ class Adm::MyProfileController < ApplicationController
     
     if(params[:user][:avatar_file])
       if(@user.avatar_file)
-        if(@user.avatar_file != 'avatar-no.gif')
+        if(@user.avatar_file != 'avatar-no.png')
           # hapus file tersebut 
           if(File.exists?(Rails.root.to_s+'/public/images/original/'+@user.avatar_file))
             File.delete(Rails.root.to_s+'/public/images/original/'+@user.avatar_file)
