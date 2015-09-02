@@ -1,14 +1,11 @@
 class Adm::MyProfileController < ApplicationController
-  before_action :authenticate_user!
   
-  helper Adm::Helper # to call from view
-  include Adm::Helper # to call within controller
+  before_action :authenticate_user!
   
   layout "adm_layout"
   
   
-  def index
-    
+  def index  
   end
   
   def edit
@@ -74,10 +71,8 @@ class Adm::MyProfileController < ApplicationController
       @user.avatar_file = new_file_name
       @user.save
       
-      redirect_to('/adm/my_profile')
-      
     end
     
-    
+    redirect_to('/adm/my_profile')
   end 
 end
