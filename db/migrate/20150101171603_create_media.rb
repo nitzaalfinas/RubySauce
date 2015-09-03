@@ -1,24 +1,20 @@
 class CreateMedia < ActiveRecord::Migration
 	def up
-		self.connection.execute %Q( 
-			CREATE TABLE IF NOT EXISTS media (
-				id int(11) NOT NULL AUTO_INCREMENT,
-				med_storage_name varchar(100) DEFAULT NULL,
-				med_url varchar(500) DEFAULT NULL,
-			  	med_title varchar(255) DEFAULT NULL,
-			  	med_caption varchar(255) DEFAULT NULL,
-			  	med_alt varchar(255) DEFAULT NULL,
-			  	med_description varchar(255) DEFAULT NULL,
-			  	med_author_id int(11) DEFAULT NULL,
-			  	gallery int(11) DEFAULT NULL COMMENT 'Pilihan yes atau no',
-			  	created_at datetime NOT NULL,
-			  	updated_at datetime NOT NULL,
-			  	PRIMARY KEY (id)
-			);
-	 	)
+		create_table :media do |t|
+			t.string :med_storage_name, limit: 100
+			t.string :med_url, limit: 500
+			t.string :med_title
+			t.string :med_caption
+			t.string :med_alt
+			t.string :med_description
+			t.integer :med_author_id, limit: 8
+			t.integer :gallery, limit: 8, comment: "pilihan yes atau no"
+			t.timestamps null: false
+		end
 	end
 
 	def down
-		self.connection.execute "DROP TABLE IF EXISTS media;"
+		drop_table :media
+		#self.connection.execute "DROP TABLE IF EXISTS media;"
 	end
 end

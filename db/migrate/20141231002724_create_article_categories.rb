@@ -1,20 +1,16 @@
 class CreateArticleCategories < ActiveRecord::Migration
 
 	def up
-		self.connection.execute %Q( 
-			CREATE TABLE article_categories (
-				id int(11) NOT NULL AUTO_INCREMENT,
-				article_id int(11),
-				category_id int(11),
-				created_at datetime NOT NULL,
-				updated_at datetime NOT NULL,
-				PRIMARY KEY (id)
-			);	
-	 	)
+		create_table :article_categories do |t|
+			t.integer :article_id, limit: 8
+			t.integer :category_id, limit: 8
+			t.timestamps null: false
+		end
 	end
 
 	def down
-		self.connection.execute "DROP TABLE IF EXISTS article_categories;"
+		drop_table :article_categories
+		#self.connection.execute "DROP TABLE IF EXISTS article_categories;"
 	end
 
 end
