@@ -1,23 +1,19 @@
 class CreateOptions < ActiveRecord::Migration
 	def up
-		self.connection.execute %Q( 
-			CREATE TABLE IF NOT EXISTS options (
-				id int(11) NOT NULL AUTO_INCREMENT,
-			  	site_title varchar(255) DEFAULT NULL,
-			  	site_description varchar(255) DEFAULT NULL,
-			  	site_domain varchar(255) DEFAULT NULL,
-			  	site_menu text,
-			  	site_menu_draft text,
-          site_keywords varchar(255) DEFAULT NULL, 
-          article_size int(11) DEFAULT NULL,
-			  	created_at datetime NOT NULL,
-			  	updated_at datetime NOT NULL,
-			  	PRIMARY KEY (id)
-			);
-	 	)
+		create_table :options do |t|
+			t.string :site_title
+			t.string :site_description
+			t.string :site_domain
+			t.text :site_menu
+			t.text :site_menu_draft
+			t.string :site_keywords
+			t.integer :article_size, limit: 8
+			t.timestamps null: false
+		end
 	end
 
 	def down
-		self.connection.execute "DROP TABLE IF EXISTS options;"
+		drop_table :options 
+		#self.connection.execute "DROP TABLE IF EXISTS options;"
 	end
 end
