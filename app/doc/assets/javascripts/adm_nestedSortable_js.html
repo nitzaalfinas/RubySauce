@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>adm_nestedSortable.js - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../assets/javascripts/adm_application_js.html">adm_application.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_articles_js.html">adm_articles.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_bootstrap_js.html">adm_bootstrap.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_categories_js.html">adm_categories.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_dashboard_js.html">adm_dashboard.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_discuss_js.html">adm_discuss.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_jquery-ui_js.html">adm_jquery-ui.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_media_js.html">adm_media.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_menu_js.html">adm_menu.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_my_profile_js.html">adm_my_profile.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_nestedSortable_js.html">adm_nestedSortable.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_pages_js.html">adm_pages.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_settings_js.html">adm_settings.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_templates_js.html">adm_templates.js</a>
+  
+    <li><a href="../../assets/javascripts/adm_users_js.html">adm_users.js</a>
+  
+    <li><a href="../../assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../assets/javascripts/article_single_js.html">article_single.js</a>
+  
+    <li><a href="../../assets/javascripts/search_js.html">search.js</a>
+  
+    <li><a href="../../assets/stylesheets/adm_application_css_scss.html">adm_application.css.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_articles_scss.html">adm_articles.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_bootstrap_scss.html">adm_bootstrap.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_categories_scss.html">adm_categories.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_dashboard_scss.html">adm_dashboard.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_discuss_scss.html">adm_discuss.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_media_scss.html">adm_media.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_media_win_scss.html">adm_media_win.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_menu_scss.html">adm_menu.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_my_profile_scss.html">adm_my_profile.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_pages_scss.html">adm_pages.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_settings_scss.html">adm_settings.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_templates_scss.html">adm_templates.scss</a>
+  
+    <li><a href="../../assets/stylesheets/adm_users_scss.html">adm_users.scss</a>
+  
+    <li><a href="../../assets/stylesheets/application_css_scss.html">application.css.scss</a>
+  
+    <li><a href="../../assets/stylesheets/bootstrap_css.html">bootstrap.css</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/article_single_js.html">article_single.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/clean-blog_js.html">clean-blog.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/discuss_js.html">discuss.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/galleries_js.html">galleries.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/landing_js.html">landing.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/page_single_js.html">page_single.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/javascripts/percategory_js.html">percategory.js</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/application_css_scss.html">application.css.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/article_single_scss.html">article_single.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/bootstrap_css.html">bootstrap.css</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/clean-blog_min_css.html">clean-blog.min.css</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/discuss_scss.html">discuss.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/galleries_scss.html">galleries.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/landing_scss.html">landing.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/page_single_scss.html">page_single.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/assets/stylesheets/percategory_scss.html">percategory.scss</a>
+  
+    <li><a href="../../assets/themes/clean_blog/supplements/fonts/font-awesome_min_css.html">font-awesome.min.css</a>
+  
+    <li><a href="../../assets/themes/clean_blog/supplements/fonts/fontawesome-webfont_svg.html">fontawesome-webfont.svg</a>
+  
+    <li><a href="../../assets/themes/clean_blog/theme_json.html">theme.json</a>
+  
+    <li><a href="../../assets/themes/clean_blog/theme_json~.html">theme.json~</a>
+  
+    <li><a href="../../assets/themes/default/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../assets/themes/default/assets/javascripts/article_single_js.html">article_single.js</a>
+  
+    <li><a href="../../assets/themes/default/assets/javascripts/search_js.html">search.js</a>
+  
+    <li><a href="../../assets/themes/default/assets/stylesheets/application_css_scss.html">application.css.scss</a>
+  
+    <li><a href="../../assets/themes/default/assets/stylesheets/bootstrap_css.html">bootstrap.css</a>
+  
+    <li><a href="../../assets/themes/default/supplements/fonts/glyphicons-halflings-regular_svg.html">glyphicons-halflings-regular.svg</a>
+  
+    <li><a href="../../assets/themes/default/theme_json.html">theme.json</a>
+  
+    <li><a href="../../views/adm/menus/index_.html">index_</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page assets/javascripts/adm_nestedSortable.js">
+
+<pre>jQuery UI Nested Sortable
+v 1.3.5 / 21 jun 2012
+http://mjsarfatti.com/code/nestedSortable
+
+Depends on:
+      jquery.ui.sortable.js 1.8+
+
+Copyright (c) 2010-2012 Manuele J Sarfatti
+Licensed under the MIT License
+http://www.opensource.org/licenses/mit-license.php</pre>
+
+<p>(function($) {</p>
+
+<pre>  $.widget(&quot;mjs.nestedSortable&quot;, $.extend({}, $.ui.sortable.prototype, {
+
+          options: {
+                  tabSize: 20,
+                  disableNesting: &#39;mjs-nestedSortable-no-nesting&#39;,
+                  errorClass: &#39;mjs-nestedSortable-error&#39;,
+                  doNotClear: false,
+                  listType: &#39;ol&#39;,
+                  maxLevels: 0,
+                  protectRoot: false,
+                  rootID: null,
+                  rtl: false,
+                  isAllowed: function(item, parent) { return true; }
+          },
+
+          _create: function() {
+                  this.element.data(&#39;sortable&#39;, this.element.data(&#39;nestedSortable&#39;));
+
+                  if (!this.element.is(this.options.listType))
+                          throw new Error(&#39;nestedSortable: Please check the listType option is set to your actual list type&#39;);
+
+                  return $.ui.sortable.prototype._create.apply(this, arguments);
+          },
+
+          destroy: function() {
+                  this.element
+                          .removeData(&quot;nestedSortable&quot;)
+                          .unbind(&quot;.nestedSortable&quot;);
+                  return $.ui.sortable.prototype.destroy.apply(this, arguments);
+          },
+
+          _mouseDrag: function(event) {
+
+                  //Compute the helpers position
+                  this.position = this._generatePosition(event);
+                  this.positionAbs = this._convertPositionTo(&quot;absolute&quot;);
+
+                  if (!this.lastPositionAbs) {
+                          this.lastPositionAbs = this.positionAbs;
+                  }
+
+                  var o = this.options;
+
+                  //Do scrolling
+                  if(this.options.scroll) {
+                          var scrolled = false;
+                          if(this.scrollParent[0] != document &amp;&amp; this.scrollParent[0].tagName != &#39;HTML&#39;) {
+
+                                  if((this.overflowOffset.top + this.scrollParent[0].offsetHeight) - event.pageY &lt; o.scrollSensitivity)
+                                          this.scrollParent[0].scrollTop = scrolled = this.scrollParent[0].scrollTop + o.scrollSpeed;
+                                  else if(event.pageY - this.overflowOffset.top &lt; o.scrollSensitivity)
+                                          this.scrollParent[0].scrollTop = scrolled = this.scrollParent[0].scrollTop - o.scrollSpeed;
+
+                                  if((this.overflowOffset.left + this.scrollParent[0].offsetWidth) - event.pageX &lt; o.scrollSensitivity)
+                                          this.scrollParent[0].scrollLeft = scrolled = this.scrollParent[0].scrollLeft + o.scrollSpeed;
+                                  else if(event.pageX - this.overflowOffset.left &lt; o.scrollSensitivity)
+                                          this.scrollParent[0].scrollLeft = scrolled = this.scrollParent[0].scrollLeft - o.scrollSpeed;
+
+                          } else {
+
+                                  if(event.pageY - $(document).scrollTop() &lt; o.scrollSensitivity)
+                                          scrolled = $(document).scrollTop($(document).scrollTop() - o.scrollSpeed);
+                                  else if($(window).height() - (event.pageY - $(document).scrollTop()) &lt; o.scrollSensitivity)
+                                          scrolled = $(document).scrollTop($(document).scrollTop() + o.scrollSpeed);
+
+                                  if(event.pageX - $(document).scrollLeft() &lt; o.scrollSensitivity)
+                                          scrolled = $(document).scrollLeft($(document).scrollLeft() - o.scrollSpeed);
+                                  else if($(window).width() - (event.pageX - $(document).scrollLeft()) &lt; o.scrollSensitivity)
+                                          scrolled = $(document).scrollLeft($(document).scrollLeft() + o.scrollSpeed);
+
+                          }
+
+                          if(scrolled !== false &amp;&amp; $.ui.ddmanager &amp;&amp; !o.dropBehaviour)
+                                  $.ui.ddmanager.prepareOffsets(this, event);
+                  }
+
+                  //Regenerate the absolute position used for position checks
+                  this.positionAbs = this._convertPositionTo(&quot;absolute&quot;);
+
+// Find the top offset before rearrangement,
+var previousTopOffset = this.placeholder.offset().top;
+
+                  //Set the helper position
+                  if(!this.options.axis || this.options.axis != &quot;y&quot;) this.helper[0].style.left = this.position.left+&#39;px&#39;;
+                  if(!this.options.axis || this.options.axis != &quot;x&quot;) this.helper[0].style.top = this.position.top+&#39;px&#39;;
+
+                  //Rearrange
+                  for (var i = this.items.length - 1; i &gt;= 0; i--) {
+
+                          //Cache variables and intersection, continue if no intersection
+                          var item = this.items[i], itemElement = item.item[0], intersection = this._intersectsWithPointer(item);
+                          if (!intersection) continue;
+
+                          if(itemElement != this.currentItem[0] //cannot intersect with itself
+                                  &amp;&amp;      this.placeholder[intersection == 1 ? &quot;next&quot; : &quot;prev&quot;]()[0] != itemElement //no useless actions that have been done before
+                                  &amp;&amp;      !$.contains(this.placeholder[0], itemElement) //no action if the item moved is the parent of the item checked
+                                  &amp;&amp; (this.options.type == &#39;semi-dynamic&#39; ? !$.contains(this.element[0], itemElement) : true)
+                                  //&amp;&amp; itemElement.parentNode == this.placeholder[0].parentNode // only rearrange items within the same container
+                          ) {
+
+                                  $(itemElement).mouseenter();
+
+                                  this.direction = intersection == 1 ? &quot;down&quot; : &quot;up&quot;;
+
+                                  if (this.options.tolerance == &quot;pointer&quot; || this._intersectsWithSides(item)) {
+                                          $(itemElement).mouseleave();
+                                          this._rearrange(event, item);
+                                  } else {
+                                          break;
+                                  }
+
+                                  // Clear emtpy ul&#39;s/ol&#39;s
+                                  this._clearEmpty(itemElement);
+
+                                  this._trigger(&quot;change&quot;, event, this._uiHash());
+                                  break;
+                          }
+                  }
+
+                  var parentItem = (this.placeholder[0].parentNode.parentNode &amp;&amp;
+                                                   $(this.placeholder[0].parentNode.parentNode).closest(&#39;.ui-sortable&#39;).length)
+                                                  ? $(this.placeholder[0].parentNode.parentNode)
+                                                  : null,
+                      level = this._getLevel(this.placeholder),
+                      childLevels = this._getChildLevels(this.helper);
+
+// To find the previous sibling in the list, keep backtracking until we hit a valid list item.
+                  var previousItem = this.placeholder[0].previousSibling ? $(this.placeholder[0].previousSibling) : null;
+                  if (previousItem != null) {
+                          while (previousItem[0].nodeName.toLowerCase() != &#39;li&#39; || previousItem[0] == this.currentItem[0] || previousItem[0] == this.helper[0]) {
+                                  if (previousItem[0].previousSibling) {
+                                          previousItem = $(previousItem[0].previousSibling);
+                                  } else {
+                                          previousItem = null;
+                                          break;
+                                  }
+                          }
+                  }
+
+// To find the next sibling in the list, keep stepping forward until we hit a valid list item.
+var nextItem = this.placeholder[0].nextSibling ? $(this.placeholder[0].nextSibling) : null;
+if (nextItem != null) {
+  while (nextItem[0].nodeName.toLowerCase() != &#39;li&#39; || nextItem[0] == this.currentItem[0] || nextItem[0] == this.helper[0]) {
+    if (nextItem[0].nextSibling) {
+      nextItem = $(nextItem[0].nextSibling);
+    } else {
+      nextItem = null;
+      break;
+    }
+  }
+}
+
+                  var newList = document.createElement(o.listType);
+
+                  this.beyondMaxLevels = 0;
+
+                  // If the item is moved to the left, send it to its parent&#39;s level unless there are siblings below it.
+                  if (parentItem != null &amp;&amp; nextItem == null &amp;&amp;
+                                  (o.rtl &amp;&amp; (this.positionAbs.left + this.helper.outerWidth() &gt; parentItem.offset().left + parentItem.outerWidth()) ||
+                                  !o.rtl &amp;&amp; (this.positionAbs.left &lt; parentItem.offset().left))) {
+                          parentItem.after(this.placeholder[0]);
+                          this._clearEmpty(parentItem[0]);
+                          this._trigger(&quot;change&quot;, event, this._uiHash());
+                  }
+                  // If the item is below a sibling and is moved to the right, make it a child of that sibling.
+                  else if (previousItem != null &amp;&amp;
+                                          (o.rtl &amp;&amp; (this.positionAbs.left + this.helper.outerWidth() &lt; previousItem.offset().left + previousItem.outerWidth() - o.tabSize) ||
+                                          !o.rtl &amp;&amp; (this.positionAbs.left &gt; previousItem.offset().left + o.tabSize))) {
+                          this._isAllowed(previousItem, level, level+childLevels+1);
+                          if (!previousItem.children(o.listType).length) {
+                                  previousItem[0].appendChild(newList);
+                          }
+  // If this item is being moved from the top, add it to the top of the list.
+  if (previousTopOffset &amp;&amp; (previousTopOffset &lt;= previousItem.offset().top)) {
+    previousItem.children(o.listType).prepend(this.placeholder);
+  }
+  // Otherwise, add it to the bottom of the list.
+  else {
+                            previousItem.children(o.listType)[0].appendChild(this.placeholder[0]);
+  }
+                          this._trigger(&quot;change&quot;, event, this._uiHash());
+                  }
+                  else {
+                          this._isAllowed(parentItem, level, level+childLevels);
+                  }
+
+                  //Post events to containers
+                  this._contactContainers(event);
+
+                  //Interconnect with droppables
+                  if($.ui.ddmanager) $.ui.ddmanager.drag(this, event);
+
+                  //Call callbacks
+                  this._trigger(&#39;sort&#39;, event, this._uiHash());
+
+                  this.lastPositionAbs = this.positionAbs;
+                  return false;
+
+          },
+
+          _mouseStop: function(event, noPropagation) {
+
+                  // If the item is in a position not allowed, send it back
+                  if (this.beyondMaxLevels) {
+
+                          this.placeholder.removeClass(this.options.errorClass);
+
+                          if (this.domPosition.prev) {
+                                  $(this.domPosition.prev).after(this.placeholder);
+                          } else {
+                                  $(this.domPosition.parent).prepend(this.placeholder);
+                          }
+
+                          this._trigger(&quot;revert&quot;, event, this._uiHash());
+
+                  }
+
+                  // Clean last empty ul/ol
+                  for (var i = this.items.length - 1; i &gt;= 0; i--) {
+                          var item = this.items[i].item[0];
+                          this._clearEmpty(item);
+                  }
+
+                  $.ui.sortable.prototype._mouseStop.apply(this, arguments);
+
+          },
+
+          serialize: function(options) {
+
+                  var o = $.extend({}, this.options, options),
+                          items = this._getItemsAsjQuery(o &amp;&amp; o.connected),
+                      str = [];
+
+                  $(items).each(function() {
+                          var res = ($(o.item || this).attr(o.attribute || &#39;id&#39;) || &#39;&#39;)
+                                          .match(o.expression || (/(.+)[-=_](.+)/)),
+                              pid = ($(o.item || this).parent(o.listType)
+                                          .parent(o.items)
+                                          .attr(o.attribute || &#39;id&#39;) || &#39;&#39;)
+                                          .match(o.expression || (/(.+)[-=_](.+)/));
+
+                          if (res) {
+                                  str.push(((o.key || res[1]) + &#39;[&#39; + (o.key &amp;&amp; o.expression ? res[1] : res[2]) + &#39;]&#39;)
+                                          + &#39;=&#39;
+                                          + (pid ? (o.key &amp;&amp; o.expression ? pid[1] : pid[2]) : o.rootID));
+                          }
+                  });
+
+                  if(!str.length &amp;&amp; o.key) {
+                          str.push(o.key + &#39;=&#39;);
+                  }
+
+                  return str.join(&#39;&amp;&#39;);
+
+          },
+
+          toHierarchy: function(options) {
+
+                  var o = $.extend({}, this.options, options),
+                          sDepth = o.startDepthCount || 0,
+                      ret = [];
+
+                  $(this.element).children(o.items).each(function () {
+                          var level = _recursiveItems(this);
+                          ret.push(level);
+                  });
+
+                  return ret;
+
+                  function _recursiveItems(item) {
+                          var id = ($(item).attr(o.attribute || &#39;id&#39;) || &#39;&#39;).match(o.expression || (/(.+)[-=_](.+)/));
+                          if (id) {
+                                  var currentItem = {&quot;id&quot; : id[2]};
+                                  if ($(item).children(o.listType).children(o.items).length &gt; 0) {
+                                          currentItem.children = [];
+                                          $(item).children(o.listType).children(o.items).each(function() {
+                                                  var level = _recursiveItems(this);
+                                                  currentItem.children.push(level);
+                                          });
+                                  }
+                                  return currentItem;
+                          }
+                  }
+          },
+
+          toArray: function(options) {
+
+                  var o = $.extend({}, this.options, options),
+                          sDepth = o.startDepthCount || 0,
+                      ret = [],
+                      left = 2;
+
+                  ret.push({
+                          &quot;item_id&quot;: o.rootID,
+                          &quot;parent_id&quot;: &#39;none&#39;,
+                          &quot;depth&quot;: sDepth,
+                          &quot;left&quot;: &#39;1&#39;,
+                          &quot;right&quot;: ($(o.items, this.element).length + 1) * 2
+                  });
+
+                  $(this.element).children(o.items).each(function () {
+                          left = _recursiveArray(this, sDepth + 1, left);
+                  });
+
+                  ret = ret.sort(function(a,b){ return (a.left - b.left); });
+
+                  return ret;
+
+                  function _recursiveArray(item, depth, left) {
+
+                          var right = left + 1,
+                              id,
+                              pid;
+
+                          if ($(item).children(o.listType).children(o.items).length &gt; 0) {
+                                  depth ++;
+                                  $(item).children(o.listType).children(o.items).each(function () {
+                                          right = _recursiveArray($(this), depth, right);
+                                  });
+                                  depth --;
+                          }
+
+                          id = ($(item).attr(o.attribute || &#39;id&#39;)).match(o.expression || (/(.+)[-=_](.+)/));
+
+                          if (depth === sDepth + 1) {
+                                  pid = o.rootID;
+                          } else {
+                                  var parentItem = ($(item).parent(o.listType)
+                                                                                   .parent(o.items)
+                                                                                   .attr(o.attribute || &#39;id&#39;))
+                                                                                   .match(o.expression || (/(.+)[-=_](.+)/));
+                                  pid = parentItem[2];
+                          }
+
+                          if (id) {
+                                          ret.push({&quot;item_id&quot;: id[2], &quot;parent_id&quot;: pid, &quot;depth&quot;: depth, &quot;left&quot;: left, &quot;right&quot;: right});
+                          }
+
+                          left = right + 1;
+                          return left;
+                  }
+
+          },
+
+          _clearEmpty: function(item) {
+
+                  var emptyList = $(item).children(this.options.listType);
+                  if (emptyList.length &amp;&amp; !emptyList.children().length &amp;&amp; !this.options.doNotClear) {
+                          emptyList.remove();
+                  }
+
+          },
+
+          _getLevel: function(item) {
+
+                  var level = 1;
+
+                  if (this.options.listType) {
+                          var list = item.closest(this.options.listType);
+                          while (list &amp;&amp; list.length &gt; 0 &amp;&amp; 
+                  !list.is(&#39;.ui-sortable&#39;)) {
+                                  level++;
+                                  list = list.parent().closest(this.options.listType);
+                          }
+                  }
+
+                  return level;
+          },
+
+          _getChildLevels: function(parent, depth) {
+                  var self = this,
+                      o = this.options,
+                      result = 0;
+                  depth = depth || 0;
+
+                  $(parent).children(o.listType).children(o.items).each(function (index, child) {
+                                  result = Math.max(self._getChildLevels(child, depth + 1), result);
+                  });
+
+                  return depth ? result + 1 : result;
+          },
+
+          _isAllowed: function(parentItem, level, levels) {
+                  var o = this.options,
+                          isRoot = $(this.domPosition.parent).hasClass(&#39;ui-sortable&#39;) ? true : false,
+                          maxLevels = this.placeholder.closest(&#39;.ui-sortable&#39;).nestedSortable(&#39;option&#39;, &#39;maxLevels&#39;); // this takes into account the maxLevels set to the recipient list
+
+                  // Is the root protected?
+                  // Are we trying to nest under a no-nest?
+                  // Are we nesting too deep?
+                  if (!o.isAllowed(this.currentItem, parentItem) ||
+                          parentItem &amp;&amp; parentItem.hasClass(o.disableNesting) ||
+                          o.protectRoot &amp;&amp; (parentItem == null &amp;&amp; !isRoot || isRoot &amp;&amp; level &gt; 1)) {
+                                  this.placeholder.addClass(o.errorClass);
+                                  if (maxLevels &lt; levels &amp;&amp; maxLevels != 0) {
+                                          this.beyondMaxLevels = levels - maxLevels;
+                                  } else {
+                                          this.beyondMaxLevels = 1;
+                                  }
+                  } else {
+                          if (maxLevels &lt; levels &amp;&amp; maxLevels != 0) {
+                                  this.placeholder.addClass(o.errorClass);
+                                  this.beyondMaxLevels = levels - maxLevels;
+                          } else {
+                                  this.placeholder.removeClass(o.errorClass);
+                                  this.beyondMaxLevels = 0;
+                          }
+                  }
+          }
+
+  }));
+
+  $.mjs.nestedSortable.prototype.options = $.extend({}, $.ui.sortable.prototype.options, $.mjs.nestedSortable.prototype.options);</pre>
+
+<p>})(jQuery);</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
