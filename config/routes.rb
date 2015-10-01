@@ -70,7 +70,7 @@ Rails.application.routes.draw do
     
     resources :settings do
       collection do
-        patch 'update', to: 'settings#update'
+        post 'update', to: 'settings#update'
       end
     end
     
