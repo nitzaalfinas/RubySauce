@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 // require_tree .  // REQUIRE_TREE DISABLED!!!!!!!!!!!!!!!!!!!!!
-//= require clean-blog
 //= require article_single
 //= require discuss
 //= require galleries
