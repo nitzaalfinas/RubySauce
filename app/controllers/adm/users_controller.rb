@@ -35,5 +35,29 @@ class Adm::UsersController < ApplicationController
     redirect_to(adm_users_path)
     
   end
+  
+  def edit
+    @id = params[:id].to_i
+    @page = params[:page].to_i
+    
+    @user = User.find(@id)
+    
+  end
+  
+  def update
+    @id = params[:id].to_i
+
+    @user = User.find(@id)
+    @user.email = params[:user][:email]
+    @user.full_name = params[:user][:full_name]
+    @user.nick_name = params[:user][:nick_name]
+    @user_save = @user.save
+    
+    if @user_save
+      redirect_to adm_users_path
+    else
+      render 'edit'
+    end
+  end
 
 end

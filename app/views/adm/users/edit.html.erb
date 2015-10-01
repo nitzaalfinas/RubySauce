@@ -1,0 +1,100 @@
+<div class="panel_title">
+  <div class="col-lg-12">
+    <div class="pull-left">
+      <h1 class="mt10 mb10 fs2">
+          Users
+          <small>Edit</small>
+      </h1>
+    </div>
+    <div class="pull-right">
+      <small>
+        <ol class="breadcrumb pt20">
+          <li>
+            <a href="/">
+              <i class="glyphicon glyphicon-home"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/adm/dashboard">
+              <i class="glyphicon glyphicon-dashboard"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/adm/users">
+              <i class="glyphicon glyphicon-user"></i>
+              Users
+            </a>
+          </li>
+          <li class="active">
+            <i class="glyphicon glyphicon-pencil"></i>
+            Edit
+          </li>
+        </ol>
+      </small>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12">
+  <div class="form-horizontal">
+    <%= form_for(@user, url: "/adm/users/#{@user.id}?page=#{@page}") do |f| %>
+      
+      <% if @user.errors.any? %>
+        <div id="errors" class="alert alert-danger">
+          <h2 class="mt5 mb5"><%= pluralize(@user.errors.count, "error") %> prevent this post from saving</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <label class="col-lg-3">Email</label>	
+        <div class="col-lg-9">
+          <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-lg-3">Full Name</label>	
+        <div class="col-lg-9">
+          <%= f.text_field :full_name, class: "form-control", placeholder: "Full Name" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-lg-3">Nick Name</label>	
+        <div class="col-lg-9">
+          <%= f.text_field :nick_name, class: "form-control", placeholder: "Nick Name" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-lg-3">Level</label>	
+        <div class="col-lg-9">
+          <select name="user[level]" class="form-control">
+            <%= options_for_select([['-Choose-',''],['Admin','Admin'],['User','']], @user.level) %>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-lg-12">
+          <input type="submit" class="btn btn-primary" value="Update">
+          <a href="/adm/users" class="btn btn-default">Cancel</a>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#pill_users').addClass('active');
+  });
+</script>
