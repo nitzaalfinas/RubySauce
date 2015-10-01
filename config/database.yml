@@ -4,8 +4,8 @@ default: &default
   pool: 5
   username: root_dev
   password: 1234
-  socket: /tmp/mysql.sock
-  #socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock # for mac
+  #socket: /var/run/mysqld/mysqld.sock # for ubuntu
 
 development:
   <<: *default
