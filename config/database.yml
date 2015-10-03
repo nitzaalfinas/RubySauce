@@ -9,13 +9,13 @@ default: &default
 
 development:
   <<: *default
-  database: rubysauce_development
+  database: xrubysauce_dev
 
 
 test:
   <<: *default
-  database: rubysauce_test
+  database: xrubysauce_test
 
 production:
   <<: *default
-  database: rubysauce_cms
+  database: xrubysauce_cms
