@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root_dev
+  password: 1234
+  socket: /tmp/mysql.sock # for mac
+  #socket: /var/run/mysqld/mysqld.sock # for ubuntu
+
+development:
+  <<: *default
+  database: rubysauce_development
+
+
+test:
+  <<: *default
+  database: rubysauce_test
+
+production:
+  <<: *default
+  database: rubysauce_cms
