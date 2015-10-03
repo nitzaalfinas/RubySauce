@@ -1,2 +1,0 @@
-module PageSingleHelper
-end
