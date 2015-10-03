@@ -9,12 +9,7 @@ default: &default
 
 development:
   <<: *default
-<<<<<<< HEAD
   database: rubysauce_development
-=======
-  database: rubysauce_dev
->>>>>>> 0c54a32d5707e0c5d4f84eac65e4db15e65acbb6
-
 
 test:
   <<: *default
