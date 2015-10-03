@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= app_set('site_title') %> - <%= @dynamic_title %></title>
+
+  <link rel='icon' href='<%= image_url "logo.png" %>' type='image/jpg'>
+
+  <!-- global -->
+  <meta name="author" content="<%= @dynamic_author %>" />
+
+  <!-- google -->
+  <meta name="description" content="<%= @dynamic_description %>" />
+  <meta name="keywords" content="<%= @dynamic_keywords %>" />
+
+  <!-- facebook -->
+  <meta property="og:title" content="<%= app_set('site_title') %> - <%= @dynamic_title %>" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="<%= app_set('site_title') %>" />
+  <meta property="og:image" content="<%= image_url @dynamic_image %>" />
+  <meta property="og:description" content="<%= @dynamic_description %>" />
+  <!--
+  <meta property="fb:app_id" content="819591064728973" />
+  -->
+
+  <!-- twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="<%= app_set('site_title') %> - <%= @dynamic_title %>" />
+  <meta name="twitter:description" content="<%= @dynamic_description %>" />
+  <meta name="twitter:image" content="<%= image_url @dynamic_image %>" />
+  <meta name="twitter:domain" content="<%= app_set('site_domain') %>" />
+
+  
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
+  <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Raleway:200,400,800', media: 'all' %>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

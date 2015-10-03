@@ -1,0 +1,33 @@
+<%= render 'widget/head_top' %>
+<section class="container back-white pl0 pr0">
+  <%= render "widget/nav" %>
+
+  <!-- content -->
+  <div class="col-lg-12">
+    <div class="col-lg-9">
+      <div class="w100 dis-table">
+        <%= form_tag '/search', method: 'get' do %>
+          <div class="col-lg-9 pl0">
+            <input type="text" name="q" value="<%= @q %>" class="form-control">
+          </div>
+          <div class="col-lg-3">
+            <%= button_tag 'Search', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="mt30">
+        <%= render partial: "articles" %>  	
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <%= render partial: "widget/popular_article" %>
+      <%= render partial: "widget/recent_article" %>
+    </div>
+  </div>
+</section>
+
+
+<%= render "widget/footer" %>
+
+<script>search.onload();</script>

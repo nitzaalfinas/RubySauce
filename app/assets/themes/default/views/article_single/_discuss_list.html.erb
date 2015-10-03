@@ -1,0 +1,18 @@
+<% @discusses = VDiscuss.where("article_id = ? and dis_approve = 'yes'",@article.id) %>
+
+<h3><%= @discusses.size %> Replies</h3>
+
+<% @discusses.each do |d| %>
+  <div class="content left" style="margin-right:20px">
+    <div class="user-avatar">
+      <i class="fa fa-user"></i>
+      <div class="user-image" style="background-image:url('image/user-pic/enlarged-facebook-profile-picture.jpg')"></div>
+    </div>	
+  </div>
+  <div class="content left" style="margin:0;width: 88%;">
+    <h2><%= d.full_name %></h2>
+    <h3><%= d.created_at %></h3>
+    <%= d.dis_body %>
+  </div>
+  <div class="clear line" style="margin-right:50px"></div>
+<% end %>

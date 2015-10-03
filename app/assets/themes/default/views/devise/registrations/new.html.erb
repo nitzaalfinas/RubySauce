@@ -1,0 +1,55 @@
+<%= render 'widget/head_top' %>
+
+<section class="container back-white pl0 pr0">
+  <%= render "widget/nav" %>
+  
+  <!-- breadcrumb -->
+  <div class="col-lg-12">
+    <ol class="breadcrumb">
+      <li>
+        <a href="/"><i class="fa fa-angle-double-right"></i> Home</a>
+      </li>
+      <li class="active">
+        Sign up
+      </li>
+    </ol>
+  </div>
+  
+  <!-- content -->
+  <div class="col-lg-12 pb10">
+    <div class="col-lg-offset-3 col-lg-6">
+      <h1 class="t-center">Sign up</h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-horizontal') do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.label :email, class: 'control-label' %>
+          <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class: 'control-label' %> 
+          <% if @validatable %>
+            <i>(<%= @minimum_password_length %> characters minimum)</i>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, class: 'control-label' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Sign up", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+  
+</section>
+
+<%= render "widget/footer" %>
