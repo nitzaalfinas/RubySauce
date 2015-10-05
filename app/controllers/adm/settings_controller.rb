@@ -24,8 +24,13 @@ class Adm::SettingsController < ApplicationController
     
     @opt_site_keywords = Option.where("option_key = 'site_keywords'").take
     @opt_site_keywords.option_value = params[:o_site_keywords]
-    @opt_xx = @opt_site_keywords.save
-
+    @opt_site_keywords.save
+    
+    @opt_article_size = Option.where("option_key = 'article_size'").take
+    @opt_article_size.option_value = params[:o_article_size]
+    @opt_xx = @opt_article_size.save
+    
+    
     # if the last option save, redirect to ...
     if @opt_xx 
       render inline: "success"
