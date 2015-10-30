@@ -12,7 +12,7 @@ class PageSingleControllerTest < ActionController::TestCase
   end
   
   test "get page/:permalink | User should see single page" do
-    sign_in users(:one)
+    sign_in users(:udin)
     get :index, permalink: articles(:article_third).permalink
     assert_response :success
     assert_template 'index'
