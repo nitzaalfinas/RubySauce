@@ -5,28 +5,28 @@ class Adm::MediaController < ApplicationController
   layout "adm_layout"
 
   def index
-    @media = Media.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @media = Medium.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
   end
 
   def new
-    @media = Media.new
+    @medium = Medium.new
   end
 
   def upload
-    @media = Media.new
-    @media.med_storage_name = params[:media][:med_storage_name]
-    @media.med_title = params[:media][:med_title]
-    @media.med_caption = params[:media][:med_caption]
-    @media.med_alt = params[:media][:med_alt]
-    @media.med_description = params[:media][:med_description]
-    @media.med_author_id = current_user.id
-    @media.gallery = params[:media][:gallery]
-    @media_save = @media.save
+    @medium = Medium.new
+    @medium.med_storage_name = params[:medium][:med_storage_name]
+    @medium.med_title = params[:medium][:med_title]
+    @medium.med_caption = params[:medium][:med_caption]
+    @medium.med_alt = params[:medium][:med_alt]
+    @medium.med_description = params[:medium][:med_description]
+    @medium.med_author_id = current_user.id
+    @medium.gallery = params[:medium][:gallery]
+    @medium_save = @medium.save
 
 
-    if @media_save
+    if @medium_save
 
-      med_storage_name = params[:media][:med_storage_name] # Assign a file like this
+      med_storage_name = params[:medium][:med_storage_name] # Assign a file like this
       randomx = Random.new
       random_id = randomx.rand(1000000...100000000).to_s
 
@@ -40,9 +40,9 @@ class Adm::MediaController < ApplicationController
         #get file extension
         file_ex = File.extname(Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename)
 
-        #get id for just saved image, in this case is @media.id. Then rename it
+        #get id for just saved image, in this case is @medium.id. Then rename it
         ## table id into string
-        table_id = @media.id.to_s
+        table_id = @medium.id.to_s
         ## old name
         old_name = Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename
         ## new name with extension
@@ -52,7 +52,7 @@ class Adm::MediaController < ApplicationController
         file_rename = File.rename(old_name, new_name)
 
         ###UPDATE DATABASE BECAUSE IMAGE HAS A NEW NAME
-        @medup = Media.where(id: @media.id).take
+        @medup = Medium.where(id: @medium.id).take
         @medup.med_storage_name = table_id+'-'+random_id+file_ex
         @medup.save
 
@@ -75,40 +75,40 @@ class Adm::MediaController < ApplicationController
 
       redirect_to adm_media_path
 
-    else #else for @media_save
+    else #else for @medium_save
       render "new"
-    end #end @media_save
+    end #end @medium_save
 
   end #upload
 
 
   def edit
-    id = params[:id]
-    @media = Media.find(params[:id])
+    id = params[:id].to_i
+    @medium = Medium.find(id)
     @page = params[:page]
   end #edit
 
 
   def update
-    @media = Media.find(params[:id])
+    @medium = Medium.find(params[:id])
 
     #if there is med_storage_name
-    if params[:media][:med_storage_name]
-      @media.med_storage_name = params[:media][:med_storage_name]	
+    if params[:medium][:med_storage_name]
+      @medium.med_storage_name = params[:medium][:med_storage_name]	
     end
 
-    @media.med_title = params[:media][:med_title]
-    @media.med_caption = params[:media][:med_caption]
-    @media.med_alt = params[:media][:med_alt]
-    @media.med_description = params[:media][:med_description]
-    @media.med_author_id = current_user.id
-    @media.gallery = params[:media][:gallery]
-    @media_save = @media.save
+    @medium.med_title = params[:medium][:med_title]
+    @medium.med_caption = params[:medium][:med_caption]
+    @medium.med_alt = params[:medium][:med_alt]
+    @medium.med_description = params[:medium][:med_description]
+    @medium.med_author_id = current_user.id
+    @medium.gallery = params[:medium][:gallery]
+    @medium_save = @medium.save
 
 
-    if @media_save
+    if @medium_save
 
-      med_storage_name = params[:media][:med_storage_name] # Assign a file like this, or
+      med_storage_name = params[:medium][:med_storage_name] # Assign a file like this, or
 
       if med_storage_name
 
@@ -122,9 +122,9 @@ class Adm::MediaController < ApplicationController
           #get file extension
           file_ex = File.extname(Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename)
 
-          #get id for just saved image, in this case is @media.id. Then rename it
+          #get id for just saved image, in this case is @medium.id. Then rename it
           ## table id into string
-          table_id = @media.id.to_s
+          table_id = @medium.id.to_s
           ## old name
           old_name = Rails.root.to_s+'/public/images/original/'+med_storage_name.original_filename
           ## new name with extension
@@ -134,7 +134,7 @@ class Adm::MediaController < ApplicationController
           file_rename = File.rename(old_name, new_name)
 
           ###UPDATE DATABASE BECAUSE IMAGE HAS NEW NAME
-          @medup = Media.where(id: @media.id).take
+          @medup = Medium.where(id: @medium.id).take
           @medup.med_storage_name = table_id+file_ex
           @medup.save
 
@@ -159,14 +159,14 @@ class Adm::MediaController < ApplicationController
 
       redirect_to adm_media_path
 
-    else #else for @media_save
+    else #else for @medium_save
       render "edit"
-    end #end @media_save
+    end #end @medium_save
 
   end #end update
 
   def destroy
-    @data = Media.find(params[:id])
+    @data = Medium.find(params[:id])
 
     if @data.med_storage_name != nil
 
@@ -206,9 +206,9 @@ class Adm::MediaController < ApplicationController
 
     orderxx = sortx+" "+orderx
 
-    total = Media.all.size
+    total = Medium.all.size
 
-    @media = Media.order(orderxx).limit(rows).offset(startx)
+    @medium = Medium.order(orderxx).limit(rows).offset(startx)
 
     @next_page = page + 1
     @prev_page = page - 1
@@ -234,9 +234,9 @@ class Adm::MediaController < ApplicationController
 
     orderxx = sortx+" "+orderx
 
-    total = Media.all.size
+    total = Medium.all.size
 
-    @media = Media.order(orderxx).limit(rows).offset(startx)
+    @medium = Medium.order(orderxx).limit(rows).offset(startx)
 
     @next_page = page + 1
     @prev_page = page - 1

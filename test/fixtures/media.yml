@@ -1,0 +1,22 @@
+one:
+    id: 1
+    med_storage_name: satu.jpg
+    med_url:
+    med_title: Coba Media 01
+    med_caption: Caption Media 01
+    med_alt: Coba Media 01
+    med_description: Ini adalah media description 01
+    med_author_id: users(:udin).id
+    gallery: Yes
+    
+
+two:
+    id: 2
+    med_storage_name: dua.jpg
+    med_url:
+    med_title: Coba Media 02
+    med_caption: Caption Media 02
+    med_alt: Coba Media 02
+    med_description: Ini adalah media description 02
+    med_author_id: users(:jabua).id
+    gallery: Yes

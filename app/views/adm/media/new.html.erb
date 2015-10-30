@@ -38,13 +38,13 @@
 
 <div class="col-lg-12">
   <div class="form-horizontal">
-    <%= form_for @media, url: "/adm/media/upload", :html => {:multipart => true} do |f| %>
+    <%= form_for @medium, url: "/adm/media/upload", :html => {:multipart => true} do |f| %>
 
-      <% if @media.errors.any? %>
+      <% if @medium.errors.any? %>
         <div id="errors" class="alert alert-danger">
-          <h2 class="mt5 mb5"><%= pluralize(@media.errors.count, "error") %> prevent this post from saving</h2>
+          <h2 class="mt5 mb5"><%= pluralize(@medium.errors.count, "error") %> prevent this post from saving</h2>
           <ul>
-            <% @media.errors.full_messages.each do |msg| %>
+            <% @medium.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
             <% end %>
           </ul>

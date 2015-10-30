@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   helper Adm::Helper # to call from view
   include Adm::Helper # to call within controller
   
+  
 end

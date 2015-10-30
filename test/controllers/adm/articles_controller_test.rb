@@ -19,7 +19,6 @@ class Adm::ArticlesControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert_template 'new'
-    assert_not_nil assigns(:categories)
   end
   
   test "should create article" do
@@ -35,8 +34,10 @@ class Adm::ArticlesControllerTest < ActionController::TestCase
   end
   
   test "should update article" do
-    put :update, :id => @article.to_param, :page => 1, :article => @article.attributes
-    assert_redirected_to adm_articles_path(:page => 1)
+    assert_no_difference('Article.count') do
+      put :update, :id => @article.to_param, :page => 1, :article => @article.attributes
+      assert_redirected_to adm_articles_path(:page => 1)
+    end
   end
   
   test "should destroy article" do

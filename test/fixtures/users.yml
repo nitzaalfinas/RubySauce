@@ -11,13 +11,15 @@
 #  column: value
 
 udin:
-  email: "udin@test.com"
-  encrypted_password: "$2a$10$xdPcJu3hEfupjBUCYVImPuU0uba3Sr.ha.k9KdHeAc0txplDhVeDq"
-  confirmed_at: "2015-06-11 00:25:08"
-  confirmation_sent_at: "2015-06-11 00:25:08"
+    id: 1
+    email: "udin@test.com"
+    encrypted_password: "$2a$10$xdPcJu3hEfupjBUCYVImPuU0uba3Sr.ha.k9KdHeAc0txplDhVeDq"
+    confirmed_at: "2015-06-11 00:25:08"
+    confirmation_sent_at: "2015-06-11 00:25:08"
 
 jabua:
-  email: "jabua@test.com"
-  encrypted_password: "$2a$10$xdPcJu3hEfupjBUCYVImPuU0uba3Sr.ha.k9KdHeAc0txplDhVeDq"
-  confirmed_at: "2015-06-11 00:25:08"
-  confirmation_sent_at: "2015-06-11 00:25:08"
+    id: 2
+    email: "jabua@test.com"
+    encrypted_password: "$2a$10$xdPcJu3hEfupjBUCYVImPuU0uba3Sr.ha.k9KdHeAc0txplDhVeDq"
+    confirmed_at: "2015-06-11 00:25:08"
+    confirmation_sent_at: "2015-06-11 00:25:08"

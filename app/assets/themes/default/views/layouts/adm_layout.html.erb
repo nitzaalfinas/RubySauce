@@ -59,8 +59,8 @@
           <li role="presentation" id='pill_categories'>
             <%= link_to(raw("<i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;Categories"), adm_categories_path) %>
           </li>
-          <li role="presentation" id='pill_media'>
-            <%= link_to(raw("<i class='glyphicon glyphicon-picture'></i>&nbsp;&nbsp;Medium"), adm_media_path) %> 
+          <li role="presentation" id='pill_medium'>
+            <%= link_to(raw("<i class='glyphicon glyphicon-picture'></i>&nbsp;&nbsp;Medium"), adm_medium_path) %> 
           </li>
 
           <li role="presentation" id="pill_discusses">
@@ -115,7 +115,7 @@
                 <li><a href="/" target="blank">Visit Site <span class="sr-only">(current)</span></a></li>
                 <li><%= link_to "New Article", new_adm_article_path %></li>
                 <li><%= link_to "New Category", new_adm_category_path %></li>
-                <li><%= link_to "New Media", '/adm/media/new' %></li>
+                <li><%= link_to "New Media", '/adm/medium/new' %></li>
                 <li><%= link_to "New Page", new_adm_page_path %></li>
               </ul>
               <!--

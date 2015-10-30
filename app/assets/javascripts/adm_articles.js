@@ -27,7 +27,7 @@ var adm_articles = {
 
         if (check == 0) {
           $.ajax({
-            url: '/adm/media/media_win?page=1&rows=5&sort=id&order=desc',
+            url: '/adm/medium/media_win?page=1&rows=5&sort=id&order=desc',
             success: function(response) {
               $('#media_win').html(response);
               $('#media_win_modal').modal();

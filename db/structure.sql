@@ -113,8 +113,8 @@ CREATE TABLE `media` (
   `med_description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `med_author_id` int(11) DEFAULT NULL,
   `gallery` int(11) DEFAULT NULL COMMENT 'Pilihan yes atau no',
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -395,7 +395,7 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-03 16:17:50
+-- Dump completed on 2015-10-29 22:58:18
 INSERT INTO schema_migrations (version) VALUES ('20141230104903');
 
 INSERT INTO schema_migrations (version) VALUES ('20141230120303');
@@ -427,4 +427,10 @@ INSERT INTO schema_migrations (version) VALUES ('20150614015305');
 INSERT INTO schema_migrations (version) VALUES ('20150614015307');
 
 INSERT INTO schema_migrations (version) VALUES ('20150614015407');
+
+INSERT INTO schema_migrations (version) VALUES ('20151026061603');
+
+INSERT INTO schema_migrations (version) VALUES ('20151028234400');
+
+INSERT INTO schema_migrations (version) VALUES ('20151029155753');
 

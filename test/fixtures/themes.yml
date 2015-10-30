@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+    id: 1
+    folder_name: "theme01"
+    active: 1
+
+two:
+    id: 2
+    folder_name: "theme02"
+    active: 1
+
+three:
+    id: 3
+    folder_name: "theme03"
+    active: 1
+    

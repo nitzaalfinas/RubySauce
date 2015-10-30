@@ -40,6 +40,7 @@ class ArticleTest < ActiveSupport::TestCase
     }
   end
   
+
   test "should not create an article without title, permalink nor body" do
     article = Article.new
     assert !article.valid?
@@ -51,5 +52,6 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal ["can't be blank"], article.errors[:body]
     assert !article.save
   end
+
   
 end

@@ -1,40 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 article_first:
-  title: Ini adalah title pertama
-  body: body yang dituliskan bla-bla-bla
-  author_id: 2
-  permalink: "test_title_pertama"
-  excerp: "ini adalah excerp"
-  feat_img: "default.png"
-  comment_status: "yes"
-  publish_status: "Publish"
-  publish_visibility: "Public"
-  article_type: "Article"
-  article_vcount: 1
+    id: 1
+    title: Ini adalah title pertama
+    body: body yang dituliskan bla-bla-bla
+    author_id: 2
+    permalink: "test_title_pertama"
+    excerp: "ini adalah excerp"
+    feat_img: "default.png"
+    comment_status: "yes"
+    publish_status: "Publish"
+    publish_visibility: "Public"
+    article_type: "Article"
+    article_vcount: 1
 
 article_second:
-  title: Ini adalah title kedua
-  body: body ble-ble-ble coy
-  author_id: 2
-  permalink: "test_title_kedua"
-  excerp: "ini adalah excerp"
-  feat_img: "default.png"
-  comment_status: "yes"
-  publish_status: "Publish"
-  publish_visibility: "Public"
-  article_type: "Article"
-  article_vcount: 1
+    id: 2
+    title: Ini adalah title kedua
+    body: body ble-ble-ble coy
+    author_id: 2
+    permalink: "test_title_kedua"
+    excerp: "ini adalah excerp"
+    feat_img: "default.png"
+    comment_status: "yes"
+    publish_status: "Publish"
+    publish_visibility: "Public"
+    article_type: "Article"
+    article_vcount: 1
   
 article_third:
-  title: Ini adalah title ketiga
-  body: body ble-ble-ble coy
-  author_id: 2
-  permalink: "test_title_kedua"
-  excerp: "ini adalah excerp"
-  feat_img: "default.png"
-  comment_status: "yes"
-  publish_status: "Publish"
-  publish_visibility: "Public"
-  article_type: "Page"
-  article_vcount: 1
+    id: 3
+    title: Ini adalah title ketiga
+    body: body ble-ble-ble coy
+    author_id: 2
+    permalink: "test_title_kedua"
+    excerp: "ini adalah excerp"
+    feat_img: "default.png"
+    comment_status: "yes"
+    publish_status: "Publish"
+    publish_visibility: "Public"
+    article_type: "Page"
+    article_vcount: 1

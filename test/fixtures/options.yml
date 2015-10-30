@@ -1,7 +1,35 @@
 one:
-  site_title: "Unit Test"
-  site_description: "site description"
-  site_domain: "site domain"
-  site_menu: "site menu"
-  site_menu_draft: "site menu draft"
+    id: 1
+    option_key: site_title
+    option_value: Ruby Sauce
+
+two:
+    id: 2
+    option_key: site_description
+    option_value: CMS based on Ruby on Rails
+
+three:
+    id: 3
+    option_key: site_domain
+    option_value: http://localhost:3000
+
+four:
+    id: 4
+    option_key: site_menu
+    option_value: 
+        
+five:
+    id: 5
+    option_key: site_menu_draft
+    option_value: 
+        
+six:
+    id: 6
+    option_key: site_keywords
+    option_value: cms, ruby, rails, cms based on ruby on rails
+
+seven:
+    id: 7
+    option_key: article_size
+    option_value: 10
   

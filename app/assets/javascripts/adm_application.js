@@ -23,7 +23,7 @@
 //= require adm_categories
 //= require adm_dashboard
 //= require adm_discuss
-//= require adm_media
+//= require adm_medium
 //= require adm_menu
 //= require adm_pages
 //= require adm_settings

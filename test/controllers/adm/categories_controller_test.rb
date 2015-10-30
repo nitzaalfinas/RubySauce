@@ -19,30 +19,39 @@ class Adm::CategoriesControllerTest < ActionController::TestCase
     get :new
     assert_response :success
     assert_template 'new'
-    assert_not_nil assigns(@category)
   end
   
-  test "should create article" do
-    assert_difference('Article.count') do
-      post :create, :article => { title: "ini dari create", body: "ini body", author_id: 3, permalink: "ini_permalink" }
+  test "should create category" do
+    assert_difference('Category.count') do
+      post :create, :category => { cat_name: "Ruby on Rails", cat_description: "ini description", cat_slug: "ruby_rails" }
     end
-    assert_redirected_to adm_articles_path
+    assert_redirected_to adm_categories_path
+  end
+  
+  test "should not create category because it doesn't have a cat_slug" do
+    assert_difference('Category.count',0) do
+      post :create, :category => { cat_name: "Ruby on Rails", cat_description: "ini description" }
+    end
+    assert_template 'new'
   end
   
   test "should get edit" do
-    get :edit, :id => @article.to_param, :article => @article.attributes
+    get :edit, :id => @category.to_param, :category => @category.attributes
     assert_response :success
   end
   
-  test "should update article" do
-    put :update, :id => @article.to_param, :page => 1, :article => @article.attributes
-    assert_redirected_to adm_articles_path(:page => 1)
+  test "should update category" do
+    assert_no_difference('Category.count') do 
+      put :update, :id => @category.to_param, :category => @category.attributes
+      assert_redirected_to adm_categories_path
+    end
   end
   
-  test "should destroy article" do
-    assert_difference('Article.count', -1) do
-      delete :destroy, :id => @article.to_param, :page => 1
+  test "should destroy category" do
+    assert_difference('Category.count', -1) do
+      delete :destroy, :id => @category.to_param
+      assert_redirected_to adm_categories_path
     end
-    assert_redirected_to adm_articles_path(:page => 1)
+    
   end
 end

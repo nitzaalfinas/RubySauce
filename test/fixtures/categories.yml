@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 cat_one:
-  cat_name: "Rails"
-  cat_description: "artikel yang berkaitan dengan Rails"
-  cat_slug: "rails"
-  cat_count: 1
+    id: 1
+    cat_name: "Rails"
+    cat_description: "artikel yang berkaitan dengan Rails"
+    cat_slug: "rails"
+    cat_count: 1
 
 cat_two:
-  cat_name: "Ruby"
-  cat_description: "artikel yang berkaitan dengan Ruby"
-  cat_slug: "ruby"
-  cat_count: 1
+    id: 2
+    cat_name: "Ruby"
+    cat_description: "artikel yang berkaitan dengan Ruby"
+    cat_slug: "ruby"
+    cat_count: 1

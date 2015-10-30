@@ -11,6 +11,26 @@ class ArticleCategoryTest < ActiveSupport::TestCase
   end
    
   test "should find article_category" do
-    article_category = article_categories(:arcat_one)
+    article_category_id = article_categories(:arcat_one).id
+    
+    assert_nothing_raised do 
+      Article.find(article_category_id)
+    end
   end
+  
+  test "should update article_category" do
+    article_category = article_categories(:arcat_one)
+    assert article_category.update_attributes(article_id: articles(:article_second).id)
+  end
+  
+  test "should destroy article_category" do
+    article_category = article_categories(:arcat_two)
+    article_category.destroy
+    
+    assert_raise(ActiveRecord::RecordNotFound) {
+      ArticleCategory.find(article_category.id)
+    }
+  end
+  
+  
 end
