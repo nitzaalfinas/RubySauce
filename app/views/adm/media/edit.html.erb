@@ -10,21 +10,13 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
-              <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_path  %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i> Dashboard', { controller: 'dashboard', action: 'index' } %>
           </li>
           <li>
-            <a href="/adm/media">
-              <i class="glyphicon glyphicon-picture"></i>
-              Medium
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-picture"></i> Medium', { controller: 'media', action: 'index' } %>
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-pencil"></i>&nbsp;
@@ -96,7 +88,7 @@
       <div class="form-group">
         <div class="col-lg-12">
           <input type="submit" value="Edit Media" class="btn btn-primary">
-          <a href="/adm/media" class="btn btn-default">Cancel</a>
+          <%= link_to "Cancel", { controller: 'media', action: 'index' }, { class: 'btn btn-default'} %>
         </div>
       </div>
 
