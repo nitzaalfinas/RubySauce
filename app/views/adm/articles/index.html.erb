@@ -7,15 +7,12 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
+            <%= link_to root_url do  %>
               <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <% end %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i>'.html_safe+' Dashboard', { controller: 'dashboard', action: 'index' } %>
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-align-left"></i>

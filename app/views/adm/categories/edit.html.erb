@@ -12,23 +12,16 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
-              <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_path %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i>'.html_safe+' Dashboard', { controller: 'dashboard', action: 'index' } %>
           </li>
           <li>
-            <a href="/adm/categories">
-              <i class="glyphicon glyphicon-tags"></i>&nbsp;
-              Categories
-              </a>
-              </li>
-                    <li class="active">
+            <%= link_to '<i class="glyphicon glyphicon-tags"></i>'.html_safe+' Categories', { controller: 'categories', action: 'index' } %>
+            
+          </li>
+          <li class="active">
             <i class="glyphicon glyphicon-pencil"></i>&nbsp;
             Edit
           </li>
