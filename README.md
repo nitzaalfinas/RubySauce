@@ -54,8 +54,9 @@ More information about devise: https://github.com/plataformatec/devise
 </div>
 <div>
     <h3>Best Features</h3>
+    <li>Test Driven Development</li>
     <li>Admin Page</li>
     <li>Templates System</li>
     <li>Changing URI easily</li>
 </div>
-.
+
