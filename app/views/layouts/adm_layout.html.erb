@@ -28,7 +28,7 @@
       <div id="adm_sidemenu" class="col-lg-2 pl0 pr0">
         <nav class="navbar" style="border: transparent;">
           <div class="navbar-header w100">
-            <a class="navbar-brand w100 text-center" href="/">Ruby Sauce</a>
+            <a class="navbar-brand w100 text-center" href="/">Indonesia Satu</a>
           </div>
         </nav>
         
@@ -60,24 +60,18 @@
             <%= link_to(raw("<i class='glyphicon glyphicon-tags'></i>&nbsp;&nbsp;Categories"), adm_categories_path) %>
           </li>
           <li role="presentation" id='pill_media'>
-            <%= link_to(raw("<i class='glyphicon glyphicon-picture'></i>&nbsp;&nbsp;Medium"), adm_media_path) %> 
+            <%= link_to(raw("<i class='glyphicon glyphicon-picture'></i>&nbsp;&nbsp;Media"), adm_media_path) %> 
           </li>
 
           <li role="presentation" id="pill_discusses">
             <%= link_to(raw("<i class='glyphicon glyphicon-comment'></i>&nbsp;&nbsp;Discussions"), '/adm/discuss') %>
           </li>
           
-          <% if current_user.level == "Admin" %>
-            <li role="presentation" id="pill_pages">
-              <%= link_to(raw("<i class='glyphicon glyphicon-briefcase'></i>&nbsp;&nbsp;Pages"), adm_pages_path) %>
-            </li>
-          <% end %>
+          <li role="presentation" id="pill_pages">
+            <%= link_to(raw("<i class='glyphicon glyphicon-briefcase'></i>&nbsp;&nbsp;Pages"), adm_pages_path) %>
+          </li>
+          
             
-          <% if current_user.level == "Admin" %>
-            <li role="presentation" id="pill_themes">
-              <%= link_to(raw("<i class='glyphicon glyphicon-heart'></i>&nbsp;&nbsp;Themes"), adm_themes_path) %>
-            </li>
-          <% end %>
 
           <% if current_user.level == "Admin" %>
             <li role="presentation" id="pill_users">

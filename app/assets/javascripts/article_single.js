@@ -15,4 +15,4 @@ $(document).ready(function() {
     });
 });
 
-
+//dari template ror_cms_2

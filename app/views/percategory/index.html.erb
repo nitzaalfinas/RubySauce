@@ -1,37 +1,27 @@
-<%= render 'widget/head_top' %>
-<section class="container back-white pl0 pr0">
-  <%= render "widget/nav" %>
+<%= render "support/fixed_nav" %>
 
-  <!-- breadcrumb -->
-  <div class="col-lg-12">
-    <ol class="breadcrumb">
-      <li>
-        <a href="/"><i class="glyphicon glyphicon-home"></i> Home</a>
-      </li>
-      <li class="active">
-        <% if @articles.size > 0 %>
-          <i class="glyphicon glyphicon-tag"></i>
-          <%= @articles.first.cat_name %>
-        <% end %>
-      </li>
-    </ol>
-  </div>
-  
-  <!-- content -->
-  <div class="col-lg-12 pl0">
-    <div class="col-lg-9 pl0">
-      <% if @articles.size > 0 %>
-        <%= render "articles", :locals => { @articles => @articles } %>  
-      <% else %>
-        Belum ada artikel 
-      <% end %>
-    </div>
-    <div class="col-lg-3 pr0">
-      <%= render partial: "widget/popular_article" %>
-      <%= render partial: "widget/recent_article" %>
-    </div>
-  </div>
-  
-</section>
+<div id="content-wrapper">
 
-<%= render "widget/footer" %>
+	<div id="sub-post">
+		<div class="container">
+			<i class="fa fa-home"></i> 
+			<a href="/">Home</a> 
+			<i class="fa fa-angle-double-right"></i>
+			<% if @articles.size > 0 %>
+				<a><%= @articles.first.cat_name %></a>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<% if @articles.size > 0 %>
+			<%= render "articles", :locals => { @articles => @articles } %>  
+		<% else %>
+			Belum ada artikel 
+		<% end %>
+
+	</div>
+</div>
+
+<%= render "support/footer" %>

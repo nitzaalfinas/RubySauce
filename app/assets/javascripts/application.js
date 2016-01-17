@@ -15,4 +15,12 @@
 //= require turbolinks
 // require_tree .  // REQUIRE_TREE DISABLED!!!!!!!!!!!!!!!!!!!!!
 //= require article_single
-//= require search
+//= require discuss
+//= require galleries
+//= require landing
+//= require page_single
+//= require percategory
+
+
+
+//template ini adalah template ror_cms_2

@@ -43,7 +43,12 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :pages
+    resources :pages do
+      collection do 
+        get 'edit' => 'pages#edit'
+        patch 'edit/simpan' => 'pages#simpan'
+      end
+    end
     
     resources :themes do
       collection do

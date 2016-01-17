@@ -13,7 +13,7 @@
 
   <!-- google -->
   <meta name="description" content="<%= @dynamic_description %>" />
-  <meta name="keywords" content="<%= @dynamic_keywords %>" />
+  <meta name="keywords" content="<%= @dynamic_keyword %>" />
 
   <!-- facebook -->
   <meta property="og:title" content="<%= app_set('site_title') %> - <%= @dynamic_title %>" />
@@ -42,7 +42,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
-  <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Raleway:200,400,800', media: 'all' %>
+  <link rel="stylesheet" href="/fonts/font-awesome.min.css">
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 

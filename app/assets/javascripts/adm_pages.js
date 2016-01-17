@@ -6,7 +6,7 @@ var adm_pages = {
             tinyMCE.init({
                 menubar: false,
                 plugins: [ "autolink link image code table template" ],
-                selector:"#article_body",
+                selector:"textarea",
                 toolbar1: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
             });	
 	},500);

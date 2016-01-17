@@ -5,72 +5,56 @@ class Adm::PagesController < ApplicationController
   layout "adm_layout"
 
   def index
-    adm_check current_user.level
-
-    @articles = VPage.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-
+    @jum = Menu.where(level_kode: current_user.level_kode).count
+    if @jum == 0
+      @m = Menu.new(level_kode: current_user.level_kode)
+      @m.save
+      @data = Menu.where(level_kode: current_user.level_kode).first
+    end
   end #def index
 
-  def new
-    adm_check current_user.level
-
-    @article = Article.new
-
+  def edit
+    @field = params[:ef]
+    @data = Menu.where(level_kode: current_user.level_kode).first
   end
 
-  def create
-    adm_check current_user.level
+  def simpan
+    @data = Menu.where(level_kode: current_user.level_kode).first
 
-    @article = Article.new(article_params)
-    @article.article_type = "Page"
-    @article_save = @article.save
+    @menu_profil = params[:menu][:menu_profil]
+    @menu_rpjmd = params[:menu][:menu_rpjmd] 
+    @menu_visimisi = params[:menu][:menu_visimisi]
+    @menu_skpd = params[:menu][:menu_skpd]
+    @menu_urusan = params[:menu][:menu_urusan]
+    @menu_program = params[:menu][:menu_program]
+    @menu_rka = params[:menu][:menu_rka]
+    @menu_lpj = params[:menu][:menu_lpj]
+    @menu_prestasi = params[:menu][:menu_prestasi]
 
-    if @article_save
-      redirect_to "/adm/pages"
-    else
-
-      render 'new'
+    if @menu_profil
+      @data.menu_profil =  @menu_profil
+    elsif @menu_rpjmd
+      @data.menu_rpjmd =  @menu_rpjmd
+    elsif @menu_visimisi
+      @data.menu_visimisi =  @menu_visimisi
+    elsif @menu_skpd
+      @data.menu_skpd =  @menu_skpd
+    elsif @menu_urusan
+      @data.menu_urusan =  @menu_urusan
+    elsif @menu_program
+      @data.menu_program =  @menu_program
+    elsif @menu_rka
+      @data.menu_rka =  @menu_rka
+    elsif @menu_lpj
+      @data.menu_lpj =  @menu_lpj
+    elsif @menu_prestasi
+      @data.menu_prestasi =  @menu_prestasi
     end
-  end #create
 
-  def edit
-    adm_check current_user.level
+    @data.save
 
-    id = params[:id]
-    @article = Article.find(id)
-    @page = params[:page]
+    redirect_to '/adm/pages'
 
-  end #def edit
-
-  def update
-    adm_check current_user.level
-
-    page = params[:page]
-    id = params[:id]
-    @article = Article.find(id)
-    @article_update = @article.update(article_params)
-
-    if @article_update
-      redirect_to "/adm/pages?page="+page
-    else
-      #if saving failure, this object need to cast
-
-
-      render 'edit'
-    end #if @article_update
-  end #def update
-
-  def destroy
-    adm_check current_user.level
-
-    @art = Article.find(params[:id])
-    @art.destroy
-    redirect_to adm_pages_path
-  end #destroy
-
-  private
-  def article_params
-    params.require(:article).permit(:title, :body, :permalink, :publish_status, :excerp, :author_id, :feat_img)
   end
 
 end

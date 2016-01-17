@@ -7,15 +7,10 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
-              <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_url %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i>'.html_safe+' Dashboard', { controller: 'dashboard', action: 'index' } %>
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-briefcase"></i>
@@ -28,40 +23,43 @@
 </div>
 
 <div class="col-lg-12">
-  <div class="col-lg-12 pl0 mb15">
-    <%= link_to "Add New", new_adm_page_path, class: "btn btn-primary" %>
-  </div>
-
-  <table id="pages_table" class="table table-stripped">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @articles.each do |article| %>
-        <tr>
-          <td>
-            <div><%= article.title %></div>
-            <div>
-              <%= link_to "edit", edit_adm_page_path(id: article.id, page: @articles.current_page) %>
-              | <%= link_to 'trash', adm_page_path(id: article.id, page: @articles.current_page), method: :delete, data: {confirm:'Are you sure?'} %>
-              | <%= link_to 'view', app_set('site_domain').to_s+"/"+article.permalink.to_s %>
-            </div>
-          </td>
-          <td><%= article.nick_name %></td>
-          <td></td>
-          <td><%= article.created_at %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= will_paginate @articles %>
+  <% if current_user.level == "Kecamatan" %>
+    <div class="col-lg-12">
+      Profil 
+      <a href="/adm/pages/edit?ef=menu_profil">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      RPJMD
+      <a href="/adm/pages/edit?ef=menu_rpjmd">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      Visi / Misi
+      <a href="/adm/pages/edit?ef=menu_visimisi">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      Urusan / Tupoksi
+      <a href="/adm/pages/edit?ef=menu_urusan">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      Program
+      <a href="/adm/pages/edit?ef=menu_program">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      RKA
+      <a href="/adm/pages/edit?ef=menu_rka">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      LPJ
+      <a href="/adm/pages/edit?ef=menu_lpj">Edit</a>
+    </div>
+    <div class="col-lg-12">
+      Prestasi
+      <a href="/adm/pages/edit?ef=menu_prestasi">Edit</a>
+    </div>
+  <% end %>
 </div>
 
 
 <script>$('#pill_pages').addClass('active');</script>
+<%= console %>
 

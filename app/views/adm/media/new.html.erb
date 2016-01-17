@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <div class="pull-left">
       <h1 class="mt10 mb10 fs2">
-        Medium
+        Media
         <small>New</small>
       </h1>
     </div>
@@ -10,18 +10,13 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <%= link_to root_url do  %>
-              <i class="glyphicon glyphicon-home"></i>
-            <% end %>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_url %>
           </li>
           <li>
             <%= link_to '<i class="glyphicon glyphicon-dashboard"></i>'.html_safe+' Dashboard', { controller: 'dashboard', action: 'index' } %>
           </li>
           <li>
-            <a href="/adm/media">
-              <i class="glyphicon glyphicon-picture"></i>
-              Medium
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-picture"></i> Media'.html_safe, { class: 'media', action: 'index' } %>
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-file"></i>&nbsp;
@@ -93,7 +88,7 @@
       <div class="form-group">
         <div class="col-lg-12">
           <input type="submit" value="Upload New Media" class="btn btn-primary">
-          <a href="/adm/media" class="btn btn-default">Cancel</a>
+          <%= link_to 'Cancel', { class: 'media', action: 'index' }, { class: 'btn btn-default' } %>
         </div>
       </div>
 

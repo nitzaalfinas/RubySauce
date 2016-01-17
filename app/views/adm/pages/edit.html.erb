@@ -12,21 +12,13 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
-              <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_url %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i>'.html_safe+' Dashboard', { controller: 'dashboard', action: 'index' } %>
           </li>
           <li>
-            <a href="/adm/pages">
-              <i class="glyphicon glyphicon-briefcase"></i>
-              Pages
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-briefcase"></i>'.html_safe+' Pages', { controller: 'pages', action: 'index' } %>
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-pencil"></i>
@@ -39,14 +31,14 @@
 </div>
 
 <div class="col-lg-12">
-  <%= form_for(@article, url: adm_page_path(id: @article.id, page: @page)) do |f| %>
+  <%= form_for(@data, url: '/adm/pages/edit/simpan') do |f| %>
 
     <!-- barisan flash error -->
-    <% if @article.errors.any? %>
+    <% if @data.errors.any? %>
       <div id="errors" class="alert alert-danger">
-        <h2 class="mt5 mb5"><%= pluralize(@article.errors.count, "error") %> prevent this post from saving</h2>
+        <h2 class="mt5 mb5"><%= pluralize(@data.errors.count, "error") %> prevent this post from saving</h2>
         <ul>
-          <% @article.errors.full_messages.each do |msg| %>
+          <% @data.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
@@ -54,29 +46,34 @@
     <% end %>
 
     <!-- barisan content form -->
-    <div class="col-lg-9 pl0">
+
+    <div class="col-lg-12 pl0">	
       <div class="form-group">
-        <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+        <% if @field == "menu_profil" %>
+          <%= f.text_area :menu_profil, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_rpjmd" %>
+          <%= f.text_area :menu_rpjmd, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_visimisi" %>
+          <%= f.text_area :menu_visimisi, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_skpd" %>
+          <%= f.text_area :menu_skpd, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_urusan" %>
+          <%= f.text_area :menu_urusan, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_program" %>
+          <%= f.text_area :menu_program, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_rka" %>
+          <%= f.text_area :menu_rka, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_lpj" %>
+          <%= f.text_area :menu_lpj, style: "min-height: 300px;" %>
+        <% elsif @field == "menu_prestasi" %>
+          <%= f.text_area :menu_prestasi, style: "min-height: 300px;" %>
+        <% end %>
       </div>
 
       <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon"><%= app_set('site_domain') %>/page/</span>
-          <%= f.text_field :permalink, class: "form-control", placeholder: "Permalink" %>
-        </div>
-      </div>	
-
-      <div class="form-group">
-        <%= f.text_area :body, placeholder: "Article", style: "min-height: 300px;" %>
+        <input type="submit" class="btn btn-primary" value="Save">
+        <%= link_to "Cancel", adm_pages_path, class: "btn btn-default" %>
       </div>
-
-      <%= render "adm/articles/panel_ext" %>
-
-    </div>
-
-    <div class="col-lg-3">
-      <%= render "panel_publish" %>
-      <%= render "panel_featured_image" %>
     </div>
 
   <% end %>

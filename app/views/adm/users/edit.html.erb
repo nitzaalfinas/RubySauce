@@ -10,21 +10,13 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
-              <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_url %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i> Dashboard'.html_safe, { controller: 'dashboard', action: 'index' } %>
           </li>
           <li>
-            <a href="/adm/users">
-              <i class="glyphicon glyphicon-user"></i>
-              Users
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-user"></i> Users'.html_safe, { controller: 'users', action: 'index' } %>
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-pencil"></i>
@@ -85,7 +77,7 @@
       <div class="form-group">
         <div class="col-lg-12">
           <input type="submit" class="btn btn-primary" value="Update">
-          <a href="/adm/users" class="btn btn-default">Cancel</a>
+          <%= link_to 'Cancel', { controller: 'users', action: 'index' }, { class: 'btn btn-default' } %>
         </div>
       </div>
 

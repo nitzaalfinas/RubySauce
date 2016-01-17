@@ -10,21 +10,13 @@
       <small>
         <ol class="breadcrumb pt20">
           <li>
-            <a href="/">
-              <i class="glyphicon glyphicon-home"></i>
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-home"></i>'.html_safe, root_path %>
           </li>
           <li>
-            <a href="/adm/dashboard">
-              <i class="glyphicon glyphicon-dashboard"></i>
-              Dashboard
-            </a>
+            <%= link_to '<i class="glyphicon glyphicon-dashboard"></i> Dashboard'.html_safe, { class: 'dashboard', action: 'index' } %>
           </li>
-             <li>
-              <a href="/adm/my_profile">
-              <i class="glyphicon glyphicon-user"></i>
-              My Profile
-            </a>       
+          <li>
+            <%= link_to '<i class="glyphicon glyphicon-user"></i> My Profile'.html_safe, { class: 'my_profile', action: 'index' } %>      
           </li>
           <li class="active">
             <i class="glyphicon glyphicon-pencil"></i>

@@ -1,23 +1,28 @@
-<div class="content">
-  <div id="landing_articles">
-    <% @articles.each do |article| %>
-      <article class="col-lg-12 mb30 article">
-        <div class="col-lg-4 feat_img">
-          <%= image_tag("thumb/"+article.feat_img, style: 'width: 100%') %>
-        </div>
-        <div class="col-lg-8 title_article">
-          <a href="/<%= article.permalink %>">
-            <h2 class="mb5 mt0"><%= article.title %></h2>
-          </a>		
-          <small class="mb10"><%= article.created_at %></small>
-          <div>
-            <%= show_excerp(article).html_safe %>
-          </div>
-        </div>
-      </article>
-    <% end %>
+<div class="content left">
+	<h1><%= @articles.first.cat_name %></h1>
 
-    <%= will_paginate @articles %>
-  </div>
+	<div id="landing_articles">
+		<% @articles.each do |article| %>
+		<article class="mb20">
+			<div class="feat_img">
+				<%= image_tag("upload/thumb/"+article.feat_img) %>
+			</div>
+			<div class="title_article">
+				<a href="/<%= article.permalink %>">
+					<h2 class="mb5"><%= article.title %></h2>
+				</a>		
+				<h3 class="mb10"><%= article.created_at %></h3>
+				<div>
+					<%= article.excerp %>
+				</div>
+			</div>
+		</article>
+		<% end %>
+
+		<%= will_paginate @articles %>
+	</div>
 </div>
+
+<div class="clear"></div>
+<div class="line"></div>
 	

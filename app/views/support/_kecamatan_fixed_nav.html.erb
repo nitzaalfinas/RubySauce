@@ -1,0 +1,49 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Indonesia Satu - Kecamatan</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/hal/profil?kode=<%= @level_kode %>">Profil</a>
+        </li>
+        <li>
+          <a href="/hal/rpjmd?kode=<%= @level_kode %>">RPJMD</a>
+        </li>
+        <li>
+          <a href="/hal/visimisi?kode=<%= @level_kode %>">Visi/Misi</a>
+        </li>
+        <li>
+          <a href="/hal/urusan?kode=<%= @level_kode %>">Urusan / Tupoksi</a>
+        </li>
+        <li>
+          <a href="/hal/program?kode=<%= @level_kode %>">Program</a>
+        </li>
+        <li>
+          <a href="/hal/rkas?kode=<%= @level_kode %>">RKAS / RKT</a>
+        </li>
+        <li>
+          <a href="/hal/lpj?kode=<%= @level_kode %>">LPJ</a>
+        </li>
+        <li>
+          <a href="/hal/prestasi?kode=<%= @level_kode %>">Prestasi</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>

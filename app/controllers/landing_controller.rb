@@ -13,11 +13,12 @@ class LandingController < ApplicationController
   #   - <code>@dynamic_keywords</code> -> SEO
   #   - <code>@dynamic_image</code> -> SEO
   def index
-    if current_user
-      @articles = VArticle.where("publish_status = 'Publish'").order('created_at DESC').paginate(page: params[:page], per_page: app_set('article_size').to_i)
-    else
-      @articles = VArticle.where("publish_status = 'Publish' and publish_visibility = 'Public'").order('created_at DESC').paginate(page: params[:page], per_page: app_set('article_size').to_i)
+    @level_kode = params[:kode] # 31.72.005
+
+    if @level_kode.length == 9
+      render 'kecamatan'
     end
+
 
     @dynamic_title = "Home" # find something better to change this
     @dynamic_author = "nitzaalfinas" # change this if you want

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  menu_kode: MyString
+  menu_profil: MyText
+  menu_rpjmd: MyText
+  menu_visimisi: MyText
+  menu_skpd: MyText
+  menu_urusan: MyText
+  menu_program: MyText
+  menu_rka: MyText
+  menu_lpj: MyText
+  menu_prestasi: MyText
+
+two:
+  menu_kode: MyString
+  menu_profil: MyText
+  menu_rpjmd: MyText
+  menu_visimisi: MyText
+  menu_skpd: MyText
+  menu_urusan: MyText
+  menu_program: MyText
+  menu_rka: MyText
+  menu_lpj: MyText
+  menu_prestasi: MyText
