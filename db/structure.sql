@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.26, for osx10.8 (x86_64)
 --
--- Host: localhost    Database: rubysauce_development
+-- Host: localhost    Database: rubysauce_dev
 -- ------------------------------------------------------
 -- Server version	5.6.26
 
@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `article_categories`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `article_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `article_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
+  `article_id` bigint(20) DEFAULT NULL,
+  `category_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,19 +43,19 @@ CREATE TABLE `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `body` text COLLATE utf8_unicode_ci,
-  `author_id` int(11) DEFAULT NULL,
+  `author_id` bigint(20) DEFAULT NULL,
   `permalink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `excerp` text COLLATE utf8_unicode_ci,
   `feat_img` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `comment_status` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'yes or no',
-  `publish_status` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'draft or publish',
-  `publish_visibility` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'public or private',
-  `article_type` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'article or page',
-  `article_vcount` int(11) DEFAULT NULL COMMENT 'article view count',
+  `comment_status` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `publish_status` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `publish_visibility` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `article_type` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `article_vcount` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +74,7 @@ CREATE TABLE `categories` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,12 +111,12 @@ CREATE TABLE `media` (
   `med_caption` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `med_alt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `med_description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `med_author_id` int(11) DEFAULT NULL,
-  `gallery` int(11) DEFAULT NULL COMMENT 'Pilihan yes atau no',
+  `med_author_id` bigint(20) DEFAULT NULL,
+  `gallery` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +129,7 @@ DROP TABLE IF EXISTS `options`;
 CREATE TABLE `options` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `option_key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `option_value` text COLLATE utf8_unicode_ci,
+  `option_value` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -163,7 +163,7 @@ CREATE TABLE `themes` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +179,7 @@ CREATE TABLE `users` (
   `encrypted_password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `full_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `nick_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar_file` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'avatar-no.png',
   `level` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `reset_password_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `reset_password_sent_at` datetime DEFAULT NULL,
@@ -192,13 +193,12 @@ CREATE TABLE `users` (
   `confirmed_at` datetime DEFAULT NULL,
   `confirmation_sent_at` datetime DEFAULT NULL,
   `unconfirmed_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `avatar_file` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +395,7 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-29 22:58:18
+-- Dump completed on 2016-02-05 10:17:27
 INSERT INTO schema_migrations (version) VALUES ('20141230104903');
 
 INSERT INTO schema_migrations (version) VALUES ('20141230120303');
